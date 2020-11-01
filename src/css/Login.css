@@ -1,0 +1,144 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url("https://cdn.vox-cdn.com/thumbor/-kFfdZ6Lo_2Ymf1werDGHnqP_CA=/0x0:4256x2832/1820x1024/filters:focal(1788x1076:2468x1756):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/65023313/The_Rose_Venice_Exterior.0.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+
+.container{
+    background-color: rgba(255, 255, 255, 0.9);
+    width: 35%;
+    text-align: center;
+    margin: 10% 32.5%;
+    padding: 0 1.5%;
+    border-radius: 30px;
+    border: 10px solid #dcdada;
+    transition: 2s;
+}
+
+/* title */
+h1 {
+    font-size: 3em;
+    font-family: sans-serif;
+    padding: 20px 0 0 0;
+    transition: 2s;
+
+}
+
+/* form login */
+.form-control {
+    width: 85%;
+    height: 3.8em;
+    margin: 20px 0 0 0;
+    border-radius: 10px;
+    border: 2px solid #c5bfbf;
+    padding: 0 10px 0 10px;
+}
+
+
+/* Button Login */
+.button_login {
+
+    border-radius: 10px;
+    border: 0px;
+    color: #ffffff;
+    background-color: #0000FF;
+    font-weight: bold;
+    font-size: 22px;
+    height: 2.2em;
+    transition: 2s;
+    display: block;
+    padding: 2% 0 0 0;
+    margin: 7%;
+    text-decoration: none;
+}
+
+
+/* responsive */
+@media (min-width: 1025px) {
+    body {
+        background-size: auto;
+    }
+
+    .container{
+        margin-top: 15%;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+}
+
+/*Ipad ngang(1024 x 768)*/
+@media screen and (max-width: 1024px) {
+    body {
+        background-size: auto;
+    }
+
+    .container{
+        margin-top: 15%;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+}
+
+/*Ipad dọc(768 x 1024)*/
+@media screen and (max-width: 768px) {
+    .container{
+        width: 40%;
+        margin-top: 20%;
+    }
+
+    h1 {
+        font-size: 1.6em;
+    }
+}
+
+/*Tablet nhỏ(480 x 640)*/
+@media screen and (max-width: 480px) {
+    .container{
+        width: 55%;
+        margin: 25% 22%;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+}
+
+/*Iphone(480 x 640)*/
+@media screen and (max-width: 320px) {
+    .container{
+        width: 80%;
+        margin: 50% 10%;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+}
+
+/*Smart phone nhỏ*/
+@media screen and (max-width: 240px) {
+    .container{
+        width: 90%;
+        margin: 80% 5%;
+    }
+
+    h1 {
+        font-size: 1.3em;
+    }
+
+    .button_login{
+        font-size: 18px;
+    }
+}

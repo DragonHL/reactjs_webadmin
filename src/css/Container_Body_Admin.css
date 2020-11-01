@@ -1,0 +1,117 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    
+}
+
+.container-body .sub-container{
+    /* background-color: #efefef; */
+    background-color: #ffffff;
+}
+
+.statistical_month_year{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 5% 0;
+    flex-wrap: wrap;
+}
+
+.statistical_month_year>.statistical_month , .statistical_year{
+    width: 35%;
+    height: 100%;
+    padding: 1%;
+    border-radius: 25px;
+    background-color: #ffffff;
+    border-left: 10px solid #007bff;
+    border-bottom: 1px solid #efefef;
+    border-top: 1px solid #efefef;
+    border-right: 0.5px solid #efefef;
+    
+}
+.statistical_month_year>.statistical_month>.title_statistical{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.statistical_month_year>.statistical_year>.title_statistical{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+.statistical_month_year .Month_Year, .fa-dollar-sign{
+    font-size: 2.5em;
+    font-weight: bold;
+}
+.statistical_month_year .Month_Year{
+    color: #0020FF;
+}
+.statistical_month_year .fa-dollar-sign{
+    color: #02BF08;
+}
+
+.statistical_month_year .money{
+    font-size: 2em;
+    font-weight: bold;
+}
+
+
+.chart{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    
+}
+
+
+
+#curve_chart, #piechart_3d{
+    width: 45%;
+}
+
+
+
+.lineChart>h5, .pieChart>h5{
+    color: #5F73DF;
+    font-weight: bold;
+
+    /* padding: 10px 0 10px 10px; */
+}
+
+
+@media screen and (max-width: 1330px) {
+
+
+    #curve_chart, #piechart_3d {
+        width: 100%;
+        margin-bottom: 5%;
+        text-align: -webkit-center;
+        text-align:-moz-center;
+        margin: 0 auto;
+    }
+
+}
+
+
+@media screen and (max-width: 768px) {
+    .statistical_month_year>.statistical_month , .statistical_year{
+        width: 100%;
+        margin-bottom: 5%;
+    }
+
+
+}
+
+@media screen and (max-width: 480px) {
+
+}
+
+@media screen and (max-width: 320px) {
+}
+
+
