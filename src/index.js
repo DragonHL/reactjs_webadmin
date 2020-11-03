@@ -2,14 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // import './index.css';
 // import App from './App';
-import './css/Login.css';
-import Login from './Component/Login';
+// import './css/Login.css';
+// import Login from './Components/Login';
 import reportWebVitals from './reportWebVitals';
 
+import './css/Overview.css';
+import AdminOverview from './Components/AdminOverview';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Login/>
+    <AdminOverview/>
   </React.StrictMode>,
   document.getElementById('root')
 );
