@@ -6,6 +6,8 @@
     
 }
 
+
+
 .body {
     position: relative;
    
@@ -125,7 +127,9 @@
     z-index: 99999;
     transition: 1s;
     overflow: scroll;
+    
 }
+
 
 /* Custom Scrollbars */
 ::-webkit-scrollbar {
@@ -170,7 +174,7 @@
     color: #0400ff;
 }
 
-#collapseExample{
+#example-collapse-text{
     text-align: center;
 }
 

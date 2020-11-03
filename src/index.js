@@ -7,11 +7,20 @@ import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 
 import './css/Overview.css';
-import AdminOverview from './Components/AdminOverview';
+// import AdminOverview from './Components/AdminOverview';
+import CustomersOverview from './Components/CustomersOverview';
+// import Test from './Components/Test';
+// import Header from './Components/Header';
+
+// import SideBar from './Components/SideBar';
+// import ContentAdminOverview from './Components/ContentAdminOverview';
+// import Footer from './Components/Footer';
+
+// import '../js/FontAwesome';
 
 ReactDOM.render(
   <React.StrictMode>
-    <AdminOverview/>
+    <CustomersOverview/>
   </React.StrictMode>,
   document.getElementById('root')
 );

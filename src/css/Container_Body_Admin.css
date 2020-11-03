@@ -14,7 +14,7 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    margin: 5% 0;
+    margin: 2% 0;
     flex-wrap: wrap;
 }
 
@@ -44,7 +44,7 @@
     
 }
 .statistical_month_year .Month_Year, .fa-dollar-sign{
-    font-size: 2.5em;
+    font-size: 2em;
     font-weight: bold;
 }
 .statistical_month_year .Month_Year{
@@ -55,7 +55,7 @@
 }
 
 .statistical_month_year .money{
-    font-size: 2em;
+    font-size: 1.8em;
     font-weight: bold;
 }
 

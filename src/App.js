@@ -1,10 +1,10 @@
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
+
+  // Route,
   Link
 } from "react-router-dom";
-import AdminOverview from "./Components/AdminOverview";
+// import AdminOverview from "./Components/AdminOverview";
 
 
 import './css/Login.css';
@@ -32,8 +32,8 @@ function App() {
       <Link to="/AdminOverview" className="btn btn-primary button_login">Login</Link>
 
         </form>
-<Route path="/" exact component={App}/>
-<Route path="/AdminOverview" component={AdminOverview}/>
+{/* <Route path="/" exact component={App}/>
+<Route path="/AdminOverview" component={AdminOverview}/> */}
       </div>
 
     </Router>
