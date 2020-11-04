@@ -178,13 +178,13 @@
     text-align: center;
 }
 
-.nav-item-vertical>a{
+.nav-item-vertical>.linkSideBar{
     color: #989898;
     font-weight: bold;
     text-decoration: none;
 }
 
-.nav-item-vertical>a:hover{
+.nav-item-vertical>.linkSideBar:hover{
     text-decoration: none;
 }
 
@@ -205,7 +205,7 @@
 }
 
 
-.list-menu>li>a {
+.list-menu>li>.linkSideBar {
     display: flex;
     text-decoration: none;
     font-size: 1.2em;
@@ -214,16 +214,16 @@
     align-items: center;
 }
 
-.list-menu>li>a:hover{
+.list-menu>li>.linkSideBar:hover{
     color: #2c2c2c;
 }
 
-.list-menu>li>a>i {
+.list-menu>li>.linkSideBar>.i {
     width: 1.5em;
 
 }
 
-.list-menu>li>a>p {
+.list-menu>li>.linkSideBar>p {
     margin-left: 0.6em;
 }
 
@@ -239,11 +239,12 @@
     margin-top: 87px;
 }
 
-.container-body .sub-container {
+.sub-container {
     margin: 10px;
     background-color: #ffffff;
     padding: 20px 10px;
     overflow-x: auto;
+    
 }
 
 .title-button{
@@ -253,7 +254,7 @@
    
 }
 
-.container-body .titleTable{
+.titleTable{
     color: #4E73DF;
     margin: 0 0 1% 1%;
     transition: 1s;
@@ -270,6 +271,7 @@
     font-size: 1.2em;
     transition: 0.5s;
     padding-top: 15px;
+    margin-right: 1%;
 }
 
 .title-button>.buttonAdd:hover{

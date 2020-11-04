@@ -1,26 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import './index.css';
-// import App from './App';
-// import './css/Login.css';
-// import Login from './Components/Login';
+
 import reportWebVitals from './reportWebVitals';
 
-import './css/Overview.css';
-// import AdminOverview from './Components/AdminOverview';
-import TrackOrder from './Components/TrackOrder';
-// import Test from './Components/Test';
-// import Header from './Components/Header';
 
-// import SideBar from './Components/SideBar';
-// import ContentAdminOverview from './Components/ContentAdminOverview';
-// import Footer from './Components/Footer';
+import WebAdmin from './Components/WebAdmin/WebAdmin';
 
-// import '../js/FontAwesome';
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <TrackOrder/>
+  
+      <WebAdmin/>
+
+    
   </React.StrictMode>,
   document.getElementById('root')
 );
