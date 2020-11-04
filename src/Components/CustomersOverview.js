@@ -2,7 +2,7 @@
 import '../css/Overview.css';
 import Header from './Header';
 import SideBar from './SideBar';
-import ContentCustomersOverview from './ContentCustomersOverview';
+import ContainerCustomersOverview from './ContainerCustomersOverview';
 import Footer from './Footer';
 
 function CustomersOverview() {
@@ -10,7 +10,7 @@ function CustomersOverview() {
         <div className="body">
             <Header></Header>
             <SideBar></SideBar>
-            <ContentCustomersOverview></ContentCustomersOverview>
+            <ContainerCustomersOverview></ContainerCustomersOverview>
             <Footer></Footer>
         </div>
     );

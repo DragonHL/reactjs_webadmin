@@ -1,6 +1,6 @@
 
 import { Chart } from "react-google-charts";
-function CurveChart() {
+function Piechart3d() {
     return (
 
         <div className="body">
@@ -34,4 +34,4 @@ function CurveChart() {
 
 
 
-export default CurveChart;
+export default Piechart3d;

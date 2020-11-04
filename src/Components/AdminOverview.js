@@ -4,7 +4,7 @@ import '../css/Container_Body_Admin.css';
 import '../css/Footer.css';
 import Header from './Header';
 import SideBar from './SideBar';
-import ContentAdminOverview from './ContentAdminOverview';
+import ContainerAdminOverview from './ContainerAdminOverview';
 import Footer from './Footer';
 
 function AdminOverview() {
@@ -12,7 +12,7 @@ function AdminOverview() {
         <div className="body">
             <Header></Header>
             <SideBar></SideBar>
-            <ContentAdminOverview></ContentAdminOverview>
+            <ContainerAdminOverview></ContainerAdminOverview>
             <Footer></Footer>
         </div>
     );

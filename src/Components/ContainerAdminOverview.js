@@ -5,7 +5,7 @@ import '../css/Container_Body_Admin.css';
 import CurveChart from './CurveChart';
 import Piechart3d from './Piechart3d';
 
-function ContentAdminOverview() {
+function ContainerAdminOverview() {
     return (
         <div className="body">
 
@@ -53,4 +53,4 @@ function ContentAdminOverview() {
     );
 }
 
-export default ContentAdminOverview;
+export default ContainerAdminOverview;

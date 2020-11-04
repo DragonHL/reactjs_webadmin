@@ -8,7 +8,7 @@ import reportWebVitals from './reportWebVitals';
 
 import './css/Overview.css';
 // import AdminOverview from './Components/AdminOverview';
-import CustomersOverview from './Components/CustomersOverview';
+import TrackOrder from './Components/TrackOrder';
 // import Test from './Components/Test';
 // import Header from './Components/Header';
 
@@ -20,7 +20,7 @@ import CustomersOverview from './Components/CustomersOverview';
 
 ReactDOM.render(
   <React.StrictMode>
-    <CustomersOverview/>
+    <TrackOrder/>
   </React.StrictMode>,
   document.getElementById('root')
 );
