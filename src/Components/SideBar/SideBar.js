@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
+
+import { useAuth } from '../../Service/LoginService'
+
 
 import '../../css/Overview.css';
 
@@ -25,8 +28,24 @@ import {
 import { GiStarsStack } from "react-icons/gi";
 
 
-function SideBar() {
+function SideBar ()  {
     const [open, setOpen] = useState(false);
+
+
+    const { currentUser, logout } = useAuth();
+    const  history  = useHistory();
+
+    async function handleLogout(){
+        // setError('')
+        try{
+            await logout();
+            history.push('/')
+        }catch{
+            // setError('Failed to log out')
+            console.log('Failed to log out')
+        }
+    }
+
     return (
         
             <div className="body">
@@ -39,13 +58,13 @@ function SideBar() {
                         aria-controls="example-collapse-text"
                         aria-expanded={open}
                     >
-                        <a class="informationA" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
-                            aria-controls="collapseExample">
+                        <a class="informationA" data-toggle="collapse" href="#setting" role="button" aria-expanded="false"
+                            aria-controls="setting">
 
                             <img src="https://image.thanhnien.vn/1080/uploaded/nthanhluan/2020_04_18/billgates_dlid.jpg"
                                 alt="imageadmin" width="80px" height="80px" class="imageAdminSideBar" />
 
-                            <p class="nameAminSideBar">Bill Gates </p>
+                            <p class="nameAminSideBar">{currentUser.email} </p>
                             <p class="role">Administrator </p>
                             <FaCaretDown class="fas fa-caret-down" />
                         </a>
@@ -61,7 +80,8 @@ function SideBar() {
                                     <a className="nav-link-vertical active " href="/#">Edit Profile</a>
                                 </li>
                                 <li className="nav-item-vertical ">
-                                    <a className="nav-link-vertical" href="/#">Exit</a>
+                                    {/* <a className="nav-link-vertical" href="/#">Exit</a> */}
+                                    <Link to="/" className="nav-link-vertical" onClick={handleLogout}>Log Out</Link>
                                 </li>
 
                             </ul>
@@ -70,56 +90,56 @@ function SideBar() {
                     </Collapse>
 
                     {/* <!-- Title dash board --> */}
-                    <h4 className="titleDasboard">Dasdboard</h4>
+                    <h4 className="titleDasboard">Dashboard</h4>
 
 
                     {/* <!-- List menu dash board --> */}
                     <ul className="list-menu">
                         <li>
-                            <Link to="/" className="linkSideBar">
+                            <Link to="/webadmin/admin" className="linkSideBar">
                                 <FaChartPie className="fas fa-chart-pie i" />
                                 <p>Admin Overview</p>
                             </Link>
                         </li>
                         <li>
-                            <Link to="/customer" className="linkSideBar">
+                            <Link to="/webadmin/customer" className="linkSideBar">
                                 <FaUsers className="fas fa-users i" />
                                 <p>Custommer Overview</p>
                             </Link>
                         </li>
                         <li>
-                            <Link to="/employees" className="linkSideBar">
+                            <Link to="/webadmin/employees" className="linkSideBar">
                                 <FaUserTie className="fas fa-user-tie i" />
                                 <p>Employee Overview</p>
                             </Link>
                         </li>
                         <li>
-                            <Link to="/kindFood" className="linkSideBar">
+                            <Link to="/webadmin/kindFood" className="linkSideBar">
                                 <FaConciergeBell className="fas fa-concierge-bell i" />
                                 <p>Kind Food</p>
                             </Link>
 
                         </li>
                         <li>
-                            <Link to="/order" className="linkSideBar">
+                            <Link to="/webadmin/order" className="linkSideBar">
                                 <FaRegListAlt className="far fa-list-alt i" />
                                 <p>Order</p>
                             </Link>
                         </li>
                         <li>
-                            <Link to="/trackOrder" className="linkSideBar">
+                            <Link to="/webadmin/trackOrder" className="linkSideBar">
                                 <FaTruck className="fas fa-truck i" />
                                 <p>Track Order</p>
                             </Link>
                         </li>
                         <li>
-                            <Link to="/discount" className="linkSideBar">
+                            <Link to="/webadmin/discount" className="linkSideBar">
                                 <FaUserTag className="fas fa-user-tag i" />
                                 <p>Discount</p>
                             </Link>
                         </li>
                         <li>
-                            <Link to="/rating" className="linkSideBar">
+                            <Link to="/webadmin/rating" className="linkSideBar">
                                 <GiStarsStack className="far fa-star i" />
                                 <p>Rating</p>
                             </Link>

@@ -251,12 +251,12 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 2%;
-   
+    height: 58px;
 }
 
 .titleTable{
     color: #4E73DF;
-    margin: 0 0 1% 1%;
+    /* margin: 1% 0 2% 1%; */
     transition: 1s;
 }
 

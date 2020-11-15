@@ -15,7 +15,7 @@ function ContainerFood() {
                 {/* <a class="btn btn-warning buttonAdd" href="./From Add And Edit Food.html" role="button">
                     ADD
                 </a> */}
-                <Link to="/formFood" className="btn btn-warning buttonAdd">ADD</Link>
+                <Link to="/webadmin/formFood" className="btn btn-warning buttonAdd">ADD</Link>
             </div>
             <TableFood />
         </div>

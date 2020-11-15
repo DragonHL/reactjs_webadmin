@@ -67,14 +67,14 @@ const TableContentKindFood = () => {
           //   target="_blank"
           //   role="button">
           //   Show </a>
-          <Link to="/food" className="btn btn-primary buttonShow btn-table">Show</Link>
+          <Link to="/webadmin/food" className="btn btn-primary buttonShow btn-table">Show</Link>
         ,
         edit:
           // <a class="btn btn-primary buttonEdit btn-table" href="/#"
           //   target="_blank"
           //   role="button">
           //   Edit</a>
-            <Link to="/formKindFood" className="btn btn-primary buttonEdit btn-table">Edit</Link>
+            <Link to="/webadmin/formFood" className="btn btn-primary buttonEdit btn-table">Edit</Link>
         ,
         delete:
           <a class="btn btn-danger buttonDelete btn-table" href="/#"
@@ -96,14 +96,14 @@ const TableContentKindFood = () => {
           //   target="_blank"
           //   role="button">
           //   Show </a>
-          <Link to="/food" className="btn btn-primary buttonShow btn-table">Show</Link>
+          <Link to="/webadmin/food" className="btn btn-primary buttonShow btn-table">Show</Link>
         ,
         edit:
           // <a class="btn btn-primary buttonEdit btn-table" href="/#"
           //   target="_blank"
           //   role="button">
           //   Edit</a>
-          <Link to="/formKindFood" className="btn btn-primary buttonEdit btn-table">Edit</Link>
+          <Link to="/webadmin/formFood" className="btn btn-primary buttonEdit btn-table">Edit</Link>
         ,
         delete:
           <a class="btn btn-danger buttonDelete btn-table" href="/#"
@@ -125,14 +125,14 @@ const TableContentKindFood = () => {
           //   target="_blank"
           //   role="button">
           //   Show </a>
-            <Link to="/food" className="btn btn-primary buttonShow btn-table">Show</Link>
+            <Link to="/webadmin/food" className="btn btn-primary buttonShow btn-table">Show</Link>
         ,
         edit:
           // <a className="btn btn-primary buttonEdit btn-table" href="/#"
           //   target="_blank"
           //   role="button">
           //   Edit</a>
-          <Link to="/formKindFood" className="btn btn-primary buttonEdit btn-table">Edit</Link>
+          <Link to="/webadmin/formFood" className="btn btn-primary buttonEdit btn-table">Edit</Link>
         ,
         delete:
           <a className="btn btn-danger buttonDelete btn-table" href="/#" role="button"

@@ -2,18 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import reportWebVitals from './reportWebVitals';
-
-
-import WebAdmin from './Components/WebAdmin/WebAdmin';
-
-
+import App from './App';
+import { BrowserRouter as Router } from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
-  
-      <WebAdmin/>
+    <Router>
+      <App/>
+    </Router>
 
-    
   </React.StrictMode>,
   document.getElementById('root')
 );

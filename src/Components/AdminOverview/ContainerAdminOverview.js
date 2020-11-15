@@ -5,6 +5,12 @@ import '../../css/Container_Body_Admin.css';
 import CurveChart from './CurveChart';
 import Piechart3d from './Piechart3d';
 
+
+
+import {
+    FaDollarSign
+} from "react-icons/fa";
+
 function ContainerAdminOverview() {
     return (
         <div className="sub-container">
@@ -18,7 +24,8 @@ function ContainerAdminOverview() {
                         <div className="statistical_month">
                             <div className="title_statistical">
                                 <p className="Month_Year">Month</p>
-                                <i className="fas fa-dollar-sign"></i>
+                                <FaDollarSign className="fas fa-dollar-sign"/>
+                                {/* <i className="fas fa-dollar-sign"></i> */}
                             </div>
                             <p className="money">654789000</p>
                         </div>
@@ -26,7 +33,8 @@ function ContainerAdminOverview() {
                         <div className="statistical_year">
                             <div className="title_statistical">
                                 <p className="Month_Year">Year</p>
-                                <i className="fas fa-dollar-sign"></i>
+                                <FaDollarSign className="fas fa-dollar-sign"/>
+                                {/* <i className="fas fa-dollar-sign"></i> */}
                             </div>
                             <p className="money">654789000</p>
                         </div>

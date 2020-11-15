@@ -70,7 +70,7 @@ const TableContentDiscount = () => {
         edit:
           // <a class="btn btn-primary buttonEdit btn-table" href="/#" role="button">
           //   Edit </a>
-          <Link to="/formDiscount" className="btn btn-primary buttonEdit btn-table">Edit</Link>
+          <Link to="/webadmin/formDiscount" className="btn btn-primary buttonEdit btn-table">Edit</Link>
         ,
         delete:
           <a className="btn btn-danger buttonEdit btn-table" href="/#" role="button">
@@ -88,7 +88,7 @@ const TableContentDiscount = () => {
         edit:
           // <a class="btn btn-primary buttonEdit btn-table" href="/#" role="button">
           //   Edit </a>
-          <Link to="/formDiscount" className="btn btn-primary buttonEdit btn-table">Edit</Link>
+          <Link to="/webadmin/formDiscount" className="btn btn-primary buttonEdit btn-table">Edit</Link>
         ,
         delete:
           <a class="btn btn-danger buttonEdit btn-table" href="/#" role="button">
@@ -106,7 +106,7 @@ const TableContentDiscount = () => {
         edit:
           // <a class="btn btn-primary buttonEdit btn-table" href="/#" role="button">
           //   Edit </a>
-          <Link to="/formDiscount" className="btn btn-primary buttonEdit btn-table">Edit</Link>
+          <Link to="/webadmin/formDiscount" className="btn btn-primary buttonEdit btn-table">Edit</Link>
         ,
         delete:
           <a class="btn btn-danger buttonEdit btn-table" href="/#" role="button">

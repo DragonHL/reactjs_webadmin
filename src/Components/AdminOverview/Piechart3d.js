@@ -22,7 +22,7 @@ function Piechart3d() {
                     // Just add this option
                     is3D: true,
                     legend: { position: 'bottom' },
-                    chartArea: {width: '80%',right: 0,top:35}
+                    chartArea: {width: '80%',right: 30,top:35}
                 }}
                 rootProps={{ 'data-testid': '2' }}
             />

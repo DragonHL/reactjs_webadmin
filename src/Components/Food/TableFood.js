@@ -68,7 +68,7 @@ const TableFood = () => {
           //   target="_blank"
           //   role="button">
           //   Edit</a>
-          <Link to="/formFood" className="btn btn-primary buttonEdit btn-table">Edit</Link>
+          <Link to="/webadmin/formFood" className="btn btn-primary buttonEdit btn-table">Edit</Link>
         ,
         delete:
           <a class="btn btn-danger buttonDelete btn-table" href="/#"
@@ -91,7 +91,7 @@ const TableFood = () => {
           //   target="_blank"
           //   role="button">
           //   Edit</a>
-          <Link to="/formFood" className="btn btn-primary buttonEdit btn-table">Edit</Link>
+          <Link to="/webadmin/formFood" className="btn btn-primary buttonEdit btn-table">Edit</Link>
         ,
         delete:
           <a class="btn btn-danger buttonDelete btn-table" href="/#"
@@ -114,7 +114,7 @@ const TableFood = () => {
           //   target="_blank"
           //   role="button">
           //   Edit</a>
-          <Link to="/formFood" className="btn btn-primary buttonEdit btn-table">Edit</Link>
+          <Link to="/webadmin/formFood" className="btn btn-primary buttonEdit btn-table">Edit</Link>
         ,
         delete:
           <a class="btn btn-danger buttonDelete btn-table" href="/#"
