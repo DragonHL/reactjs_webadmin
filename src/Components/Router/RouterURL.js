@@ -11,6 +11,8 @@ import Food from "../Food/Food";
 import FormInsert_EditKindFood from "../KindFood/FormInsert_EditKindFood";
 import FormInsert_EditFood from "../Food/FormInsert_EditFood";
 import FormInsert_EditDiscount from "../Discount/FormInsert_EditDiscount";
+import FormInsert_EditEmployees from "../EmployeesOverview/FormInsert_EditEmployees";
+
 
 // import Login from "../Login/Login";
 
@@ -39,6 +41,9 @@ function RouterURL() {
                 <Route path="/webadmin/formKindFood" component={FormInsert_EditKindFood} />
                 <Route path="/webadmin/formFood" component={FormInsert_EditFood} />
                 <Route path="/webadmin/formDiscount" component={FormInsert_EditDiscount} />
+                <Route path="/webadmin/formEmployee" component={FormInsert_EditEmployees} />
+
+
 
                 {/* <Route path="/login" component={Login} /> */}
                 

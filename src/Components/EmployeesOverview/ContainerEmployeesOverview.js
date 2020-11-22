@@ -5,6 +5,7 @@ import '../../css/DataTable.css';
 
 import TableContentEmployees from './TableContentEmployees';
 
+import {Link} from "react-router-dom";
 
 function ContainerEmployeesOverview() {
 
@@ -14,8 +15,11 @@ function ContainerEmployeesOverview() {
 
             {/* <div class="container-body">
                 <div class="sub-container"> */}
+                <div class="title-button">
                     <h1 class="titleTable">Employees Overview</h1>
-
+                    <Link to="/webadmin/formEmployee" className="linkSideBar btn btn-warning buttonAdd">ADD</Link> 
+                </div>
+                    
                     <TableContentEmployees />
 
                 {/* </div>
