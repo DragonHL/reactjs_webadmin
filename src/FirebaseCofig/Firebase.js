@@ -18,6 +18,7 @@ var fibaseDb = firebase.initializeApp({
     appId: "1:588075255846:web:02a53bfc925ab73bcfbee7",
     measurementId: "G-BWJX1X84CL"
 
+
     // apiKey: "AIzaSyAftz67ITYF0_o89L1ERADmvYPc-7YhgEU",
     // authDomain: "duanttn.firebaseapp.com",
     // databaseURL: "https://duanttn.firebaseio.com",
@@ -26,9 +27,10 @@ var fibaseDb = firebase.initializeApp({
     // messagingSenderId: "646002843115",
     // appId: "1:646002843115:web:76e231d4be9f5157e5cdae",
     // measurementId: "G-KBNTKYJ4HS"
+
 });
 
 export const storage = fibaseDb.storage();
 export const auth = fibaseDb.auth();
-// export const fibaseDb = firebase.database();
 export default fibaseDb = firebase.database();
+

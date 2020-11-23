@@ -4,22 +4,6 @@ import Firebase from "../../FirebaseCofig/Firebase"
 
 const TableContentEmployees = () => {
 
-  // const addOrEdit = obj =>{
-  //   Firebase.child('contacts').push()(
-  //     obj,
-  //     err => {
-  //       if(err){
-  //         console.log(err)
-  //       }
-  //     }
-  //   )
-
-
-
-  // }
-
-
-
   const data = {
     columns: [
       {

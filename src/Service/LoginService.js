@@ -2,7 +2,8 @@ import React, { useContext, useState, useEffect } from 'react';
 import {  Route } from 'react-router-dom'
 import Login from '../Components/Login/Login'
 
-import { auth } from '../FirebaseCofig/Firebase'
+
+import { auth } from '../FirebaseCofig/Firebase';
 
 const AuthContext = React.createContext();
 
