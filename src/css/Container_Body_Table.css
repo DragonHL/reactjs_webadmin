@@ -28,3 +28,7 @@ table .dataTable {
 .table .btn-table{
     width: 5em;
 }
+
+tbody + thead{
+    display: none;
+  }

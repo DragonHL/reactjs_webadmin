@@ -1,13 +1,32 @@
 import React from 'react';
 import { MDBDataTable } from 'mdbreact';
 import { Link } from "react-router-dom";
+import { useList } from "react-firebase-hooks/database";
+
+import DiscountService from "../../Service/DiscountService";
 
 const TableContentDiscount = () => {
+
+  const [dataDiscount, loading, error] = useList(DiscountService.getAll());
+
+  const rows = dataDiscount.map((tutorial, index) => ({
+    stt: (index + 1),
+    code: tutorial.val().code,
+    discount: tutorial.val().discount,
+    description: tutorial.val().description,
+    dateStart: tutorial.val().dateStart,
+    dateEnd: tutorial.val().dateEnd,
+    edit: <Link to="/webadmin/formDiscount" className="btn btn-primary buttonEdit btn-table">Edit</Link>,
+    delete: <a className="btn btn-danger buttonEdit btn-table" href="/#" role="button">Delete</a>,
+    
+  }));
+
+
   const data = {
     columns: [
       {
-        label: 'ID',
-        field: 'id',
+        label: '',
+        field: 'stt',
         sort: 'asc',
         width: 100
       },
@@ -57,76 +76,20 @@ const TableContentDiscount = () => {
         width: 100
       }
 
-
     ],
-    rows: [
-      {
-        id: '1',
-        code: '9999999',
-        discount: '10%',
-        description: 'SALE 10%',
-        dateStart: '25/10/2020',
-        dateEnd: '7984512310',
-        edit:
-          // <a class="btn btn-primary buttonEdit btn-table" href="/#" role="button">
-          //   Edit </a>
-          <Link to="/webadmin/formDiscount" className="btn btn-primary buttonEdit btn-table">Edit</Link>
-        ,
-        delete:
-          <a className="btn btn-danger buttonEdit btn-table" href="/#" role="button">
-            Delete</a>,
 
-      }
-      ,
-      {
-        id: '1',
-        code: '9999999',
-        discount: '10%',
-        description: 'SALE 10%',
-        dateStart: '25/10/2020',
-        dateEnd: '7984512310',
-        edit:
-          // <a class="btn btn-primary buttonEdit btn-table" href="/#" role="button">
-          //   Edit </a>
-          <Link to="/webadmin/formDiscount" className="btn btn-primary buttonEdit btn-table">Edit</Link>
-        ,
-        delete:
-          <a class="btn btn-danger buttonEdit btn-table" href="/#" role="button">
-            Delete</a>,
-
-      }
-      ,
-      {
-        id: '1',
-        code: '9999999',
-        discount: '10%',
-        description: 'SALE 10%',
-        dateStart: '25/10/2020',
-        dateEnd: '7984512310',
-        edit:
-          // <a class="btn btn-primary buttonEdit btn-table" href="/#" role="button">
-          //   Edit </a>
-          <Link to="/webadmin/formDiscount" className="btn btn-primary buttonEdit btn-table">Edit</Link>
-        ,
-        delete:
-          <a class="btn btn-danger buttonEdit btn-table" href="/#" role="button">
-            Delete</a>,
-
-      }
-      ,
-
-
-
-
-    ]
+    rows: rows
+ 
   };
 
   return (
     <MDBDataTable
       striped
-      // bordered
       hover
-      data={data}
+      data={data} 
+
+      // bordered
+      // data={{ columns: data.columns, rows: rows }} 
     />
   );
 }

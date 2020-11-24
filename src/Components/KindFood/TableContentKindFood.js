@@ -1,13 +1,28 @@
 import React from 'react';
 import { MDBDataTable } from 'mdbreact';
 import {Link} from "react-router-dom";
+import KindFoodService from "../../Service/KindFoodService";
+import { useList } from "react-firebase-hooks/database";
 
 const TableContentKindFood = () => {
+
+  const [dataKindFood, loading, error] = useList(KindFoodService.getAll());
+
+  const rows = dataKindFood.map((tutorial, index) => ({
+    stt: (index + 1) ,
+    name: tutorial.val().name,
+    images: <img src={tutorial.val().imageUrl} alt="" />,
+    quantity: tutorial.val().quantity,
+    show: <Link to="/webadmin/food/:name" className="btn btn-primary buttonShow btn-table">Show</Link>,
+    edit: <Link to="/webadmin/formFood" className="btn btn-primary buttonEdit btn-table">Edit</Link>,
+    delete: <a className="btn btn-danger buttonEdit btn-table" href="/#" role="button">Delete</a>,
+  }));
+
   const data = {
     columns: [
       {
-        label: 'ID',
-        field: 'id',
+        label: '',
+        field: 'stt',
         sort: 'asc',
         width: 100
       },
@@ -53,106 +68,21 @@ const TableContentKindFood = () => {
       }
 
     ],
-    rows: [
-      {
-        id: '1',
-        name: 'System Architect',
-        images:
-          <img
-            src="https://www.lifeloveandsugar.com/wp-content/uploads/2018/01/Moist-Vanilla-Layer-Cake5.jpg"
-            alt="" />,
-        quantity: '19',
-        show:
-          // <a class="btn btn-primary buttonShow btn-table" href="/#"
-          //   target="_blank"
-          //   role="button">
-          //   Show </a>
-          <Link to="/webadmin/food" className="btn btn-primary buttonShow btn-table">Show</Link>
-        ,
-        edit:
-          // <a class="btn btn-primary buttonEdit btn-table" href="/#"
-          //   target="_blank"
-          //   role="button">
-          //   Edit</a>
-            <Link to="/webadmin/formFood" className="btn btn-primary buttonEdit btn-table">Edit</Link>
-        ,
-        delete:
-          <a class="btn btn-danger buttonDelete btn-table" href="/#"
-            target="_blank"
-            role="button">
-            Delete</a>
-      }
-      ,
-      {
-        id: '2',
-        name: 'System Architect',
-        images:
-          <img
-            src="https://i.pinimg.com/564x/16/8f/d5/168fd5b9097a7729297651ba613ede5f.jpg"
-            alt="" />,
-        quantity: '19',
-        show:
-          // <a class="btn btn-primary buttonShow btn-table" href="/#"
-          //   target="_blank"
-          //   role="button">
-          //   Show </a>
-          <Link to="/webadmin/food" className="btn btn-primary buttonShow btn-table">Show</Link>
-        ,
-        edit:
-          // <a class="btn btn-primary buttonEdit btn-table" href="/#"
-          //   target="_blank"
-          //   role="button">
-          //   Edit</a>
-          <Link to="/webadmin/formFood" className="btn btn-primary buttonEdit btn-table">Edit</Link>
-        ,
-        delete:
-          <a class="btn btn-danger buttonDelete btn-table" href="/#"
-            target="_blank"
-            role="button">
-            Delete</a>
-      }
-      ,
-      {
-        id: '3',
-        name: 'System Architect',
-        images:
-          <img
-            src="https://i.pinimg.com/564x/eb/ef/9b/ebef9b5a9be2c4d4c7b259fc76a93dd9.jpg"
-            alt="" />,
-        quantity: '19',
-        show:
-          // <a class="btn btn-primary buttonShow btn-table" href="/#"
-          //   target="_blank"
-          //   role="button">
-          //   Show </a>
-            <Link to="/webadmin/food" className="btn btn-primary buttonShow btn-table">Show</Link>
-        ,
-        edit:
-          // <a className="btn btn-primary buttonEdit btn-table" href="/#"
-          //   target="_blank"
-          //   role="button">
-          //   Edit</a>
-          <Link to="/webadmin/formFood" className="btn btn-primary buttonEdit btn-table">Edit</Link>
-        ,
-        delete:
-          <a className="btn btn-danger buttonDelete btn-table" href="/#" role="button"
-            target="_blank"
-          >
-            Delete</a>
-      }
 
+    rows: rows
 
-
-
-    ]
   };
 
   return (
     <MDBDataTable
       striped
-      // bordered
       hover
       data={data}
+      entriesOptions={[5, 20, 25]}
+      entries={5} 
+      pagesAmount={5}
+      // proSelect
+      // bordered
     />
   );
 }
