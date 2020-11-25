@@ -4,24 +4,28 @@ import { Link } from "react-router-dom";
 import FoodService from "../../Service/FoodService";
 import { useList } from "react-firebase-hooks/database";
 
+import firebase from "../../FirebaseCofig/Firebase";
+
+const db = firebase.ref("/Food");
+
 const TableFood = (props) => {
 
-  console.log("-----------------------table food-------------------------")
-  console.log(props.nameKindFood)
+  // console.log("-----------------------table food-------------------------")
+  // console.log(props.key)
+  // console.log(props.nameKindFood)
 
 
   const [nameKindFood, setValueNameKindFood] = useState(props.nameKindFood);
+
   /* use react-firebase-hooks */
-  const [dataFood, loading, error] = useList(FoodService.getAll());
+ 
+  const [dataFood, loading, error] = useList(FoodService.getAllFollowKindFood(nameKindFood));
 
   console.log("-------------------table food follow kind food------------------")
-  console.log(FoodService.getAllFollowKindFood())
+  console.log(dataFood)
 
 
-
-
-
-  const rows = dataFood.map((dataF, index) => ({
+  const rows = dataFood.map((dataF,index) => ({
     stt: (index + 1),
     name: dataF.val().name,
     images: <img src={dataF.val().imageUrl} alt="" />,
@@ -30,6 +34,7 @@ const TableFood = (props) => {
     edit: <Link to="/webadmin/formFood" className="btn btn-primary buttonEdit btn-table">Edit</Link>,
     delete: <a class="btn btn-danger buttonDelete btn-table" href="/#" target="_blank" role="button">Delete</a>
   }));
+
 
   const data = {
     columns: [

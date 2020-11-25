@@ -27,7 +27,7 @@ function ContainerFood(props) {
                 
                 <Link to={{pathname: `/webadmin/formFood/${keyKindFood}&&${nameKindFood}`,state:{key: keyKindFood, name: nameKindFood }}}  className="btn btn-warning buttonAdd">ADD</Link>
             </div>
-            <TableFood nameKindFood={props.location.state.name} />
+            <TableFood nameKindFood={ props.location.state.name } />
         </div>
     );
 }

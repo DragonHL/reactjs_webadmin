@@ -3,17 +3,12 @@ import firebase from "../FirebaseCofig/Firebase";
 const db = firebase.ref("/Food");
 
 const getAll = () => {
+    console.log(db)
     return db;
 }
 
-const getAllFollowKindFood = () => {
-    firebase.ref("Food").child("imageUrl")
-     .on("value", 
-     snapshot => { return console.log(snapshot.val()) },
-     error => {
-         console.log(error);
-     },
-    );
+const getAllFollowKindFood = (name) => {
+    return db.orderByChild('nameKindFood').equalTo(name);
 }
 
 const create = (data) => {
