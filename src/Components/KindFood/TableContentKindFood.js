@@ -8,12 +8,12 @@ const TableContentKindFood = () => {
 
   const [dataKindFood, loading, error] = useList(KindFoodService.getAll());
 
-  const rows = dataKindFood.map((tutorial, index) => ({
+  const rows = dataKindFood.map((dataKF, index) => ({
     stt: (index + 1) ,
-    name: tutorial.val().name,
-    images: <img src={tutorial.val().imageUrl} alt="" />,
-    quantity: tutorial.val().quantity,
-    show: <Link to={{pathname: `/webadmin/food/${tutorial.val().name}&&${tutorial.key}`,state:{name: tutorial.val().name, id: tutorial.key}}} className="btn btn-primary buttonShow btn-table">Show</Link>,
+    name: dataKF.val().name,
+    images: <img src={dataKF.val().imageUrl} alt="" />,
+    quantity: dataKF.val().quantity,
+    show: <Link to={{pathname: `/webadmin/food/${dataKF.val().name}&&${dataKF.key}`,state:{name: dataKF.val().name, id: dataKF.key}}} className="btn btn-primary buttonShow btn-table">Show</Link>,
     edit: <Link to="/webadmin/formFood" className="btn btn-primary buttonEdit btn-table">Edit</Link>,
     delete: <a className="btn btn-danger buttonEdit btn-table" href="/#" role="button">Delete</a>,
   }));

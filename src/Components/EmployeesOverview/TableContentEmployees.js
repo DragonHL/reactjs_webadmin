@@ -47,18 +47,18 @@ const TableContentEmployees = () => {
   // }
   // console.log(tutorials) // data
 
-  const rows = dataEmployees.map((tutorial, index) => ({
+  const rows = dataEmployees.map((dataE, index) => ({
     stt: (index + 1),
-    name: tutorial.val().name,
-    age: tutorial.val().age,
-    mail: tutorial.val().mail,
-    phone: tutorial.val().phone,
-    address: tutorial.val().address,
-    birthday: tutorial.val().birthday,
-    images: <img src={tutorial.val().imageUrl} alt="" />,
-    startWork: tutorial.val().startWork,
-    endWork: tutorial.val().endWork,
-    role: tutorial.val().role,
+    name: dataE.val().name,
+    age: dataE.val().age,
+    mail: dataE.val().mail,
+    phone: dataE.val().phone,
+    address: dataE.val().address,
+    birthday: dataE.val().birthday,
+    images: <img src={dataE.val().imageUrl} alt="" />,
+    startWork: dataE.val().startWork,
+    endWork: dataE.val().endWork,
+    role: dataE.val().role,
     edit: <Link to="/webadmin/formEmployee" className="btn btn-primary buttonEdit btn-table">Edit</Link>,
     delete: <a className="btn btn-danger buttonEdit btn-table" href="/#" role="button">Delete</a>,
   }));

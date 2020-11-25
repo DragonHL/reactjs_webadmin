@@ -9,13 +9,13 @@ const TableContentDiscount = () => {
 
   const [dataDiscount, loading, error] = useList(DiscountService.getAll());
 
-  const rows = dataDiscount.map((tutorial, index) => ({
+  const rows = dataDiscount.map((dataD, index) => ({
     stt: (index + 1),
-    code: tutorial.val().code,
-    discount: tutorial.val().discount,
-    description: tutorial.val().description,
-    dateStart: tutorial.val().dateStart,
-    dateEnd: tutorial.val().dateEnd,
+    code: dataD.val().code,
+    discount: dataD.val().discount,
+    description: dataD.val().description,
+    dateStart: dataD.val().dateStart,
+    dateEnd: dataD.val().dateEnd,
     edit: <Link to="/webadmin/formDiscount" className="btn btn-primary buttonEdit btn-table">Edit</Link>,
     delete: <a className="btn btn-danger buttonEdit btn-table" href="/#" role="button">Delete</a>,
     
