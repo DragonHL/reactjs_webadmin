@@ -1,15 +1,41 @@
-import React, { useState, useEffect }  from 'react';
+import React, { useState, useEffect } from 'react';
 import { MDBDataTable } from 'mdbreact';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import FoodService from "../../Service/FoodService";
+import { useList } from "react-firebase-hooks/database";
+
+const TableFood = (props) => {
+
+  console.log("-----------------------table food-------------------------")
+  console.log(props.nameKindFood)
 
 
-const TableFood = () => {
+  const [nameKindFood, setValueNameKindFood] = useState(props.nameKindFood);
+  /* use react-firebase-hooks */
+  const [dataFood, loading, error] = useList(FoodService.getAll());
+
+  console.log("-------------------table food follow kind food------------------")
+  console.log(FoodService.getAllFollowKindFood())
+
+
+
+
+
+  const rows = dataFood.map((dataF, index) => ({
+    stt: (index + 1),
+    name: dataF.val().name,
+    images: <img src={dataF.val().imageUrl} alt="" />,
+    information: dataF.val().information,
+    kindFood: dataF.val().nameKindFood,
+    edit: <Link to="/webadmin/formFood" className="btn btn-primary buttonEdit btn-table">Edit</Link>,
+    delete: <a class="btn btn-danger buttonDelete btn-table" href="/#" target="_blank" role="button">Delete</a>
+  }));
 
   const data = {
     columns: [
       {
-        label: 'ID',
-        field: 'id',
+        label: '',
+        field: 'stt',
         sort: 'asc',
         width: 100
       },
@@ -55,90 +81,16 @@ const TableFood = () => {
       }
 
     ],
-    rows: [
-      {
-        id: '1',
-        name: 'System Architect',
-        images:
-          <img
-            src="https://www.lifeloveandsugar.com/wp-content/uploads/2018/01/Moist-Vanilla-Layer-Cake5.jpg"
-            alt="" />,
-        information: '19',
-        kindFood:'Cake',
-        edit:
-          // <a class="btn btn-primary buttonEdit btn-table" href="/#"
-          //   target="_blank"
-          //   role="button">
-          //   Edit</a>
-          <Link to="/webadmin/formFood" className="btn btn-primary buttonEdit btn-table">Edit</Link>
-        ,
-        delete:
-          <a class="btn btn-danger buttonDelete btn-table" href="/#"
-            target="_blank"
-            role="button">
-            Delete</a>
-      }
-      ,
-      {
-        id: '2',
-        name: 'System Architect',
-        images:
-          <img
-            src="https://www.lifeloveandsugar.com/wp-content/uploads/2018/01/Moist-Vanilla-Layer-Cake5.jpg"
-            alt="" />,
-        information: '19',
-        kindFood:'Cake',
-        edit:
-          // <a class="btn btn-primary buttonEdit btn-table" href="/#"
-          //   target="_blank"
-          //   role="button">
-          //   Edit</a>
-          <Link to="/webadmin/formFood" className="btn btn-primary buttonEdit btn-table">Edit</Link>
-        ,
-        delete:
-          <a class="btn btn-danger buttonDelete btn-table" href="/#"
-            target="_blank"
-            role="button">
-            Delete</a>
-      }
-      ,
-      {
-        id: '3',
-        name: 'System Architect',
-        images:
-          <img
-            src="https://www.lifeloveandsugar.com/wp-content/uploads/2018/01/Moist-Vanilla-Layer-Cake5.jpg"
-            alt="" />,
-        information: '19',
-        kindFood:'Cake',
-        edit:
-          // <a class="btn btn-primary buttonEdit btn-table" href="/#"
-          //   target="_blank"
-          //   role="button">
-          //   Edit</a>
-          <Link to="/webadmin/formFood" className="btn btn-primary buttonEdit btn-table">Edit</Link>
-        ,
-        delete:
-          <a class="btn btn-danger buttonDelete btn-table" href="/#"
-            target="_blank"
-            role="button">
-            Delete</a>
-      }
-      ,
-     
-
-
-
-
-    ]
+    rows: rows
   };
 
   return (
     <MDBDataTable
       striped
-      // bordered
       hover
       data={data}
+
+    // bordered
     />
   );
 }

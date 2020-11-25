@@ -2,35 +2,135 @@
 import '../../css/Overview.css';
 
 import { Form, Button } from 'react-bootstrap';
+import React, { useState } from 'react';
 
-function FormInsert_EditKindFood() {
+import { storage } from "../../FirebaseCofig/Firebase";
+
+import FoodService from "../../Service/FoodService"
+
+function FormInsert_EditKindFood(props) {
+
+    // console.log("---------------------table food-----------------------")
+    // console.log(props.location.state)
+    // console.log("---------------------name-----------------------")
+    // console.log(props.location.state.name)
+    // console.log("-----------------------id---------------------")
+    // console.log(props.location.state.key)
+
+
+    const [keyKindFood, setValueKeyKindFood] = useState (props.location.state.key);
+    const [nameKindFood, setValueNameKindFood] = useState (props.location.state.name);
+
+
+    const initialFieldValues = {
+        name: '',
+        information: '',
+        nameKindFood: props.location.state.name,
+        imageUrl: ''
+    }
+
+    const [valuesFood, setValueFood] = useState (initialFieldValues);
+    const [submitted, setSubmitted] = useState(false);
+    const [image, setImage] = useState(null);
+
+    const handleInputChange = e => {
+        var { name, value } = e.target;
+        setValueFood({ ...valuesFood, [name]: value })
+    }
+
+    const handleChange = e =>{
+        if(e.target.files[0]){
+            setImage(e.target.files[0]);
+        }
+    }
+
+    const saveKindFood = () => {
+       
+        const uploadTask = storage.ref(`imagesFood/${image.name}`).put(image);
+        uploadTask.on(
+            "state_changed",
+            snapshot => { },
+            error => {
+                console.log(error);
+            },
+            () => {
+                storage.ref("imagesFood")
+                    .child(image.name)
+                    .getDownloadURL()
+                    .then(url => {
+                        var data = {
+                            name: valuesFood.name,
+                            information: valuesFood.information,
+                            nameKindFood: valuesFood.nameKindFood,
+                            imageUrl: url
+                        };
+
+                        FoodService.create(data)
+                            .then(() => {
+                                setSubmitted(true);
+                            })
+                            .catch(e => {
+                                console.log(e);
+                            });
+
+                    })
+            }
+        )
+
+    }
+
+    const hanleFormSubmit = e => {
+        setValueFood(initialFieldValues);
+        setSubmitted(false);
+    }
 
 
     return (
         <div className="sub-container">
             <h2 className="titleform">Form Add And Edit Food</h2>
-            <Form>
+            <Form onSubmit={hanleFormSubmit}>
 
                 <Form.Group controlId="formName">
                     <Form.Label>Name: </Form.Label>
-                    <Form.Control type="text" placeholder="Name Food" />
+                    <Form.Control
+                    name="name" 
+                    type="text" 
+                    placeholder="Name Food"
+                    value={valuesFood.name}
+                        onChange={handleInputChange}
+                    />
                 </Form.Group>
 
                 <Form.Group controlId="formInformation">
                     <Form.Label>Information: </Form.Label>
-                    <Form.Control type="text" placeholder="Information" />
+                    <Form.Control
+                    name="information" 
+                    type="text" 
+                    placeholder="Information" 
+                    value={valuesFood.information}
+                    onChange={handleInputChange}
+                    />
                 </Form.Group>
 
                 <Form.Group controlId="formKindFood">
                     <Form.Label>Kind Food: </Form.Label>
-                    <Form.Control type="text" placeholder="Kind Food" />
+                    <Form.Control 
+                    type="text" 
+                    placeholder="Kind Food" 
+                    value={valuesFood.nameKindFood}
+                    onChange={handleInputChange}
+                    />
                 </Form.Group>
 
                 <Form.Group>
-                    <Form.File id="fileImageKindFood" label="Choose Image:" />
+                    <Form.File 
+                    id="fileImageKindFood" 
+                    label="Choose Image:" 
+                    onChange={handleChange} 
+                    />
                 </Form.Group>
 
-                <Button variant="primary" type="submit">
+                <Button onClick={saveKindFood}>
                     Submit
                 </Button>
             </Form>

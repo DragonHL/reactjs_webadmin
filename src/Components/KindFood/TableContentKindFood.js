@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState }  from 'react';
 import { MDBDataTable } from 'mdbreact';
 import {Link} from "react-router-dom";
 import KindFoodService from "../../Service/KindFoodService";
@@ -8,12 +8,14 @@ const TableContentKindFood = () => {
 
   const [dataKindFood, loading, error] = useList(KindFoodService.getAll());
 
+  const [keyKindFood, setValueKeyKindFood] = useState (dataKindFood.key);
+
   const rows = dataKindFood.map((dataKF, index) => ({
     stt: (index + 1) ,
     name: dataKF.val().name,
     images: <img src={dataKF.val().imageUrl} alt="" />,
     quantity: dataKF.val().quantity,
-    show: <Link to={{pathname: `/webadmin/food/${dataKF.val().name}&&${dataKF.key}`,state:{name: dataKF.val().name, id: dataKF.key}}} className="btn btn-primary buttonShow btn-table">Show</Link>,
+    show: <Link to={{pathname: `/webadmin/food/${dataKF.val().name}&&${dataKF.key}`,state:{name: dataKF.val().name, key: dataKF.key}}} className="btn btn-primary buttonShow btn-table">Show</Link>,
     edit: <Link to="/webadmin/formFood" className="btn btn-primary buttonEdit btn-table">Edit</Link>,
     delete: <a className="btn btn-danger buttonEdit btn-table" href="/#" role="button">Delete</a>,
   }));

@@ -78,28 +78,6 @@ const FormInsert_EditEmployees = () => {
         )
     }
 
-    const handleUpload = (e, obj) => {
-        const uploadTask = storage.ref(`imagesEmployees/${image.name}`).put(image);
-        uploadTask.on(
-            "state_changed",
-            snapshot => { },
-            error => {
-                console.log(error);
-            },
-            () => {
-                storage.ref("imagesEmployees")
-                    .child(image.name)
-                    .getDownloadURL()
-                    .then(url => {
-                        console.log(url);
-                    })
-            }
-        )
-
-
-
-    };
-
     const hanleFormSubmit = e => {
         setValuesEmployees(initialFieldValues);
         setSubmitted(false);
@@ -116,7 +94,6 @@ const FormInsert_EditEmployees = () => {
                         name="name"
                         type="text"
                         placeholder="Name Food"
-
                         value={valuesEmployees.name}
                         onChange={handleInputChange}
                     />
@@ -128,7 +105,6 @@ const FormInsert_EditEmployees = () => {
                         name="phone"
                         type="text"
                         placeholder="Phone"
-
                         value={valuesEmployees.phone}
                         onChange={handleInputChange}
                     />
@@ -136,46 +112,56 @@ const FormInsert_EditEmployees = () => {
 
                 <Form.Group controlId="formAddress">
                     <Form.Label>Address: </Form.Label>
-                    <Form.Control name="address" type="text" placeholder="Address"
-
-                        value={valuesEmployees.address}
-                        onChange={handleInputChange}
+                    <Form.Control 
+                    name="address" 
+                    type="text" 
+                    placeholder="Address"
+                    value={valuesEmployees.address}
+                    onChange={handleInputChange}
                     />
                 </Form.Group>
 
                 <Form.Group controlId="formBirthday">
                     <Form.Label>Birthday: </Form.Label>
-                    <Form.Control name="birthday" type="text" placeholder="Birthday"
-
-                        value={valuesEmployees.birthday}
-                        onChange={handleInputChange}
+                    <Form.Control 
+                    name="birthday" 
+                    type="text" 
+                    placeholder="Birthday"
+                    value={valuesEmployees.birthday}
+                    onChange={handleInputChange}
                     />
                 </Form.Group>
 
                 <Form.Group controlId="formStartWork">
                     <Form.Label>StartWork: </Form.Label>
-                    <Form.Control name="startWork" type="text" placeholder="Start Work"
-
-                        value={valuesEmployees.startWork}
-                        onChange={handleInputChange}
+                    <Form.Control 
+                    name="startWork" 
+                    type="text" 
+                    placeholder="Start Work"
+                    value={valuesEmployees.startWork}
+                    onChange={handleInputChange}
                     />
                 </Form.Group>
 
                 <Form.Group controlId="formEndWork">
                     <Form.Label>EndWork: </Form.Label>
-                    <Form.Control name="endWork" type="text" placeholder="End Work"
-
-                        value={valuesEmployees.endWork}
-                        onChange={handleInputChange}
+                    <Form.Control 
+                    name="endWork" 
+                    type="text" 
+                    placeholder="End Work"
+                    value={valuesEmployees.endWork}
+                    onChange={handleInputChange}
                     />
                 </Form.Group>
 
                 <Form.Group controlId="formRole">
                     <Form.Label>Role: </Form.Label>
-                    <Form.Control name="role" type="text" placeholder="Role"
-
-                        value={valuesEmployees.role}
-                        onChange={handleInputChange}
+                    <Form.Control 
+                    name="role" 
+                    type="text" 
+                    placeholder="Role"
+                    value={valuesEmployees.role}
+                    onChange={handleInputChange}
                     />
                 </Form.Group>
 
