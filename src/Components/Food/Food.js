@@ -1,21 +1,20 @@
 
 import '../../css/Container_Body_Table.css';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import TableFood from './TableFood';
 import { Link } from "react-router-dom";
-import { useParams } from "react-router";
 
-function ContainerFood({ history, match }) {
-
-    //   const { name } = useParams();
-    const { path } = match;
-    const { name } = match.params;
+// 
+function ContainerFood(props) {
 
 
-    console.log(path)
-    console.log(name)
-    console.log(path.name)
+    console.log(props.location.state)
+    console.log("---------------------name-----------------------")
+    console.log(props.location.state.name)
+    console.log("-----------------------id---------------------")
+    console.log(props.location.state.id)
+    console.log("--------------------------------------------")
 
 
     return (
