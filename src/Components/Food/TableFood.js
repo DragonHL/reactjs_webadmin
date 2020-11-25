@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect }  from 'react';
 import { MDBDataTable } from 'mdbreact';
 import {Link} from "react-router-dom";
+import { useParams } from "react-router";
 
-const TableFood = () => {
+const TableFood = ({ history, match } ) => {
+
+  // const { name } = useParams();
+  // console.log(name)
+
+  // const { path } = match;
+  // const { name } = match.params;
+
+  // console.log()
+  // console.log(name)
+  // console.log(props.match.params.name)
+
   const data = {
     columns: [
       {

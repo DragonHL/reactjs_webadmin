@@ -10,11 +10,6 @@ function FormInsert_EditKindFood() {
         <div className="sub-container">
             <h2 className="titleform">Form Add And Edit Food</h2>
             <Form>
-                <Form.Group controlId="formId">
-                    <Form.Label>Id:</Form.Label>
-                    <Form.Control type="text" placeholder="Id " />
-
-                </Form.Group>
 
                 <Form.Group controlId="formName">
                     <Form.Label>Name: </Form.Label>

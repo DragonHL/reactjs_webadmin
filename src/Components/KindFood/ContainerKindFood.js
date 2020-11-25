@@ -6,7 +6,9 @@ import '../../css/DataTable.css';
 import TableContentKindFood from './TableContentKindFood';
 
 import {Link} from "react-router-dom";
-function ContainerKindFood() {
+
+function ContainerKindFood( ) {
+
 
 
     return (
