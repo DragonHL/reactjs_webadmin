@@ -1,23 +1,52 @@
-import React from 'react';
+import React, {filter} from 'react';
 import { MDBDataTable } from 'mdbreact';
 import { Link } from "react-router-dom";
 import { useList } from "react-firebase-hooks/database";
 
 import DiscountService from "../../Service/DiscountService";
+import { Button } from 'react-bootstrap';
 
-const TableContentDiscount = () => {
+const TableContentDiscount = (props) => {
 
-  const [dataDiscount, loading, error] = useList(DiscountService.getAll());
+  const [dataDiscount, loading, error] = useList(DiscountService.getAllFollowStatus(0));
+  // const [dataDiscountFollowCode, loading2, error2] = useList(DiscountService.getAllFollowCode("NZPAXCKW"));
+
+  // console.log("dataDiscount")
+  // console.log(dataDiscount)
+  
+  function deleteTutorial (key) {
+    DiscountService.remove(key)
+      .then(() => {
+        props.refreshList();
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
 
   const rows = dataDiscount.map((dataD, index) => ({
+    
     stt: (index + 1),
     code: dataD.val().code,
     discount: dataD.val().discount,
     description: dataD.val().description,
     dateStart: dataD.val().dateStart,
     dateEnd: dataD.val().dateEnd,
-    edit: <Link to="/webadmin/formDiscount" className="btn btn-primary buttonEdit btn-table">Edit</Link>,
-    delete: <a className="btn btn-danger buttonEdit btn-table" href="/#" role="button">Delete</a>,
+    edit: <Link to={{
+      pathname: `/webadmin/formEditDiscount`,
+      state:{
+        key: dataD.key,
+        code: dataD.val().code,
+        discount: dataD.val().discount,
+        description: dataD.val().description,
+        dateStart: dataD.val().dateStart,
+        dateEnd: dataD.val().dateEnd, 
+      }}}
+    className="btn btn-primary buttonEdit btn-table">Edit</Link>,
+    delete: <Button className="btn btn-danger buttonEdit btn-table" onClick={() => deleteTutorial(dataD.key)} variant="danger">Delete</Button>
+    
+    
+    // <a className="btn btn-danger buttonEdit btn-table" onClick={this.deleteTutorial(dataD.key)} href="/#" role="button">Delete</a>,
     
   }));
 

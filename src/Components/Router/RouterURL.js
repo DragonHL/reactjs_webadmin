@@ -8,10 +8,17 @@ import Discount from "../Discount/ContainerDiscount";
 import Rating from "../Rating/ContainerRating";
 import Food from "../Food/Food";
 
-import FormInsert_EditKindFood from "../KindFood/FormInsert_EditKindFood";
-import FormInsert_EditFood from "../Food/FormInsert_EditFood";
-import FormInsert_EditDiscount from "../Discount/FormInsert_EditDiscount";
-import FormInsert_EditEmployees from "../EmployeesOverview/FormInsert_EditEmployees";
+import FormInsert_KindFood from "../KindFood/FormInsert_KindFood";
+import FormEdit_KindFood from "../KindFood/FormEdit_KindFood";
+
+import FormInsertFood from "../Food/FormInsertFood";
+import FormEditFood from "../Food/FormEditFood";
+
+import FormInsert_Discount from "../Discount/FormInsert_Discount";
+import FormEdit_Discount from "../Discount/FormEdit_Discount";
+
+import FormInsert_Employees from "../EmployeesOverview/FormInsert_Employees";
+import FormEdit_Employees from "../EmployeesOverview/FormEdit_Employees";
 
 // import Login from "../Login/Login";
 
@@ -40,10 +47,17 @@ function RouterURL() {
                 <Route path="/webadmin/rating" component={Rating} />
                 <Route path="/webadmin/food" component={Food} />
 
-                <Route path="/webadmin/formKindFood" component={FormInsert_EditKindFood} />
-                <Route path="/webadmin/formFood" component={FormInsert_EditFood} />
-                <Route path="/webadmin/formDiscount" component={FormInsert_EditDiscount} />
-                <Route path="/webadmin/formEmployee" component={FormInsert_EditEmployees} />
+                <Route path="/webadmin/formInsertKindFood" component={FormInsert_KindFood} />
+                <Route path="/webadmin/formEditKindFood" component={FormEdit_KindFood} />
+
+                <Route path="/webadmin/formInsertFood" component={FormInsertFood} />
+                <Route path="/webadmin/formEditFood" component={FormEditFood} />
+
+                <Route path="/webadmin/formInsertDiscount" component={FormInsert_Discount} />
+                <Route path="/webadmin/formEditDiscount" component={FormEdit_Discount} />
+                
+                <Route path="/webadmin/formInsertEmployee" component={FormInsert_Employees} />
+                <Route path="/webadmin/formEditEmployee" component={FormEdit_Employees} />
 
 
 

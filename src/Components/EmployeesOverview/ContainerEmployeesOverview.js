@@ -17,7 +17,7 @@ function ContainerEmployeesOverview() {
                 <div class="sub-container"> */}
                 <div class="title-button">
                     <h1 class="titleTable">Employees Overview</h1>
-                    <Link to="/webadmin/formEmployee" className="linkSideBar btn btn-warning buttonAdd">ADD</Link> 
+                    <Link to="/webadmin/formInsertEmployee" className="linkSideBar btn btn-warning buttonAdd">ADD</Link> 
                 </div>
                     
                     <TableContentEmployees />

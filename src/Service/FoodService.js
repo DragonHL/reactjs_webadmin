@@ -3,7 +3,6 @@ import firebase from "../FirebaseCofig/Firebase";
 const db = firebase.ref("/Food");
 
 const getAll = () => {
-    console.log(db)
     return db;
 }
 

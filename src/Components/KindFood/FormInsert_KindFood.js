@@ -5,16 +5,17 @@ import { Form, Button } from 'react-bootstrap';
 
 import { storage } from "../../FirebaseCofig/Firebase";
 
-import React, { Component, useRef, useState } from 'react';
+import React, { useState } from 'react';
 
 import ServiceKindFood from "../../Service/KindFoodService"
 
-function FormInsert_EditKindFood() {
+function FormInsert_KindFood() {
 
     const initialFieldValues = {
         name: '',
         quantity: '',
-        imageUrl: ''
+        imageUrl: '',
+
     }
 
     const [valuesKindFood, setValueKindFood] = useState (initialFieldValues);
@@ -49,7 +50,8 @@ function FormInsert_EditKindFood() {
                         var data = {
                             name: valuesKindFood.name,
                             quantity: valuesKindFood.quantity,
-                            imageUrl: url
+                            imageUrl: url,
+                            status: 0
                         };
 
                         ServiceKindFood.create(data)
@@ -73,13 +75,8 @@ function FormInsert_EditKindFood() {
 
     return (
         <div className="sub-container">
-            <h2 className="titleform">Form Add And Edit Kind Food</h2>
+            <h2 className="titleform">Form Add Kind Food</h2>
             <Form onSubmit={hanleFormSubmit}>
-                {/* <Form.Group controlId="formId">
-                    <Form.Label>Id:</Form.Label>
-                    <Form.Control type="text" placeholder="Id " />
-
-                </Form.Group> */}
 
                 <Form.Group controlId="formName">
                     <Form.Label> Name Kind Food: </Form.Label>
@@ -124,4 +121,4 @@ function FormInsert_EditKindFood() {
     );
 }
 
-export default FormInsert_EditKindFood;
+export default FormInsert_KindFood;

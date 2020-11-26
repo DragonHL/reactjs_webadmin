@@ -12,7 +12,7 @@ import ServiceEmployee from "../../Service/EmployeeService"
 
 
 
-const FormInsert_EditEmployees = () => {
+const FormInsert_Employees = () => {
 
     const initialFieldValues = {
         name: '',
@@ -22,7 +22,7 @@ const FormInsert_EditEmployees = () => {
         startWork: '',
         endWork: '',
         role: '',
-        imageUrl: ''
+        imageUrl: '',
     }
 
     const [valuesEmployees, setValuesEmployees] = useState(initialFieldValues);
@@ -62,7 +62,8 @@ const FormInsert_EditEmployees = () => {
                             startWork: valuesEmployees.startWork,
                             endWork: valuesEmployees.endWork,
                             role: valuesEmployees.role,
-                            imageUrl: url
+                            imageUrl: url,
+                            status: 0
                         };
 
                         ServiceEmployee.create(data)
@@ -182,4 +183,4 @@ const FormInsert_EditEmployees = () => {
     );
 }
 
-export default FormInsert_EditEmployees;
+export default FormInsert_Employees;

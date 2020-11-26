@@ -12,7 +12,8 @@ function FormInsert_EditDiscount() {
         discount: '',
         description: '',
         dateStart: '',
-        dateEnd: ''
+        dateEnd: '',
+        status: ''
     }
 
     const [valuesDiscounts, setValuesDiscount] = useState(initialFieldValues);
@@ -29,7 +30,8 @@ function FormInsert_EditDiscount() {
             discount: valuesDiscounts.discount,
             description: valuesDiscounts.description,
             dateStart: valuesDiscounts.dateStart,
-            dateEnd: valuesDiscounts.dateEnd
+            dateEnd: valuesDiscounts.dateEnd,
+            status: 0
         };
 
         DiscountService.create(data)
@@ -49,17 +51,9 @@ function FormInsert_EditDiscount() {
     return (
         <div className="sub-container">
 
-            <h2 className="titleform">Form Add And Edit Discount</h2>
+            <h2 className="titleform">Form Add Discount</h2>
 
             <Form onSubmit={hanleFormSubmit}>
-                {/* <Form.Group controlId="formId">
-                    <Form.Label> Id: </Form.Label>
-                    <Form.Control 
-                    type="text" 
-                    placeholder="Id " 
-                    
-                    />
-                </Form.Group> */}
 
                 <Form.Group controlId="formCode">
                     <Form.Label> Code: </Form.Label>

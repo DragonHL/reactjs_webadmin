@@ -24,6 +24,19 @@ const TableFood = (props) => {
   console.log("-------------------table food follow kind food------------------")
   console.log(dataFood)
 
+  const dbFood = dataFood.filter(function(item) {
+    console.log("item.val().status ")
+    console.log(item.val().status )
+
+    for (var key in item) {
+      console.log("key ")
+      console.log(key )
+    }
+    
+  })
+
+  console.log("dbFood")
+    console.log(dbFood)
 
   const rows = dataFood.map((dataF,index) => ({
     stt: (index + 1),
@@ -31,7 +44,12 @@ const TableFood = (props) => {
     images: <img src={dataF.val().imageUrl} alt="" />,
     information: dataF.val().information,
     kindFood: dataF.val().nameKindFood,
-    edit: <Link to="/webadmin/formFood" className="btn btn-primary buttonEdit btn-table">Edit</Link>,
+    
+    edit: <Link 
+    to={{pathname: `/webadmin/formEditFood/${dataF.val().nameKindFood}&&${dataF.key}`,
+    state:{key: dataF.key, name: dataF.val().name, images: dataF.val().imageUrl, information: dataF.val().information, nameKF: dataF.val().nameKindFood}}}
+    className="btn btn-primary buttonEdit btn-table">Edit</Link>,
+
     delete: <a class="btn btn-danger buttonDelete btn-table" href="/#" target="_blank" role="button">Delete</a>
   }));
 

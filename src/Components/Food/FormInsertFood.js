@@ -8,7 +8,11 @@ import { storage } from "../../FirebaseCofig/Firebase";
 
 import FoodService from "../../Service/FoodService"
 
-function FormInsert_EditKindFood(props) {
+import { useHistory } from "react-router-dom";
+
+
+
+function FormInsertFood(props) {
 
     // console.log("---------------------table food-----------------------")
     // console.log(props.location.state)
@@ -18,14 +22,16 @@ function FormInsert_EditKindFood(props) {
     // console.log(props.location.state.key)
 
 
-    const [keyKindFood, setValueKeyKindFood] = useState (props.location.state.key);
-    const [nameKindFood, setValueNameKindFood] = useState (props.location.state.name);
+    // const [keyKindFood, setValueKeyKindFood] = useState (props.location.state.key);
+    // const [nameKindFood, setValueNameKindFood] = useState (props.location.state.name);
 
+    // const [nameKindFood, setValueNameKindFood] = useState(props.nameKindFood);
+const history = useHistory();
 
     const initialFieldValues = {
         name: '',
         information: '',
-        nameKindFood: props.location.state.name,
+        nameKindFood: props.location.state.nameKindFood,
         imageUrl: ''
     }
 
@@ -62,12 +68,14 @@ function FormInsert_EditKindFood(props) {
                             name: valuesFood.name,
                             information: valuesFood.information,
                             nameKindFood: valuesFood.nameKindFood,
-                            imageUrl: url
+                            imageUrl: url,
+                            status: 0
                         };
 
                         FoodService.create(data)
                             .then(() => {
                                 setSubmitted(true);
+                                history.push('/webadmin/food',{nameKindFood: props.location.state.nameKindFood})
                             })
                             .catch(e => {
                                 console.log(e);
@@ -87,7 +95,7 @@ function FormInsert_EditKindFood(props) {
 
     return (
         <div className="sub-container">
-            <h2 className="titleform">Form Add And Edit Food</h2>
+            <h2 className="titleform">Form Add Food</h2>
             <Form onSubmit={hanleFormSubmit}>
 
                 <Form.Group controlId="formName">
@@ -117,7 +125,7 @@ function FormInsert_EditKindFood(props) {
                     <Form.Control 
                     type="text" 
                     placeholder="Kind Food" 
-                    value={valuesFood.nameKindFood}
+                    value={initialFieldValues.nameKindFood}
                     onChange={handleInputChange}
                     />
                 </Form.Group>
@@ -140,4 +148,4 @@ function FormInsert_EditKindFood(props) {
     );
 }
 
-export default FormInsert_EditKindFood;
+export default FormInsertFood;

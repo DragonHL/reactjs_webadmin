@@ -9,14 +9,9 @@ function ContainerFood(props) {
     
     console.log("------------------------------------------------")
     console.log(props.location.state)
-    console.log("---------------------name-----------------------")
-    console.log(props.location.state.name)
-    console.log("-----------------------id---------------------")
-    console.log(props.location.state.key)
-    console.log("--------------------------------------------")
 
-    const [keyKindFood, setValueKeyKindFood] = useState (props.location.state.key);
-    const [nameKindFood, setValueNameKindFood] = useState (props.location.state.name);
+    // const [keyKindFood, setValueKeyKindFood] = useState (props.location.state.key);
+    // const [nameKindFood, setValueNameKindFood] = useState (props.location.state.nameKindFood);
     
 
     return (
@@ -25,9 +20,10 @@ function ContainerFood(props) {
             <div class="title-button">
                 <h1 class="titleTable">Food</h1>
                 
-                <Link to={{pathname: `/webadmin/formFood/${keyKindFood}&&${nameKindFood}`,state:{key: keyKindFood, name: nameKindFood }}}  className="btn btn-warning buttonAdd">ADD</Link>
+                <Link to={{pathname: `/webadmin/formInsertFood`,state:{nameKindFood: props.location.state.nameKindFood}}}  className="btn btn-warning buttonAdd">ADD</Link>
+               
             </div>
-            <TableFood nameKindFood={ props.location.state.name } />
+            <TableFood nameKindFood={ props.location.state.nameKindFood } />
         </div>
     );
 }
