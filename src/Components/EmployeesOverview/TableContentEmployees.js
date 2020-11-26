@@ -45,7 +45,7 @@ const TableContentEmployees = (props) => {
       className="btn btn-primary buttonEdit btn-table">Edit</Link>,
     delete: <Button className="btn btn-danger buttonEdit btn-table" onClick={() => deleteEmployee(dataE.key)} variant="danger">Delete</Button>
     
-    // <a className="btn btn-danger buttonEdit btn-table" href="/#" role="button">Delete</a>,
+    
   }));
 
 

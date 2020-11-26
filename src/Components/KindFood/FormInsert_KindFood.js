@@ -34,7 +34,7 @@ function FormInsert_KindFood() {
     }
 
     const saveKindFood = () => {
-       
+        if (image !== null) {
         const uploadTask = storage.ref(`imagesKindFood/${image.name}`).put(image);
         uploadTask.on(
             "state_changed",
@@ -47,10 +47,15 @@ function FormInsert_KindFood() {
                     .child(image.name)
                     .getDownloadURL()
                     .then(url => {
-                        var data = {
+                        var data = (url !== null) ? {
                             name: valuesKindFood.name,
                             quantity: valuesKindFood.quantity,
                             imageUrl: url,
+                            status: 0
+                        } : {
+                            name: valuesKindFood.name,
+                            quantity: valuesKindFood.quantity,
+                            imageUrl: null,
                             status: 0
                         };
 
@@ -65,7 +70,23 @@ function FormInsert_KindFood() {
                     })
             }
         )
+        } else {
+            var data = {
+                name: valuesKindFood.name,
+                quantity: valuesKindFood.quantity,
+                imageUrl: null,
+                status: 0
+            };
 
+            ServiceKindFood.create(data)
+                .then(() => {
+                    setSubmitted(true);
+                })
+                .catch(e => {
+                    console.log(e);
+                });
+
+        }
     }
 
     const hanleFormSubmit = e => {
