@@ -6,14 +6,11 @@ import { useList } from "react-firebase-hooks/database";
 
 import firebase from "../../FirebaseCofig/Firebase";
 
+import { Button } from 'react-bootstrap';
+
 const db = firebase.ref("/Food");
 
 const TableFood = (props) => {
-
-  // console.log("-----------------------table food-------------------------")
-  // console.log(props.key)
-  // console.log(props.nameKindFood)
-
 
   const [nameKindFood, setValueNameKindFood] = useState(props.nameKindFood);
 
@@ -21,36 +18,35 @@ const TableFood = (props) => {
  
   const [dataFood, loading, error] = useList(FoodService.getAllFollowKindFood(nameKindFood));
 
-  console.log("-------------------table food follow kind food------------------")
-  console.log(dataFood)
+  function deleteFood (key) {
+    FoodService.remove(key)
+      .then(() => {
+        props.refreshList();
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
 
-  const dbFood = dataFood.filter(function(item) {
-    console.log("item.val().status ")
-    console.log(item.val().status )
-
-    for (var key in item) {
-      console.log("key ")
-      console.log(key )
+  const dbFood = dataFood.filter(function(item, index) {
+    if(item.val().status === 0){
+      return item;
     }
-    
   })
 
-  console.log("dbFood")
-    console.log(dbFood)
-
-  const rows = dataFood.map((dataF,index) => ({
+  const rows = dbFood.map((dataF,index) => ({
     stt: (index + 1),
     name: dataF.val().name,
     images: <img src={dataF.val().imageUrl} alt="" />,
     information: dataF.val().information,
     kindFood: dataF.val().nameKindFood,
-    
     edit: <Link 
     to={{pathname: `/webadmin/formEditFood/${dataF.val().nameKindFood}&&${dataF.key}`,
     state:{key: dataF.key, name: dataF.val().name, images: dataF.val().imageUrl, information: dataF.val().information, nameKF: dataF.val().nameKindFood}}}
     className="btn btn-primary buttonEdit btn-table">Edit</Link>,
 
-    delete: <a class="btn btn-danger buttonDelete btn-table" href="/#" target="_blank" role="button">Delete</a>
+    delete: <Button className="btn btn-danger buttonEdit btn-table" onClick={() => deleteFood(dataF.key)} variant="danger">Delete</Button>
+
   }));
 
 

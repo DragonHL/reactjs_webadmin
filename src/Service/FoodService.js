@@ -19,7 +19,7 @@ const update = (key, data) => {
 }
 
 const remove = (key) => {
-    return db.child(key).remove();
+    return db.child(key).update({ status: 1 });
 }
 
 export default {
