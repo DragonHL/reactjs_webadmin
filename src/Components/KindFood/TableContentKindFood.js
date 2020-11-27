@@ -2,6 +2,7 @@ import React, { useState }  from 'react';
 import { MDBDataTable } from 'mdbreact';
 import {Link} from "react-router-dom";
 import KindFoodService from "../../Service/KindFoodService";
+
 import { useList } from "react-firebase-hooks/database";
 
 import { Button } from 'react-bootstrap';
@@ -22,21 +23,27 @@ const TableContentKindFood = (props) => {
       });
   };
 
+ 
+
+
   const rows = dataKindFood.map((dataKF, index) => ({
     stt: (index + 1) ,
-    name: dataKF.val().name,
-    images: <img src={dataKF.val().imageUrl} alt="" />,
+    name: dataKF.val().nameKindFood,
+    images: <img src={dataKF.val().imagesKindFood} alt="" />,
     quantity: dataKF.val().quantity,
-    show: <Link to={{pathname: `/webadmin/food`,state:{nameKindFood: dataKF.val().name}}} className="btn btn-primary buttonShow btn-table">Show</Link>,
+    show: <Link to={{pathname: `/webadmin/food`,state:{nameKindFood: dataKF.val().nameKindFood, keyKindFood: dataKF.key }}} className="btn btn-primary buttonShow btn-table">Show</Link>,
     edit: 
     <Link to={{
-      pathname: `/webadmin/formEditKindFood/${dataKF.val().name}&&${dataKF.key}`,
-      state:{nameKindFood: dataKF.val().name, key: dataKF.key, quantity: dataKF.val().quantity, imagesUrl: dataKF.val().imageUrl 
+      pathname: `/webadmin/formEditKindFood/${dataKF.val().nameKindFood}&&${dataKF.key}`,
+      state:{
+        nameKindFood: dataKF.val().nameKindFood, 
+        key: dataKF.key, 
+        quantity: dataKF.val().quantity, 
+        imagesUrl: dataKF.val().imagesKindFood 
       }}} 
       className="btn btn-primary buttonEdit btn-table">Edit</Link>,
     delete: <Button className="btn btn-danger buttonEdit btn-table" onClick={() => deleteKindFood(dataKF.key)} variant="danger">Delete</Button>
     
-// &&${dataKF.key}
   }));
 
   const data = {
@@ -56,7 +63,7 @@ const TableContentKindFood = (props) => {
       {
         label: 'Images',
         field: 'images',
-        sort: 'asc',
+        sort: 'disabled',
         width: 100
       }
       ,
@@ -70,21 +77,21 @@ const TableContentKindFood = (props) => {
       {
         label: 'Show Food',
         field: 'show',
-        sort: 'asc',
+        sort: 'disabled',
         width: 100
       }
       ,
       {
         label: 'Edit',
         field: 'edit',
-        sort: 'asc',
+        sort: 'disabled',
         width: 100
       }
       ,
       {
         label: 'Delete',
         field: 'delete',
-        sort: 'asc',
+        sort: 'disabled',
         width: 100
       }
 

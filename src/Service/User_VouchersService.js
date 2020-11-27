@@ -1,13 +1,21 @@
 import firebase from "../FirebaseCofig/Firebase";
 
-const db = firebase.ref("/KindFood");
+const db = firebase.ref("/USERVOUCHERS");
 
 const getAll = () => {
     return db;
 }
 
+const getAllFollowVoucherId= (voucherId) => {
+    return db.orderByChild('voucherId').equalTo(voucherId);
+}
+
 const getAllFollowStatus = (status) => {
     return db.orderByChild('status').equalTo(status);
+}
+
+const getAllFollowCode = (code) => {
+    return db.orderByChild('code').equalTo(code);
 }
 
 const create = (data) => {
@@ -22,15 +30,16 @@ const remove = (key) => {
     return db.child(key).update({ status: 1 });
 }
 
-const updateQuantity = (key, quantity) => {
-    return db.child(key).update({ quantity: quantity });
-}
+// const remove = (key) => {
+//     return db.child(key).remove();
+// }
 
 export default {
     getAll,
     create,
     update,
     remove,
+    getAllFollowVoucherId,
     getAllFollowStatus,
-    updateQuantity
+    getAllFollowCode
 }

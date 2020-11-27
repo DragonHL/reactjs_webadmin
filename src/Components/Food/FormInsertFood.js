@@ -8,6 +8,7 @@ import { storage } from "../../FirebaseCofig/Firebase";
 
 import FoodService from "../../Service/FoodService"
 
+
 import { useHistory } from "react-router-dom";
 
 
@@ -18,26 +19,29 @@ function FormInsertFood(props) {
     // console.log(props.location.state)
     // console.log("---------------------name-----------------------")
     // console.log(props.location.state.name)
-    // console.log("-----------------------id---------------------")
-    // console.log(props.location.state.key)
+    console.log("-----------------------id---------------------")
+    console.log(props.location.state.keyKindFood)
 
 
     // const [keyKindFood, setValueKeyKindFood] = useState (props.location.state.key);
     // const [nameKindFood, setValueNameKindFood] = useState (props.location.state.name);
 
     // const [nameKindFood, setValueNameKindFood] = useState(props.nameKindFood);
-    const history = useHistory();
+   
 
     const initialFieldValues = {
         name: '',
         information: '',
         nameKindFood: props.location.state.nameKindFood,
-        imageUrl: ''
+        kindFoodID: props.location.state.keyKindFood,
+        price: '',
+        imageUrl: '',
     }
 
     const [valuesFood, setValueFood] = useState(initialFieldValues);
     const [submitted, setSubmitted] = useState(false);
     const [image, setImage] = useState(null);
+     const history = useHistory();
 
     const handleInputChange = e => {
         var { name, value } = e.target;
@@ -65,37 +69,42 @@ function FormInsertFood(props) {
                         .getDownloadURL()
                         .then(url => {
                             var data = (url !== null) ? {
-                                name: valuesFood.name,
-                                information: valuesFood.information,
-                                nameKindFood: valuesFood.nameKindFood,
-                                imageUrl: url,
+                                nameFood: valuesFood.name,
+                                informationFood: valuesFood.information,
+                                // nameKindFood: valuesFood.nameKindFood,
+                                kindFoodID: props.location.state.keyKindFood,
+                                price: valuesFood.price,
+                                imagesFood: url,
                                 status: 0
                             } : {
-                                name: valuesFood.name,
-                                information: valuesFood.information,
-                                nameKindFood: valuesFood.nameKindFood,
-                                imageUrl: null,
+                                nameFood: valuesFood.name,
+                                informationFood: valuesFood.information,
+                                kindFoodID: props.location.state.keyKindFood,
+                                imagesFood: null,
+                                price: valuesFood.price,
                                 status: 0
                             };
 
                             FoodService.create(data)
                                 .then(() => {
                                     setSubmitted(true);
-                                    history.push('/webadmin/food', { nameKindFood: props.location.state.nameKindFood })
+                                    history.push('/webadmin/food', { keyKindFood: props.location.state.keyKindFood, nameKindFood: props.location.state.nameKindFood })
                                 })
                                 .catch(e => {
                                     console.log(e);
                                 });
+
 
                         })
                 }
             )
         } else {
             var data = {
-                name: valuesFood.name,
-                information: valuesFood.information,
-                nameKindFood: valuesFood.nameKindFood,
-                imageUrl: null,
+                nameFood: valuesFood.name,
+                informationFood: valuesFood.information,
+                kindFoodID: props.location.state.keyKindFood,
+                imagesFood: null,
+                price: valuesFood.price,
                 status: 0
             };
 
@@ -143,15 +152,26 @@ function FormInsertFood(props) {
                     />
                 </Form.Group>
 
-                <Form.Group controlId="formKindFood">
+                <Form.Group controlId="formPriceFood">
+                    <Form.Label>Price Food: </Form.Label>
+                    <Form.Control
+                        name="price"
+                        type="text"
+                        placeholder="Price Food"
+                        value={valuesFood.price}
+                        onChange={handleInputChange}
+                    />
+                </Form.Group>
+
+                {/* <Form.Group controlId="formKindFood">
                     <Form.Label>Kind Food: </Form.Label>
                     <Form.Control
                         type="text"
                         placeholder="Kind Food"
-                        value={initialFieldValues.nameKindFood}
+                        value={valuesFood.nameKindFood}
                         onChange={handleInputChange}
                     />
-                </Form.Group>
+                </Form.Group> */}
 
                 <Form.Group>
                     <Form.File

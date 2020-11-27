@@ -6,8 +6,8 @@ const getAll = () => {
     return db;
 }
 
-const getAllFollowKindFood = (name) => {
-    return db.orderByChild('nameKindFood').equalTo(name);
+const getAllFollowKindFood = (kindFoodID) => {
+    return db.orderByChild('kindFoodID').equalTo(kindFoodID);
 }
 
 const create = (data) => {

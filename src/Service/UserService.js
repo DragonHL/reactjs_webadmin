@@ -1,6 +1,6 @@
 import firebase from "../FirebaseCofig/Firebase";
 
-const db = firebase.ref("/KindFood");
+const db = firebase.ref("/User");
 
 const getAll = () => {
     return db;
@@ -22,15 +22,10 @@ const remove = (key) => {
     return db.child(key).update({ status: 1 });
 }
 
-const updateQuantity = (key, quantity) => {
-    return db.child(key).update({ quantity: quantity });
-}
-
 export default {
     getAll,
     create,
     update,
     remove,
-    getAllFollowStatus,
-    updateQuantity
+    getAllFollowStatus
 }

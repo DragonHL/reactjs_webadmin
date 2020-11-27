@@ -3,21 +3,23 @@ import '../../css/Overview.css';
 import '../../css/Form_Add.css';
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
-import DiscountService from "../../Service/DiscountService"
+import VouchersService from "../../Service/VouchersService";
+import { useHistory } from "react-router-dom";
 
-function FormInsert_EditDiscount() {
+function FormEdit_Vouchers(props) {
 
     const initialFieldValues = {
-        code: '',
-        discount: '',
-        description: '',
-        dateStart: '',
-        dateEnd: '',
-        status: ''
+        code: props.location.state.code,
+        discount: props.location.state.discount,
+        description: props.location.state.description,
+        dateStart: props.location.state.dateStart,
+        dateEnd: props.location.state.dateEnd,
+        key: props.location.state.key,
     }
 
     const [valuesDiscounts, setValuesDiscount] = useState(initialFieldValues);
     const [submitted, setSubmitted] = useState(false);
+    const history = useHistory();
 
     const handleInputChange = e => {
         var { name, value } = e.target;
@@ -30,13 +32,14 @@ function FormInsert_EditDiscount() {
             discount: valuesDiscounts.discount,
             description: valuesDiscounts.description,
             dateStart: valuesDiscounts.dateStart,
-            dateEnd: valuesDiscounts.dateEnd,
-            status: 0
+            dateEnd: valuesDiscounts.dateEnd
         };
 
-        DiscountService.create(data)
+        VouchersService.update(valuesDiscounts.key, data)
             .then(() => {
                 setSubmitted(true);
+                console.log("Update Vouchers Success!!")
+                history.push(`/webadmin/vouchers`);
             })
             .catch(e => {
                 console.log(e);
@@ -51,7 +54,7 @@ function FormInsert_EditDiscount() {
     return (
         <div className="sub-container">
 
-            <h2 className="titleform">Form Add Discount</h2>
+            <h2 className="titleform">Form Edit Vouchers</h2>
 
             <Form onSubmit={hanleFormSubmit}>
 
@@ -119,4 +122,4 @@ function FormInsert_EditDiscount() {
     );
 }
 
-export default FormInsert_EditDiscount;
+export default FormEdit_Vouchers;

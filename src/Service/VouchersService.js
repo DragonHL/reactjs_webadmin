@@ -1,6 +1,6 @@
 import firebase from "../FirebaseCofig/Firebase";
 
-const db = firebase.ref("/Discount");
+const db = firebase.ref("/Vouchers");
 
 const getAll = () => {
     return db;
@@ -12,6 +12,10 @@ const getAllFollowStatus = (status) => {
 
 const getAllFollowCode = (code) => {
     return db.orderByChild('code').equalTo(code);
+}
+
+const createVouchers = () => {
+    return db.push();
 }
 
 const create = (data) => {
@@ -36,5 +40,7 @@ export default {
     update,
     remove,
     getAllFollowStatus,
-    getAllFollowCode
+    getAllFollowCode,
+    createVouchers,
+    
 }

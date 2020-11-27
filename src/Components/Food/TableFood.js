@@ -2,23 +2,42 @@ import React, { useState, useEffect } from 'react';
 import { MDBDataTable } from 'mdbreact';
 import { Link } from "react-router-dom";
 import FoodService from "../../Service/FoodService";
-import { useList } from "react-firebase-hooks/database";
+import KindFoodService from "../../Service/KindFoodService";
 
-import firebase from "../../FirebaseCofig/Firebase";
+import { useList } from "react-firebase-hooks/database";
 
 import { Button } from 'react-bootstrap';
 
-const db = firebase.ref("/Food");
 
 const TableFood = (props) => {
 
+//    console.log("props")
+//  console.log(props.keyKindFood)
+//  console.log(props.nameKindFood)
+
   const [nameKindFood, setValueNameKindFood] = useState(props.nameKindFood);
+  const [keyKindFood, setValueKeyKindFood] = useState(props.keyKindFood);
 
   /* use react-firebase-hooks */
- 
-  const [dataFood, loading, error] = useList(FoodService.getAllFollowKindFood(nameKindFood));
 
-  function deleteFood (key) {
+  const [dataFood, loading, error] = useList(FoodService.getAllFollowKindFood(keyKindFood));
+
+
+  useEffect(() => {
+    var count = 0;
+      for(var db of dataFood){
+        if(db.val().kindFoodID === props.keyKindFood){
+          count += 1;
+        }
+      }
+
+     KindFoodService.updateQuantity(props.keyKindFood, count).then(()=>{
+       console.log("update quantity success!!!!!")
+     })
+  }, [dataFood]);
+
+
+  function deleteFood(key) {
     FoodService.remove(key)
       .then(() => {
         props.refreshList();
@@ -28,22 +47,33 @@ const TableFood = (props) => {
       });
   };
 
-  const dbFood = dataFood.filter(function(item, index) {
-    if(item.val().status === 0){
+  const dbFood = dataFood.filter(function (item, index) {
+    if (item.val().status === 0) {
       return item;
     }
   })
 
-  const rows = dbFood.map((dataF,index) => ({
+  const rows = dbFood.map((dataF, index) => ({
     stt: (index + 1),
-    name: dataF.val().name,
-    images: <img src={dataF.val().imageUrl} alt="" />,
-    information: dataF.val().information,
-    kindFood: dataF.val().nameKindFood,
-    edit: <Link 
-    to={{pathname: `/webadmin/formEditFood/${dataF.val().nameKindFood}&&${dataF.key}`,
-    state:{key: dataF.key, name: dataF.val().name, images: dataF.val().imageUrl, information: dataF.val().information, nameKF: dataF.val().nameKindFood}}}
-    className="btn btn-primary buttonEdit btn-table">Edit</Link>,
+    name: dataF.val().nameFood,
+    images: <img src={dataF.val().imagesFood} alt="" />,
+    information: dataF.val().informationFood,
+    kindFood: nameKindFood,
+    price: dataF.val().price,
+    edit: <Link
+      to={{
+        pathname: `/webadmin/formEditFood`,
+        state: {
+          key: dataF.key,
+          nameFood: dataF.val().nameFood,
+          imagesFood: dataF.val().imagesFood,
+          informationFood: dataF.val().informationFood,
+          nameKindFood: nameKindFood,
+          keyKindFood: keyKindFood,
+          price: dataF.val().price
+        }
+      }}
+      className="btn btn-primary buttonEdit btn-table">Edit</Link>,
 
     delete: <Button className="btn btn-danger buttonEdit btn-table" onClick={() => deleteFood(dataF.key)} variant="danger">Delete</Button>
 
@@ -67,7 +97,7 @@ const TableFood = (props) => {
       {
         label: 'Images',
         field: 'images',
-        sort: 'asc',
+        sort: 'disabled',
         width: 100
       }
       ,
@@ -86,16 +116,23 @@ const TableFood = (props) => {
       }
       ,
       {
+        label: 'Price',
+        field: 'price',
+        sort: 'asc',
+        width: 100
+      }
+      ,
+      {
         label: 'Edit',
         field: 'edit',
-        sort: 'asc',
+        sort: 'disabled',
         width: 100
       }
       ,
       {
         label: 'Delete',
         field: 'delete',
-        sort: 'asc',
+        sort: 'disabled',
         width: 100
       }
 
@@ -108,7 +145,9 @@ const TableFood = (props) => {
       striped
       hover
       data={data}
-
+      entriesOptions={[5, 20, 25, 50, 100]}
+      entries={5} 
+      pagesAmount={5}
     // bordered
     />
   );

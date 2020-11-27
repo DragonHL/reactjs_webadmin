@@ -7,20 +7,23 @@ import { storage } from "../../FirebaseCofig/Firebase";
 
 import React, { useState } from 'react';
 
-import ServiceKindFood from "../../Service/KindFoodService"
+import ServiceKindFood from "../../Service/KindFoodService";
+
+import { useHistory } from "react-router-dom";
 
 function FormInsert_KindFood() {
 
     const initialFieldValues = {
-        name: '',
+        nameKindFood: '',
         quantity: '',
-        imageUrl: '',
+        imagesKindFood: '',
 
     }
 
     const [valuesKindFood, setValueKindFood] = useState (initialFieldValues);
     const [submitted, setSubmitted] = useState(false);
     const [image, setImage] = useState(null);
+    const history = useHistory();
 
     const handleInputChange = e => {
         var { name, value } = e.target;
@@ -48,20 +51,21 @@ function FormInsert_KindFood() {
                     .getDownloadURL()
                     .then(url => {
                         var data = (url !== null) ? {
-                            name: valuesKindFood.name,
+                            nameKindFood: valuesKindFood.nameKindFood,
                             quantity: valuesKindFood.quantity,
-                            imageUrl: url,
+                            imagesKindFood: url,
                             status: 0
                         } : {
-                            name: valuesKindFood.name,
+                            name: valuesKindFood.nameKindFood,
                             quantity: valuesKindFood.quantity,
-                            imageUrl: null,
+                            imagesKindFood: null,
                             status: 0
                         };
 
                         ServiceKindFood.create(data)
                             .then(() => {
                                 setSubmitted(true);
+                                history.push(`/webadmin/kindFood`);
                             })
                             .catch(e => {
                                 console.log(e);
@@ -72,15 +76,16 @@ function FormInsert_KindFood() {
         )
         } else {
             var data = {
-                name: valuesKindFood.name,
+                nameKindFood: valuesKindFood.nameKindFood,
                 quantity: valuesKindFood.quantity,
-                imageUrl: null,
+                imagesKindFood: null,
                 status: 0
             };
 
             ServiceKindFood.create(data)
                 .then(() => {
                     setSubmitted(true);
+                    history.push(`/webadmin/kindFood`);
                 })
                 .catch(e => {
                     console.log(e);
@@ -102,15 +107,15 @@ function FormInsert_KindFood() {
                 <Form.Group controlId="formName">
                     <Form.Label> Name Kind Food: </Form.Label>
                     <Form.Control 
-                    name="name"
+                    name="nameKindFood"
                     type="text" 
                     placeholder="Name Kind Food"
-                    value={valuesKindFood.name}
+                    value={valuesKindFood.nameKindFood}
                     onChange={handleInputChange}
                     />
                 </Form.Group>
 
-                <Form.Group controlId="formQuantity">
+                {/* <Form.Group controlId="formQuantity">
                     <Form.Label> Quantity: </Form.Label>
                     <Form.Control
                     name="quantity"
@@ -118,7 +123,7 @@ function FormInsert_KindFood() {
                     onChange={handleInputChange} 
                     type="text" 
                     placeholder="Quantity" />
-                </Form.Group>
+                </Form.Group> */}
 
                 <Form.Group>
                     <Form.File 

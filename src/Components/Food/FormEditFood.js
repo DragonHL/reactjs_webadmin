@@ -8,33 +8,27 @@ import { storage } from "../../FirebaseCofig/Firebase";
 
 import FoodService from "../../Service/FoodService"
 
+import { useHistory } from "react-router-dom";
+
 function FormEditFood(props) {
 
     // console.log("---------------------table food-----------------------")
-    // console.log(props.location.state)
-    // console.log("---------------------name-----------------------")
-    // console.log(props.location.state.name)
-    // console.log("-----------------------id---------------------")
-    // console.log(props.location.state.key)
-
-
-    // const [keyKindFood, setValueKeyKindFood] = useState (props.location.state.key);
-    // const [nameKindFood, setValueNameKindFood] = useState (props.location.state.name);
-
-    // const [nameKindFood, setValueNameKindFood] = useState(props.nameKindFood);
-
+    // console.log(props.location.state) // get param on address web
+    // console.log(props.location.state.price) 
 
     const initialFieldValues = {
-        nameFood: props.location.state.name,
-        information: props.location.state.information,
+        nameFood: props.location.state.nameFood,
+        informationFood: props.location.state.informationFood,
         nameKindFood: props.location.state.nameKindFood,
-        imageUrl: props.location.state.imageUrl,
+        imagesFood: props.location.state.imagesFood,
+        price: props.location.state.price,
         key: props.location.state.key
     }
 
     const [valuesFood, setValueFood] = useState(initialFieldValues);
     const [submitted, setSubmitted] = useState(false);
     const [image, setImage] = useState(null);
+    const history = useHistory();
 
     const handleInputChange = e => {
         var { name, value } = e.target;
@@ -63,20 +57,23 @@ function FormEditFood(props) {
                         .then(url => {
 
                             var data = (url !== null) ? {
-                                name: valuesFood.nameFood,
-                                information: valuesFood.information,
+                                nameFood: valuesFood.nameFood,
+                                informationFood: valuesFood.informationFood,
                                 nameKindFood: valuesFood.nameKindFood,
+                                price: valuesFood.price,
                                 imageUrl: url
                             } : {
-                                    name: valuesFood.nameFood,
-                                    information: valuesFood.information,
+                                    nameFood: valuesFood.nameFood,
+                                    informationFood: valuesFood.informationFood,
                                     nameKindFood: valuesFood.nameKindFood,
+                                    price: valuesFood.price,
                                 };
 
                             FoodService.update(valuesFood.key, data)
                                 .then(() => {
                                     setSubmitted(true);
                                     console.log("success!!!")
+                                    history.push('/webadmin/food', { keyKindFood: props.location.state.keyKindFood, nameKindFood: props.location.state.nameKindFood })
                                 })
                                 .catch(e => {
                                     console.log(e);
@@ -87,15 +84,17 @@ function FormEditFood(props) {
             )
         } else {
             var data = {
-                name: valuesFood.nameFood,
-                information: valuesFood.information,
+                nameFood: valuesFood.nameFood,
+                informationFood: valuesFood.informationFood,
                 nameKindFood: valuesFood.nameKindFood,
+                price: valuesFood.price,
             };
 
             FoodService.update(valuesFood.key, data)
                 .then(() => {
                     setSubmitted(true);
                     console.log("success!!!")
+                    history.push('/webadmin/food', { keyKindFood: props.location.state.keyKindFood, nameKindFood: props.location.state.nameKindFood })
                 })
                 .catch(e => {
                     console.log(e);
@@ -128,10 +127,21 @@ function FormEditFood(props) {
                 <Form.Group controlId="formInformation">
                     <Form.Label>Information: </Form.Label>
                     <Form.Control
-                        name="information"
+                        name="informationFood"
                         type="text"
                         placeholder="Information"
-                        value={valuesFood.information}
+                        value={valuesFood.informationFood}
+                        onChange={handleInputChange}
+                    />
+                </Form.Group>
+
+                <Form.Group controlId="formPriceFood">
+                    <Form.Label>Price Food: </Form.Label>
+                    <Form.Control
+                        name="price"
+                        type="text"
+                        placeholder="Price Food"
+                        value={valuesFood.price}
                         onChange={handleInputChange}
                     />
                 </Form.Group>
@@ -141,7 +151,7 @@ function FormEditFood(props) {
                     <Form.Control
                         type="text"
                         placeholder="Kind Food"
-                        value={initialFieldValues.nameKindFood}
+                        value={props.location.state.nameKindFood}
                         onChange={handleInputChange}
                     />
                 </Form.Group>

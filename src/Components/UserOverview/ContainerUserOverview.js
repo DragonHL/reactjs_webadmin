@@ -4,10 +4,10 @@ import '../../css/Container_Body_Table.css';
 import '../../css/DataTable.css';
 
 
-import TableContentCustomers from './TableContentCustomers';
+import TableContentUser from './TableContentUser';
 
 
-function ContainerCustomersOverview() {
+function ContainerUserOverview() {
 
 
     return (
@@ -15,9 +15,9 @@ function ContainerCustomersOverview() {
 
             {/* <div class="container-body">
                 <div class="sub-container"> */}
-                    <h1 class="titleTable">Customers Overview</h1>
+                    <h1 class="titleTable">User Overview</h1>
 
-                    <TableContentCustomers />
+                    <TableContentUser />
 
                 {/* </div>
 
@@ -26,4 +26,4 @@ function ContainerCustomersOverview() {
     );
 }
 
-export default ContainerCustomersOverview;
+export default ContainerUserOverview;

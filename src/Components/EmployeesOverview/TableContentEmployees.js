@@ -85,7 +85,7 @@ const TableContentEmployees = (props) => {
       {
         label: 'Images',
         field: 'images',
-        sort: 'asc',
+        sort: 'disabled',
         width: 100
       },
       {
@@ -109,13 +109,13 @@ const TableContentEmployees = (props) => {
       {
         label: 'Edit',
         field: 'edit',
-        sort: 'asc',
+        sort: 'disabled',
         width: 100
       },
       {
         label: 'Delete',
         field: 'delete',
-        sort: 'asc',
+        sort: 'disabled',
         width: 100
       }
     ],
@@ -133,7 +133,7 @@ const TableContentEmployees = (props) => {
       entriesOptions={[5, 20, 25, 50, 100]}
       entries={5}
       pagesAmount={5}
-
+      
     // data={{ columns: data.columns, rows: rows }} 
     // bordered
 

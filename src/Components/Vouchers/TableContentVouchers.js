@@ -3,19 +3,15 @@ import { MDBDataTable } from 'mdbreact';
 import { Link } from "react-router-dom";
 import { useList } from "react-firebase-hooks/database";
 
-import DiscountService from "../../Service/DiscountService";
+import VouchersService from "../../Service/VouchersService";
 import { Button } from 'react-bootstrap';
 
-const TableContentDiscount = (props) => {
+const TableContentVouchers = (props) => {
 
-  const [dataDiscount, loading, error] = useList(DiscountService.getAllFollowStatus(0));
-  // const [dataDiscountFollowCode, loading2, error2] = useList(DiscountService.getAllFollowCode("NZPAXCKW"));
-
-  // console.log("dataDiscount")
-  // console.log(dataDiscount)
+  const [dataVouchers, loading, error] = useList(VouchersService.getAllFollowStatus(0));
   
   function deleteTutorial (key) {
-    DiscountService.remove(key)
+    VouchersService.remove(key)
       .then(() => {
         props.refreshList();
       })
@@ -24,7 +20,7 @@ const TableContentDiscount = (props) => {
       });
   };
 
-  const rows = dataDiscount.map((dataD, index) => ({
+  const rows = dataVouchers.map((dataD, index) => ({
     
     stt: (index + 1),
     code: dataD.val().code,
@@ -32,8 +28,15 @@ const TableContentDiscount = (props) => {
     description: dataD.val().description,
     dateStart: dataD.val().dateStart,
     dateEnd: dataD.val().dateEnd,
+    show: <Link to={{
+      pathname: `/webadmin/userVouchers`,
+      state:{
+        key: dataD.key,
+        code: dataD.val().code, 
+      }}}
+    className="btn btn-primary buttonEdit btn-table">Show</Link>,
     edit: <Link to={{
-      pathname: `/webadmin/formEditDiscount`,
+      pathname: `/webadmin/formEditVouchers`,
       state:{
         key: dataD.key,
         code: dataD.val().code,
@@ -44,9 +47,7 @@ const TableContentDiscount = (props) => {
       }}}
     className="btn btn-primary buttonEdit btn-table">Edit</Link>,
     delete: <Button className="btn btn-danger buttonEdit btn-table" onClick={() => deleteTutorial(dataD.key)} variant="danger">Delete</Button>
-    
-    
-    // <a className="btn btn-danger buttonEdit btn-table" onClick={this.deleteTutorial(dataD.key)} href="/#" role="button">Delete</a>,
+  
     
   }));
 
@@ -63,13 +64,13 @@ const TableContentDiscount = (props) => {
         label: 'Code',
         field: 'code',
         sort: 'asc',
-        width: 270
+        width: 170
       },
       {
         label: 'Discount',
         field: 'discount',
         sort: 'asc',
-        width: 200
+        width: 100
       },
       {
         label: 'Description',
@@ -92,16 +93,23 @@ const TableContentDiscount = (props) => {
       }
       ,
       {
+        label: 'Show',
+        field: 'show',
+        sort: 'disabled',
+        width: 100
+      }
+      ,
+      {
         label: 'Edit',
         field: 'edit',
-        sort: 'asc',
+        sort: 'disabled',
         width: 100
       }
       ,
       {
         label: 'Delete',
         field: 'delete',
-        sort: 'asc',
+        sort: 'disabled',
         width: 100
       }
 
@@ -125,4 +133,4 @@ const TableContentDiscount = (props) => {
   );
 }
 
-export default TableContentDiscount;
+export default TableContentVouchers;

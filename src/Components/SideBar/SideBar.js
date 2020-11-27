@@ -102,9 +102,9 @@ function SideBar ()  {
                             </Link>
                         </li>
                         <li>
-                            <Link to="/webadmin/customer" className="linkSideBar">
+                            <Link to="/webadmin/user" className="linkSideBar">
                                 <FaUsers className="fas fa-users i" />
-                                <p>Custommer Overview</p>
+                                <p>User Overview</p>
                             </Link>
                         </li>
                         <li>
@@ -133,7 +133,7 @@ function SideBar ()  {
                             </Link>
                         </li>
                         <li>
-                            <Link to="/webadmin/discount" className="linkSideBar">
+                            <Link to="/webadmin/vouchers" className="linkSideBar">
                                 <FaUserTag className="fas fa-user-tag i" />
                                 <p>Discount</p>
                             </Link>

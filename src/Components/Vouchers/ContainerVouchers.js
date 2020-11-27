@@ -4,27 +4,27 @@ import '../../css/DataTable.css';
 import { Link } from "react-router-dom";
 
 
-import TableContentDiscount from './TableContentDiscount';
+import TableContentVouchers from './TableContentVouchers';
 
 
-function ContainerDiscount() {
+function ContainerVouchers() {
 
 
     return (
         <div className="sub-container">
             
             <div class="title-button">
-                <h1 class="titleTable">Discount</h1>
+                <h1 class="titleTable">Vouchers</h1>
                 {/* <a class="btn btn-warning buttonAdd" href="./From Add And Edit Discount.html" role="button">
                     ADD
                 </a> */}
-                <Link to="/webadmin/formInsertDiscount" className="btn btn-warning buttonAdd">ADD</Link>
+                <Link to="/webadmin/formInsertVouchers" className="btn btn-warning buttonAdd">ADD</Link>
             </div>
 
-            <TableContentDiscount />
+            <TableContentVouchers />
 
         </div>
     );
 }
 
-export default ContainerDiscount;
+export default ContainerVouchers;
