@@ -1,4 +1,4 @@
-import React, { filter } from 'react';
+import React from 'react';
 import { MDBDataTable } from 'mdbreact';
 
 import { useList } from "react-firebase-hooks/database";
@@ -20,7 +20,7 @@ const TableContentUserVouchers = (props) => {
     voucher: props.code,
     // user: name(dataUV) + dataUV.val().userId, // check User
     user: name(dataUV),
-    status: (dataUV.val().status === 0) ? <Button  variant="success">Not Used</Button> : <Button variant="danger">&ensp;&nbsp; Used &nbsp;&ensp;</Button>,
+    status: (dataUV.val().status === 0) ? <Button variant="success">Not Used</Button> : <Button variant="danger">&ensp;&nbsp; Used &nbsp;&ensp;</Button>,
 
   }));
 
@@ -32,7 +32,6 @@ const TableContentUserVouchers = (props) => {
       }
     })
     return nameU;
-
   }
 
   const data = {

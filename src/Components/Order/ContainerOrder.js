@@ -12,15 +12,10 @@ function ContainerOrder() {
     return (
         <div className="sub-container">
 
-            {/* <div class="container-body">
-                <div class="sub-container"> */}
             <h1 class="titleTable">Order</h1>
 
             <TableContentOrder />
-
-            {/* </div>
-
-            </div> */}
+            
         </div>
     );
 }

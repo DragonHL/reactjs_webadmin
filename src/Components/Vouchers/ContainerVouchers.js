@@ -15,10 +15,9 @@ function ContainerVouchers() {
             
             <div class="title-button">
                 <h1 class="titleTable">Vouchers</h1>
-                {/* <a class="btn btn-warning buttonAdd" href="./From Add And Edit Discount.html" role="button">
-                    ADD
-                </a> */}
+
                 <Link to="/webadmin/formInsertVouchers" className="btn btn-warning buttonAdd">ADD</Link>
+                
             </div>
 
             <TableContentVouchers />

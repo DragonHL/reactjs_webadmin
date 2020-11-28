@@ -10,16 +10,11 @@ import VouchersService from "../../Service/VouchersService";
 import UserService from "../../Service/UserService";
 import User_VouchersService from "../../Service/User_VouchersService";
 
-import firebase from "../../FirebaseCofig/Firebase";
-
-
 
 
 function FormInsert_EditVouchers() {
 
     const [dataUser, loading, error] = useList(UserService.getAllFollowStatus(0));
-
-
 
     const initialFieldValues = {
         code: '',
@@ -79,9 +74,6 @@ function FormInsert_EditVouchers() {
             .catch(function (error) {
                 console.log(error)
             })
-
-
-
 
     }
 

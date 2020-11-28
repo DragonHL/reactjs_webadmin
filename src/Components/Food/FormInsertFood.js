@@ -15,19 +15,9 @@ import { useHistory } from "react-router-dom";
 
 function FormInsertFood(props) {
 
-    // console.log("---------------------table food-----------------------")
-    // console.log(props.location.state)
-    // console.log("---------------------name-----------------------")
-    // console.log(props.location.state.name)
-    console.log("-----------------------id---------------------")
-    console.log(props.location.state.keyKindFood)
+    // console.log("-----------------------id---------------------")
+    // console.log(props.location.state.keyKindFood)
 
-
-    // const [keyKindFood, setValueKeyKindFood] = useState (props.location.state.key);
-    // const [nameKindFood, setValueNameKindFood] = useState (props.location.state.name);
-
-    // const [nameKindFood, setValueNameKindFood] = useState(props.nameKindFood);
-   
 
     const initialFieldValues = {
         name: '',
@@ -163,7 +153,7 @@ function FormInsertFood(props) {
                     />
                 </Form.Group>
 
-                {/* <Form.Group controlId="formKindFood">
+                <Form.Group controlId="formKindFood">
                     <Form.Label>Kind Food: </Form.Label>
                     <Form.Control
                         type="text"
@@ -171,7 +161,7 @@ function FormInsertFood(props) {
                         value={valuesFood.nameKindFood}
                         onChange={handleInputChange}
                     />
-                </Form.Group> */}
+                </Form.Group>
 
                 <Form.Group>
                     <Form.File

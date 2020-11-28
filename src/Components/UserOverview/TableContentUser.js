@@ -58,7 +58,7 @@ const TableContentUser = () => {
       {
         label: 'Images',
         field: 'imageUser',
-        sort: 'asc',
+        sort: 'disabled',
         width: 100
       }
       ,
@@ -94,6 +94,9 @@ const TableContentUser = () => {
       striped
       hover
       data={data}
+      entriesOptions={[5, 20, 25, 50, 100]}
+      entries={5} 
+      pagesAmount={5}
 
       // bordered
     />

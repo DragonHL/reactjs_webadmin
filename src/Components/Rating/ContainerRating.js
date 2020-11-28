@@ -12,16 +12,10 @@ function ContainerRating() {
     return (
         <div className="sub-container">
 
-            {/* <div class="container-body">
-                <div class="sub-container"> */}
-                    <h1 class="titleTable">Rating</h1>
-                  
+            <h1 class="titleTable">Rating</h1>
 
-                    <TableRating />
+            <TableRating />
 
-                {/* </div>
-
-            </div> */}
         </div>
     );
 }

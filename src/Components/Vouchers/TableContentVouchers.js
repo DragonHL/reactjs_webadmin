@@ -1,4 +1,4 @@
-import React, {filter} from 'react';
+import React from 'react';
 import { MDBDataTable } from 'mdbreact';
 import { Link } from "react-router-dom";
 import { useList } from "react-firebase-hooks/database";
@@ -9,8 +9,8 @@ import { Button } from 'react-bootstrap';
 const TableContentVouchers = (props) => {
 
   const [dataVouchers, loading, error] = useList(VouchersService.getAllFollowStatus(0));
-  
-  function deleteTutorial (key) {
+
+  function deleteTutorial(key) {
     VouchersService.remove(key)
       .then(() => {
         props.refreshList();
@@ -21,7 +21,7 @@ const TableContentVouchers = (props) => {
   };
 
   const rows = dataVouchers.map((dataD, index) => ({
-    
+
     stt: (index + 1),
     code: dataD.val().code,
     discount: dataD.val().discount,
@@ -30,25 +30,28 @@ const TableContentVouchers = (props) => {
     dateEnd: dataD.val().dateEnd,
     show: <Link to={{
       pathname: `/webadmin/userVouchers`,
-      state:{
+      state: {
         key: dataD.key,
-        code: dataD.val().code, 
-      }}}
-    className="btn btn-primary buttonEdit btn-table">Show</Link>,
+        code: dataD.val().code,
+      }
+    }}
+      className="btn btn-primary buttonEdit btn-table">Show</Link>,
     edit: <Link to={{
       pathname: `/webadmin/formEditVouchers`,
-      state:{
+      state: {
         key: dataD.key,
         code: dataD.val().code,
         discount: dataD.val().discount,
         description: dataD.val().description,
         dateStart: dataD.val().dateStart,
-        dateEnd: dataD.val().dateEnd, 
-      }}}
-    className="btn btn-primary buttonEdit btn-table">Edit</Link>,
-    delete: <Button className="btn btn-danger buttonEdit btn-table" onClick={() => deleteTutorial(dataD.key)} variant="danger">Delete</Button>
-  
-    
+        dateEnd: dataD.val().dateEnd,
+      }
+    }}
+      className="btn btn-success buttonEdit btn-table">Edit</Link>,
+    delete: <Button
+      className="btn btn-danger buttonEdit btn-table"
+      onClick={() => deleteTutorial(dataD.key)} >Delete</Button>
+
   }));
 
 
@@ -116,19 +119,19 @@ const TableContentVouchers = (props) => {
     ],
 
     rows: rows
- 
+
   };
 
   return (
     <MDBDataTable
       striped
       hover
-      data={data} 
+      data={data}
       entriesOptions={[5, 20, 25, 50, 100]}
-      entries={5} 
+      entries={5}
       pagesAmount={5}
-      // bordered
-      // data={{ columns: data.columns, rows: rows }} 
+    // bordered
+    // data={{ columns: data.columns, rows: rows }} 
     />
   );
 }

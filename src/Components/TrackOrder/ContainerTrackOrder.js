@@ -5,19 +5,13 @@ import '../../css/Content_Track_Order.css';
 
 
 
-
-
 function ContainerTrackOrder() {
 
 
     return (
         <div className="sub-container">
 
-            {/* <div className="container-body">
-                <div className="sub-container"> */}
-
             <h1 className="titleTable">Track Order</h1>
-
 
             <div class="search-track-order">
                 <h5>Track Order</h5>
@@ -95,12 +89,7 @@ function ContainerTrackOrder() {
                 </div>
             </div>
 
-
-            {/* </div>
-            </div> */}
         </div>
-
-
 
     );
 }

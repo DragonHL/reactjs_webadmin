@@ -17,7 +17,9 @@ function ContainerKindFood( ) {
             <div class="title-button">
                 <h1 class="titleTable">Kind Food</h1>
 
-                <Link to="/webadmin/formInsertKindFood" className="linkSideBar btn btn-warning buttonAdd">ADD</Link> 
+                <Link 
+                to = "/webadmin/formInsertKindFood" 
+                className = "linkSideBar btn btn-warning buttonAdd">ADD</Link> 
                     
             </div>
 

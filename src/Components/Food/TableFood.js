@@ -73,7 +73,7 @@ const TableFood = (props) => {
           price: dataF.val().price
         }
       }}
-      className="btn btn-primary buttonEdit btn-table">Edit</Link>,
+      className="btn btn-success buttonEdit btn-table">Edit</Link>,
 
     delete: <Button className="btn btn-danger buttonEdit btn-table" onClick={() => deleteFood(dataF.key)} variant="danger">Delete</Button>
 

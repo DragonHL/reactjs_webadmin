@@ -42,8 +42,8 @@ const TableContentEmployees = (props) => {
         startWork: dataE.val().startWork, endWork: dataE.val().endWork, role: dataE.val().role,
       }
     }}
-      className="btn btn-primary buttonEdit btn-table">Edit</Link>,
-    delete: <Button className="btn btn-danger buttonEdit btn-table" onClick={() => deleteEmployee(dataE.key)} variant="danger">Delete</Button>
+      className="btn btn-success buttonEdit btn-table">Edit</Link>,
+    delete: <Button className="btn btn-danger btn-table" onClick={() => deleteEmployee(dataE.key)} >Delete</Button>
     
     
   }));

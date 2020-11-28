@@ -13,15 +13,10 @@ function ContainerUserOverview() {
     return (
         <div className="sub-container">
 
-            {/* <div class="container-body">
-                <div class="sub-container"> */}
-                    <h1 class="titleTable">User Overview</h1>
+            <h1 class="titleTable">User Overview</h1>
 
-                    <TableContentUser />
+            <TableContentUser />
 
-                {/* </div>
-
-            </div> */}
         </div>
     );
 }
