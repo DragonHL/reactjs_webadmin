@@ -2,7 +2,11 @@ import AdminOverview from "../AdminOverview/ContainerAdminOverview";
 import UserOverview from "../UserOverview/ContainerUserOverview";
 import EmployeesOverview from "../EmployeesOverview/ContainerEmployeesOverview";
 import KindFood from "../KindFood/ContainerKindFood";
+
 import Order from "../Order/ContainerOrder";
+
+import OrderDetail from "../OrderDetail/ContainerOrderDetail";
+
 import TrackOrder from "../TrackOrder/ContainerTrackOrder";
 
 import Vouchers from "../Vouchers/ContainerVouchers";
@@ -46,7 +50,11 @@ function RouterURL() {
                 <Route path="/webadmin/user" component={UserOverview} />
                 <Route path="/webadmin/employees" component={EmployeesOverview} />
                 <Route path="/webadmin/kindFood" component={KindFood} />
+
                 <Route path="/webadmin/order" component={Order} />
+
+                <Route path="/webadmin/detail" component={OrderDetail} />
+
                 <Route path="/webadmin/trackOrder" component={TrackOrder} />
 
                 <Route path="/webadmin/vouchers" component={Vouchers} />

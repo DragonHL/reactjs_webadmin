@@ -41,3 +41,17 @@ tbody+thead {
     background-color: #0ec513 !important;
     border-color: #0ec513 !important;
 }
+
+.table-striped>tbody>tr:nth-child(odd)>td,
+.table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: white;
+}
+
+
+/* button confirm of order */
+.btn-confirm {
+    height: 38px;
+    margin: auto;
+    border-radius: 5px;
+    padding: 6px 12px;
+}

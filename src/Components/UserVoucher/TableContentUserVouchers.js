@@ -12,13 +12,16 @@ import { Button } from 'react-bootstrap';
 const TableContentUserVouchers = (props) => {
 
   const [dataUserVouchers, loadingUserVouchers, errorUserVouchers] = useList(User_VouchersService.getAllFollowVoucherId(props.voucherId));
-  const [dataUser, loadingUser, errorUser] = useList(UserService.getAll());
+  // const [dataUser, loadingUser, errorUser] = useList(UserService.getAll());
+  const [dataUser, loadingUser, errorUser] = useList(UserService.getAllFollowStatus(0));
+
+  console.log(dataUser)
 
   const rows = dataUserVouchers.map((dataUV, index) => ({
-
+   
     stt: (index + 1),
     voucher: props.code,
-    // user: name(dataUV) + dataUV.val().userId, // check User
+    // user: name(dataUV) + dataUV.val().userID, // check User
     user: name(dataUV),
     status: (dataUV.val().status === 0) ? <Button variant="success">Not Used</Button> : <Button variant="danger">&ensp;&nbsp; Used &nbsp;&ensp;</Button>,
 
@@ -27,12 +30,21 @@ const TableContentUserVouchers = (props) => {
   function name(dataUV) {
     var nameU;
     dataUser.forEach(function (user) {
-      if (user.key === dataUV.val().userId) {
+      // console.log("user.key")
+      // console.log(user.key )
+      // console.log("dataUV.val().userID")
+      // console.log(dataUV.val().userID)
+      // console.log(user.val().nameUser)
+      if (user.key === dataUV.val().userID) {
         nameU = user.val().nameUser;
       }
     })
     return nameU;
   }
+
+  console.log("rows")
+  console.log(rows.user)
+ 
 
   const data = {
     columns: [

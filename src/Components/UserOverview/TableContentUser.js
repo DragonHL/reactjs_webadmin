@@ -2,6 +2,7 @@ import React from 'react';
 import { MDBDataTable } from 'mdbreact';
 import { useList } from "react-firebase-hooks/database";
 import UserService from "../../Service/UserService";
+import { Button } from 'react-bootstrap';
 
 const TableContentUser = () => {
 
@@ -13,15 +14,15 @@ const TableContentUser = () => {
     mailUser: dataU.val().mailUser,
     // passwordUser:dataU.val().passwordUser,
     phoneUser:dataU.val().phoneUser,
-    addressUser:dataU.val().addressUser,
+    addressUser:dataU.val().address,
     imageUser:<img src={dataU.val().imageUser} alt="" />,
-    status:(dataU.val().status === 0) ? "Activate" : "Delete",
-    dateCreated:dataU.val().dateCreated,
+    status:(dataU.val().status === 0) ? <Button variant="success">Activate</Button> : <Button variant="danger">&ensp;&nbsp; Delete &nbsp;&ensp;</Button>,
+    dateCreated:dataU.val().dateCreate,
     dateUpdate:dataU.val().dateUpdate,
 
   }));
 
-
+// "Activate" : "Delete" 
 
   const data = {
     columns: [

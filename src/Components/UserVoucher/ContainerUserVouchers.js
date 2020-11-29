@@ -12,7 +12,10 @@ function ContainerUserVouchers(props) {
 
             <h1 class="titleTable">User Vouchers</h1>
 
-            <TableContentUserVouchers voucherId={props.location.state.key} code={props.location.state.code} />
+            <TableContentUserVouchers 
+            voucherId={props.location.state.key} 
+            code={props.location.state.code} 
+            />
 
         </div>
     );

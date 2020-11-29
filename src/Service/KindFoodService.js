@@ -1,36 +1,36 @@
-import firebase from "../FirebaseCofig/Firebase";
+import firebase from '../FirebaseCofig/Firebase';
 
-const db = firebase.ref("/KindFood");
+const db = firebase.ref ('/KINDFOOD');
 
 const getAll = () => {
-    return db;
-}
+  return db;
+};
 
-const getAllFollowStatus = (status) => {
-    return db.orderByChild('status').equalTo(status);
-}
+const getAllFollowStatus = status => {
+  return db.orderByChild ('status').equalTo (status);
+};
 
-const create = (data) => {
-    return db.push(data);
-}
+const create = data => {
+  return db.push (data);
+};
 
 const update = (key, data) => {
-    return db.child(key).update(data);
-}
+  return db.child (key).update (data);
+};
 
-const remove = (key) => {
-    return db.child(key).update({ status: 1 });
-}
+const remove = key => {
+  return db.child (key).update ({status: 1});
+};
 
 const updateQuantity = (key, quantity) => {
-    return db.child(key).update({ quantity: quantity });
-}
+  return db.child (key).update ({quantity: quantity});
+};
 
 export default {
-    getAll,
-    create,
-    update,
-    remove,
-    getAllFollowStatus,
-    updateQuantity
-}
+  getAll,
+  create,
+  update,
+  remove,
+  getAllFollowStatus,
+  updateQuantity,
+};

@@ -48,6 +48,8 @@ const TableFood = (props) => {
   };
 
   const dbFood = dataFood.filter(function (item, index) {
+    console.log("item.val().status of food")
+    console.log(item.val().status)
     if (item.val().status === 0) {
       return item;
     }

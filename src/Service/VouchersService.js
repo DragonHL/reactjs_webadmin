@@ -1,6 +1,6 @@
 import firebase from "../FirebaseCofig/Firebase";
 
-const db = firebase.ref("/Vouchers");
+const db = firebase.ref("/vouchers");
 
 const getAll = () => {
     return db;
