@@ -63,7 +63,7 @@ function FormInsertFood(props) {
                                 informationFood: valuesFood.information,
                                 // nameKindFood: valuesFood.nameKindFood,
                                 kindFoodID: props.location.state.keyKindFood,
-                                price: valuesFood.price,
+                                price: parseFloat(valuesFood.price),
                                 imagesFood: url,
                                 status: 0
                             } : {
@@ -71,7 +71,7 @@ function FormInsertFood(props) {
                                 informationFood: valuesFood.information,
                                 kindFoodID: props.location.state.keyKindFood,
                                 imagesFood: null,
-                                price: valuesFood.price,
+                                price: parseFloat(valuesFood.price),
                                 status: 0
                             };
 
@@ -94,7 +94,7 @@ function FormInsertFood(props) {
                 informationFood: valuesFood.information,
                 kindFoodID: props.location.state.keyKindFood,
                 imagesFood: null,
-                price: valuesFood.price,
+                price: parseFloat(valuesFood.price),
                 status: 0
             };
 

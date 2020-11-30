@@ -10,6 +10,7 @@
 
 table .dataTable {
     border-collapse: collapse !important;
+    
 }
 
 
@@ -54,4 +55,6 @@ tbody+thead {
     margin: auto;
     border-radius: 5px;
     padding: 6px 12px;
+
 }
+

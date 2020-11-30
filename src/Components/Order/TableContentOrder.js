@@ -1,13 +1,14 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {MDBDataTable} from 'mdbreact';
 import OrderService from '../../Service/OrderService';
 import {Link} from 'react-router-dom';
 import {useList} from 'react-firebase-hooks/database';
-import {Button} from 'react-bootstrap';
-import Modal from 'react-bootstrap/Modal';
+;
 
 const TableContentOrder = props => {
   const [dataBill, loading, error] = useList (OrderService.getAll ());
+
+
 
   const rows = dataBill.map ((data, index) => ({
     stt: index + 1,
@@ -28,7 +29,7 @@ const TableContentOrder = props => {
           state: {
             cart: data.val().cart,
           },
-          
+
         }}
         className="btn btn-primary buttonEdit btn-table"
       >
@@ -37,7 +38,7 @@ const TableContentOrder = props => {
     ),
 
     confirm: (
-      <p className="bg-success text-white btn-confirm" >Confirm</p>
+      <p className="text-white btn-confirm btn-success" >Confirm</p>
     ),
   }));
 
@@ -109,12 +110,12 @@ const TableContentOrder = props => {
 
   return (
     <MDBDataTable
-      striped
       hover
       data={data}
       entriesOptions={[5, 20, 25, 50, 100]}
       entries={5}
       pagesAmount={5}
+      small
       // bordered
     />
   );

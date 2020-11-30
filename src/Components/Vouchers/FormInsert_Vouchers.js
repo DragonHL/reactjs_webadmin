@@ -55,8 +55,9 @@ function FormInsert_EditVouchers () {
         for (var user of dataUser) {
           console.log ('user');
           console.log (user);
+          console.log (user.val().userID);
           var dataUserVouchers = {
-            userID: user.key,
+            userID: user.val().userID,
             voucherId: voucher.key,
             status: 0,
           };

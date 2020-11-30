@@ -144,12 +144,12 @@ const TableFood = (props) => {
 
   return (
     <MDBDataTable
-      striped
       hover
       data={data}
       entriesOptions={[5, 20, 25, 50, 100]}
       entries={5} 
       pagesAmount={5}
+      small
     // bordered
     />
   );

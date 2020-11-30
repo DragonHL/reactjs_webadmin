@@ -47,7 +47,7 @@ const TableContentVouchers = (props) => {
         dateEnd: dataD.val().dateEnd,
       }
     }}
-      className="btn btn-success buttonEdit btn-table">Edit</Link>,
+      className="btn btn-success buttonEdit btn-table ">Edit</Link>,
     delete: <Button
       className="btn btn-danger buttonEdit btn-table"
       onClick={() => deleteTutorial(dataD.key)} >Delete</Button>
@@ -124,12 +124,12 @@ const TableContentVouchers = (props) => {
 
   return (
     <MDBDataTable
-      striped
       hover
       data={data}
       entriesOptions={[5, 20, 25, 50, 100]}
       entries={5}
       pagesAmount={5}
+      small
     // bordered
     // data={{ columns: data.columns, rows: rows }} 
     />

@@ -7,11 +7,14 @@ const getAll = () => {
 };
 
 
-const getAllCar = () => {
-  return db.child('cart').orderByChild('product');
+// const getTotalPriceFollowDate = (start, end) => {
+//   return db.orderByChild('date').startAt(start).endAt(end);
+// }
+const getTotalPriceFollowDate = (start, end) => {
+  return db.orderByChild('date').startAt(start).endAt(end);
 }
 
 export default {
     getAll,
-    getAllCar
+    getTotalPriceFollowDate
 }

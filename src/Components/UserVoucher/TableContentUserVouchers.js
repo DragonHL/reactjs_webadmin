@@ -23,18 +23,16 @@ const TableContentUserVouchers = (props) => {
     voucher: props.code,
     // user: name(dataUV) + dataUV.val().userID, // check User
     user: name(dataUV),
-    status: (dataUV.val().status === 0) ? <Button variant="success">Not Used</Button> : <Button variant="danger">&ensp;&nbsp; Used &nbsp;&ensp;</Button>,
+    status: (dataUV.val().status === 0) ? <Button variant="success">Not Used</Button> : <Button variant="danger">Used</Button>,
 
   }));
 
   function name(dataUV) {
     var nameU;
     dataUser.forEach(function (user) {
-      // console.log("user.key")
-      // console.log(user.key )
-      // console.log("dataUV.val().userID")
-      // console.log(dataUV.val().userID)
-      // console.log(user.val().nameUser)
+      // console.log("user.key ", user.key )
+      // console.log("dataUV.val().userID ", dataUV.val().userID)
+      // console.log("user.val().nameUser ",user.val().nameUser)
       if (user.key === dataUV.val().userID) {
         nameU = user.val().nameUser;
       }
@@ -87,7 +85,7 @@ const TableContentUserVouchers = (props) => {
       entriesOptions={[5, 20, 25, 50, 100]}
       entries={5}
       pagesAmount={5}
-
+      small
     // bordered
     // data={{ columns: data.columns, rows: rows }} 
     />
