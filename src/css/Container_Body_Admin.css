@@ -10,6 +10,11 @@
     /* background-color: #ffffff; */
 /* } */
 
+.box-date {
+    display: flex;
+    justify-content: space-between;
+}
+
 .statistical_month_year{
     width: 100%;
     display: flex;
