@@ -96,13 +96,8 @@ function ContainerAdminOverview() {
             var totalPrice = 0;
             var count = 0;
             for (var date of dataOrder) {
-                // console.log("totalprice ==> ", date.val().totalprice)
-                // console.log("date ==> ", date.val().date)
-
-                // if(date.val().date === )
                 totalPrice += date.val().totalprice;
                 count++;
-                // console.log("-----------------------------------------------------------")
             }
             console.log("count ====> ", count)
             return totalPrice;
