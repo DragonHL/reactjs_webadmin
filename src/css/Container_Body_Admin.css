@@ -12,7 +12,7 @@
 
 .box-date {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .statistical_month_year{

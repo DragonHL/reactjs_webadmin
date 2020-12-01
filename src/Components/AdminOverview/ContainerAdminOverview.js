@@ -12,6 +12,8 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { registerLocale, setDefaultLocale } from "react-datepicker";
 // registerLocale('es', es)
+// import subDays from "date-fns/subDays";
+import { subDays, addDays } from "date-fns";
 
 import OrderService from '../../Service/OrderService';
 
@@ -29,82 +31,107 @@ function ContainerAdminOverview() {
 
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
-// OrderService.getTotalPriceFollowDate('26/11/2020', '30/11/2020')
-    const [dataOrder, loadingOrder, errorOrder] = useList(getData());
 
+  
+
+    const [dataOrder, loadingOrder, errorOrder] = useList(
+        OrderService.getTotalPriceFollowDate(
+            moment(startDate).format('DD-MM-YYYY'),
+            moment(endDate).format('DD-MM-YYYY') 
+        ));
+
+    // moment(addDays(endDate, 1)).format('DD-MM-YYYY')
+
+    console.log("startDate ====> ", startDate)
+    console.log("endDate ====> ", endDate)
 
     console.log("dataOrderadaf ======> ", dataOrder)
 
 
 
 
-    // function getDateStart() {
-    //     var dateTime = moment(valueDateStart).format('DD-MM-YYYY');
-    //     console.log("date =====> ", dateTime);
-    //     return dateTime;
-    // }
+    function getDateStart() {
+        var dateTime = moment(startDate).format('DD-MM-YYYY');
+        // console.log("date =====> ", dateTime);
+        return dateTime;
+    }
 
-    // function compareDate() {
-    //     var arrayDate = getDateStart().match(/\d+/g);
-    //     return arrayDate;
-    // }
+    // console.log("getDateStart ====> ", getDateStart())
 
-    // console.log("arrayDate ====> ", compareDate())
+    function compareDate() {
+        var formtDateNow = moment(new Date()).format('DD-MM-YYYY');
+        var formatStartDate = moment(startDate).format('DD-MM-YYYY');
+        var formatEndDate = moment(endDate).format('DD-MM-YYYY');
+        var arrayDateNow = formtDateNow.match(/\d+/g);
+        var arrayStartDate = formatStartDate.match(/\d+/g);
+        var arrayEndDate = formatEndDate.match(/\d+/g);
 
 
-    function getDateStart(date) {
-        var dateStart = setStartDate(date);
-    
-        // var totalPrice = 0;
-        // var count = 0;
 
-        // for (var i of dataOrder) {
-        //     // console.log("totalprice ==> ", i.val().totalprice)
-        //     // console.log("date ==> ", i.val().date)
-        //     totalPrice += i.val().totalprice;
-        //     count++;
-        //     // console.log("-----------------------------------------------------------")
+        // console.log("arrayDateNow ====> ", arrayDateNow)
+        // console.log("arrayStartDate ====> ", arrayStartDate)
+        // console.log("arrayEndDate ====> ", arrayEndDate)
+        // console.log("arrayStartDate[1] ====> ", arrayEndDate[1])
+
+        // var dateOrder = "";
+        // for (var date of dataOrder) {
+        //     dateOrder = date.val().date;
         // }
 
-        // console.log("count ====> ", count)
+        // const dates = dataOrder.map((dataOD, index) => ({
+        //     date: dataOD.val().date
+        // }));
 
-        // console.log("Statistical ====> ", totalPrice)
-        return dateStart;
-    }
+        // console.log("dates ====> ", dates)
 
-    function getDateEnd(date) {
-        var dateEnd = setEndDate(date)
-        return dateEnd;
-    }
+        // var dateOrder = "";
+        // for (var d of dates) {
+        //     dateOrder = d.date;
 
-    function getData(){
-        const dataOrder = OrderService.getTotalPriceFollowDate('26/12/2020', '30/12/2020');
-        console.log("dataOrder ====> ", dataOrder)
-        // const data = useList(OrderService.getTotalPriceFollowDate(startDate, '30/12/2020'));
-        // console.log("data ====> ", data)
+        // }
 
-        return dataOrder;
-    }
+        // console.log("dateOrder ====> ", dateOrder.match(/\d+/g))
+        // arrayStartDate[1] === arrayEndDate[1] && arrayStartDate[2] === arrayEndDate[2]
+
+            var totalPrice = 0;
+            var count = 0;
+            for (var date of dataOrder) {
+                // console.log("totalprice ==> ", date.val().totalprice)
+                // console.log("date ==> ", date.val().date)
+
+                // if(date.val().date === )
+                totalPrice += date.val().totalprice;
+                count++;
+                // console.log("-----------------------------------------------------------")
+            }
+            console.log("count ====> ", count)
+            return totalPrice;
+        }
+        // return
+    
+
+    console.log("arrayDate ====> ", compareDate())
 
 
-// thông kê
-    // function Statistical(dataOrder) {
-    //     var totalPrice = 0;
-    //     var count = 0;
 
-    //     for (var i of dataOrder) {
-    //         // console.log("totalprice ==> ", i.val().totalprice)
-    //         // console.log("date ==> ", i.val().date)
-    //         totalPrice += i.val().totalprice;
-    //         count++;
-    //         // console.log("-----------------------------------------------------------")
-    //     }
+    // // thông kê
+        // function Statistical() {
+        //     var totalPrice = 0;
+        //     var count = 0;
 
-    //     console.log("count ====> ", count)
-    //     return totalPrice;
-    // }
+        //     for (var i of dataOrder) {
+        //         // console.log("totalprice ==> ", i.val().totalprice)
+        //         // console.log("date ==> ", i.val().date)
+        //         totalPrice += i.val().totalprice;
+        //         count++;
+        //         // console.log("-----------------------------------------------------------")
+        //     }
 
-    // console.log("Statistical ====> ", Statistical())
+        //     console.log("count ====> ", count)
+        //     return totalPrice;
+        // }
+
+        // console.log("Statistical ====> ", Statistical())
 
 
     return (
@@ -117,7 +144,7 @@ function ContainerAdminOverview() {
                     <DatePicker
                         dateFormat="dd-MM-yyyy"
                         selected={startDate}
-                        onChange={date => getDateStart(date)}
+                        onChange={date => setStartDate(date)}
                         selectsStart
                         startDate={startDate}
                         endDate={endDate}
@@ -129,15 +156,17 @@ function ContainerAdminOverview() {
                     <DatePicker
                         dateFormat="dd-MM-yyyy"
                         selected={endDate}
-                        onChange={date => getDateEnd(date)}
+                        onChange={date => setEndDate(date)}
                         selectsEnd
                         startDate={startDate}
                         endDate={endDate}
                         minDate={startDate}
+                    // minDate={moment().add(1, startDate)}
+                    // maxDate={addDays(new Date(), 5)}
                     />
                 </div>
             </div>
-
+            {/* {startDate} */}
             {/* {Statistical()} +  */}
 
             <div className="statistical_month_year">
@@ -146,16 +175,16 @@ function ContainerAdminOverview() {
                         <p className="Month_Year">Statistical</p>
                         <FaDollarSign className="fas fa-dollar-sign" />
                     </div>
-                    <p className="money"> </p>
+                    <p className="money">{compareDate()}</p>
                 </div>
 
-                <div className="statistical_year">
+                {/* <div className="statistical_year">
                     <div className="title_statistical">
                         <p className="Month_Year">Year</p>
                         <FaDollarSign className="fas fa-dollar-sign" />
                     </div>
                     <p className="money">654789000</p>
-                </div>
+                </div> */}
             </div>
 
             <div className="chart">

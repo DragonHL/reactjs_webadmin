@@ -12,6 +12,7 @@ const getAll = () => {
 // }
 const getTotalPriceFollowDate = (start, end) => {
   return db.orderByChild('date').startAt(start).endAt(end);
+  // return db.orderByChild('date').startAt(start).endAt(end);
 }
 
 export default {
