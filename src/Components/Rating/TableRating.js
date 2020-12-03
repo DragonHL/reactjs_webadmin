@@ -2,10 +2,12 @@ import React from 'react';
 import { MDBDataTable } from 'mdbreact';
 import { useList } from "react-firebase-hooks/database";
 import RatingService from "../../Service/RatingService";
+import moment from 'moment';
 
 const TableRating = () => {
 
   const [dataRating, loading, error] = useList(RatingService.getAll());
+  
 
   const rows = dataRating.map((dataR, index) => ({
     stt: (index + 1),
@@ -17,7 +19,7 @@ const TableRating = () => {
       <img src="https://i.pinimg.com/originals/ee/31/7f/ee317f106d13672c84d1b8b3d544ddd5.gif" alt="Heart Red" /> :
       <img src="https://www.businessinsider.in/photo/67860158/heres-every-single-new-emoji-arriving-in-2019/White-heart.jpg" alt="Heart White" />,
     star: dataR.val().star,
-    date: dataR.val().date,
+    date: moment(dataR.val().date).format('DD-MM-YYYY'),
 
   }));
 

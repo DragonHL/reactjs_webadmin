@@ -53,7 +53,7 @@ const TableContentEmployees = (props) => {
   const data = {
     columns: [
       {
-        label: 'STT',
+        label: '#',
         field: 'stt',
         sort: 'asc',
         width: 20

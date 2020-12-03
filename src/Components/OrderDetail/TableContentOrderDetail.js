@@ -16,20 +16,24 @@ const TableContentOrderDetail = (props) => {
   for (var i in dataDetail) {
     dataDetail[i].product.quantity = dataDetail[i].quantity;
     OrderDetail.push(dataDetail[i].product);
-    console.log(dataDetail[i].quantity, "i")
+    // console.log(dataDetail[i].quantity, "i")
   }
 
   function nameKindFood() {
     var name = "";
-    for (var d of OrderDetail) {
-      for (var o of dataKindFood) {
-        if (o.key === d.kindFoodID) {
-          name = o.val().nameKindFood;
+    for (var o of OrderDetail) {
+      for (var d of dataKindFood) {
+        // console.log('d.key', d.key)
+        // console.log('o.kindFoodID', o.kindFoodID)
+        if (d.key === o.kindFoodID) {
+          name = d.val().nameKindFood;
+          // console.log('d.kindFoodID', d.kindFoodID)
         }
       }
     }
     return name;
   }
+  // console.log("nameKindFood()", OrderDetail)
 
   const rows = OrderDetail.map((dataOD, index) => ({
     stt: (index + 1),

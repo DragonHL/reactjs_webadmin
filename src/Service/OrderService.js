@@ -6,16 +6,12 @@ const getAll = () => {
   return db;
 };
 
-
-// const getTotalPriceFollowDate = (start, end) => {
-//   return db.orderByChild('date').startAt(start).endAt(end);
-// }
-const getTotalPriceFollowDate = (start, end) => {
-  return db.orderByChild('date').startAt(start).endAt(end);
-  // return db.orderByChild('date').startAt(start).endAt(end);
+const updateStatus = (key, value) => {
+  return db.child(key).update({status: value});
 }
+
 
 export default {
     getAll,
-    getTotalPriceFollowDate
+    updateStatus
 }

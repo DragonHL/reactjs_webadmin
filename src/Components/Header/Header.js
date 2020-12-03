@@ -1,23 +1,21 @@
 
-import React,{Component} from 'react';
-
-
-
+// import React,{Component} from 'react';
+import React from "react";
 
 import '../../css/Overview.css';
 import '../../css/Container_Body_Admin.css';
 import '../../css/Footer.css';
 import '../../css/Font_Google.css';
 
-
 // library react-icons/bi or react-icons/fa ....
-import { BiSearch } from 'react-icons/bi';
+// import { BiSearch } from 'react-icons/bi';
 // import { GoThreeBars } from "react-icons/go";
 
 
-class Header extends Component{
+function Header (){
+ 
     
-    render(){
+
         return (
             <div >
     
@@ -30,14 +28,14 @@ class Header extends Component{
     
                     <div className="navbar-header">
                         {/* <div className="iconMenu">
-                            <GoThreeBars className="fas fa-bars"/> 
+                            <GoThreeBars className="fas fa-bars" /> 
 
                         </div> */}
                         {/* <!-- Search form --> */}
-                        <div className="search">
+                        {/* <div className="search">
                             <input className="form-control iSearch" type="text" placeholder="Search..." aria-label="Search" />
                             <BiSearch className="fas fa-search" />
-                        </div>
+                        </div> */}
     
                         {/* <!-- information --> */}
                         <div className="informationAdmin">
@@ -49,7 +47,7 @@ class Header extends Component{
                 </div>
             </div>
         );
-    }
+    
 }
 
 export default Header;

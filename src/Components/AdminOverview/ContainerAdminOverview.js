@@ -32,101 +32,114 @@ function ContainerAdminOverview() {
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
 
-  
-
-    const [dataOrder, loadingOrder, errorOrder] = useList(
-        OrderService.getTotalPriceFollowDate(
-            moment(startDate).format('DD-MM-YYYY'),
-            moment(endDate).format('DD-MM-YYYY') 
-        ));
+    const [dataOrder, loadingOrder, errorOrder] = useList(OrderService.getAll());
 
     // moment(addDays(endDate, 1)).format('DD-MM-YYYY')
 
-    console.log("startDate ====> ", startDate)
-    console.log("endDate ====> ", endDate)
+    // console.log("startDate ====> ", moment(startDate).format('DD-MM-YYYY'))
+    // console.log("endDate ====> ", moment(endDate).format('DD-MM-YYYY'))
 
-    console.log("dataOrderadaf ======> ", dataOrder)
-
-
+    // console.log("dataOrderadaf ======> ", dataOrder)
 
 
-    function getDateStart() {
-        var dateTime = moment(startDate).format('DD-MM-YYYY');
-        // console.log("date =====> ", dateTime);
-        return dateTime;
-    }
+    var formtDateNow = moment(new Date()).format('DD-MM-YYYY');
+    var formatStartDate = moment(startDate).format('DD-MM-YYYY');
+    var formatEndDate = moment(endDate).format('DD-MM-YYYY');
+    var arrayDateNow = formtDateNow.match(/\d+/g);
+    var arrayStartDate = formatStartDate.match(/\d+/g);
+    var arrayEndDate = formatEndDate.match(/\d+/g);
+    // console.log("arrayDateNow ====> ", arrayDateNow)
+    // console.log("arrayStartDate ====> ", arrayStartDate)
+    // console.log("arrayEndDate ====> ", arrayEndDate)
+    // console.log("arrayStartDate[1] ====> ", arrayEndDate[1])
 
-    // console.log("getDateStart ====> ", getDateStart())
+    // function arrayStatisticalFollowMonth() {
 
-    function compareDate() {
-        var formtDateNow = moment(new Date()).format('DD-MM-YYYY');
-        var formatStartDate = moment(startDate).format('DD-MM-YYYY');
-        var formatEndDate = moment(endDate).format('DD-MM-YYYY');
-        var arrayDateNow = formtDateNow.match(/\d+/g);
-        var arrayStartDate = formatStartDate.match(/\d+/g);
-        var arrayEndDate = formatEndDate.match(/\d+/g);
+    //     var totalPrice = 0;
+    //     var count = 0;
+    //     var month = 0;
+    //     var arrayDateOfOrder = 0;
+    //     for (var item of dataOrder) {
+    //         arrayDateOfOrder = (item.val().date).match(/\d+/g);
+            
+    //             console.log("arrayStartDate[1] ====> ", arrayStartDate[1])
+    //             console.log("arrayEndDate[1] ====> ", arrayEndDate[1])
+    //             console.log("arrayDateOfOrder[1] ====> ", item.val().date)
+    //         if (
+    //             // (parseFloat(arrayDateOfOrder[1]) === 1) &&
+    //             (parseFloat(arrayDateOfOrder[1]) === parseFloat(arrayStartDate[1])) && (parseFloat(arrayDateOfOrder[1]) === parseFloat(arrayEndDate[1])) &&
+    //             (parseFloat(arrayStartDate[2]) <= parseFloat(arrayDateOfOrder[2])) && (parseFloat(arrayEndDate[2]) <= parseFloat(arrayDateOfOrder[2]))) {
+    //             totalPrice += item.val().totalprice;
+    //             month++;
+    //             count++;
+               
+    //         }
+    //          console.log("count ====> ", count)
+    //             console.log("month ====> ", month)
+
+    //     }
+
+    //     // return totalPrice;
+    // }
+
+    // console.log("arrayStatisticalFollowMonth ====> ", arrayStatisticalFollowMonth())
 
 
 
-        // console.log("arrayDateNow ====> ", arrayDateNow)
-        // console.log("arrayStartDate ====> ", arrayStartDate)
-        // console.log("arrayEndDate ====> ", arrayEndDate)
-        // console.log("arrayStartDate[1] ====> ", arrayEndDate[1])
+    function statisticalMonth() {
 
-        // var dateOrder = "";
-        // for (var date of dataOrder) {
-        //     dateOrder = date.val().date;
-        // }
-
-        // const dates = dataOrder.map((dataOD, index) => ({
-        //     date: dataOD.val().date
-        // }));
-
-        // console.log("dates ====> ", dates)
-
-        // var dateOrder = "";
-        // for (var d of dates) {
-        //     dateOrder = d.date;
-
-        // }
-
-        // console.log("dateOrder ====> ", dateOrder.match(/\d+/g))
-        // arrayStartDate[1] === arrayEndDate[1] && arrayStartDate[2] === arrayEndDate[2]
-
-            var totalPrice = 0;
-            var count = 0;
-            for (var date of dataOrder) {
-                totalPrice += date.val().totalprice;
+        var totalPrice = 0;
+        var count = 0;
+        var arrayDateOfOrder = 0;
+        for (var item of dataOrder) {
+            arrayDateOfOrder = (item.val().date).match(/\d+/g);
+            if ((parseFloat(arrayStartDate[0]) <= parseFloat(arrayDateOfOrder[0])) && (parseFloat(arrayDateOfOrder[0]) <= parseFloat(arrayEndDate[0])) &&
+                (parseFloat(arrayDateOfOrder[1]) === parseFloat(arrayStartDate[1])) && (parseFloat(arrayDateOfOrder[1]) === parseFloat(arrayEndDate[1])) &&
+                (parseFloat(arrayStartDate[2]) <= parseFloat(arrayDateOfOrder[2])) && (parseFloat(arrayEndDate[2]) <= parseFloat(arrayDateOfOrder[2]))) {
+                totalPrice += item.val().totalprice;
                 count++;
             }
-            console.log("count ====> ", count)
-            return totalPrice;
         }
-        // return
-    
-
-    console.log("arrayDate ====> ", compareDate())
-
+        // console.log("count ====> ", count)
+        return totalPrice;
+    }
 
 
-    // // thông kê
-        // function Statistical() {
-        //     var totalPrice = 0;
-        //     var count = 0;
 
-        //     for (var i of dataOrder) {
-        //         // console.log("totalprice ==> ", i.val().totalprice)
-        //         // console.log("date ==> ", i.val().date)
-        //         totalPrice += i.val().totalprice;
-        //         count++;
-        //         // console.log("-----------------------------------------------------------")
-        //     }
 
-        //     console.log("count ====> ", count)
-        //     return totalPrice;
-        // }
+    function statisticalYear() {
 
-        // console.log("Statistical ====> ", Statistical())
+        var totalPrice = 0;
+        var count = 0;
+        var arrayDateOfOrder = 0;
+        for (var item of dataOrder) {
+            arrayDateOfOrder = (item.val().date).match(/\d+/g);
+            if ((parseFloat(arrayStartDate[2]) <= parseFloat(arrayDateOfOrder[2])) && (parseFloat(arrayEndDate[2]) <= parseFloat(arrayDateOfOrder[2]))) {
+                totalPrice += item.val().totalprice;
+                count++;
+            }
+        }
+        // console.log("count ====> ", count)
+        return totalPrice;
+    }
+
+    // console.log("statisticalYear ====> ", statisticalYear())
+
+    function statisticalDay() {
+        var totalPrice = 0;
+        var count = 0;
+        var arrayDateOfOrder = 0;
+        for (var item of dataOrder) {
+            arrayDateOfOrder = (item.val().date).match(/\d+/g);
+            if ((parseFloat(arrayDateNow[0]) === parseFloat(arrayDateOfOrder[0]))) {
+                totalPrice += item.val().totalprice;
+                count++;
+            }
+        }
+        // console.log("count ====> ", count)
+        return totalPrice;
+    }
+
 
 
     return (
@@ -164,22 +177,29 @@ function ContainerAdminOverview() {
             {/* {startDate} */}
             {/* {Statistical()} +  */}
 
-            <div className="statistical_month_year">
+            <div className="statistical_day_month_year">
+                <div className="statistical_day">
+                    <div className="title_statistical">
+                        <p className="Day_Month_Year">Day</p>
+                        <FaDollarSign className="fas fa-dollar-sign" />
+                    </div>
+                    <p className="money">{statisticalDay()}</p>
+                </div>
                 <div className="statistical_month">
                     <div className="title_statistical">
-                        <p className="Month_Year">Statistical</p>
+                        <p className="Day_Month_Year">Month</p>
                         <FaDollarSign className="fas fa-dollar-sign" />
                     </div>
-                    <p className="money">{compareDate()}</p>
+                    <p className="money">{statisticalMonth()}</p>
                 </div>
 
-                {/* <div className="statistical_year">
+                <div className="statistical_year">
                     <div className="title_statistical">
-                        <p className="Month_Year">Year</p>
+                        <p className="Day_Month_Year">Year</p>
                         <FaDollarSign className="fas fa-dollar-sign" />
                     </div>
-                    <p className="money">654789000</p>
-                </div> */}
+                    <p className="money">{statisticalYear()}</p>
+                </div>
             </div>
 
             <div className="chart">

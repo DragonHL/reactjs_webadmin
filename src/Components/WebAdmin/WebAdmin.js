@@ -2,7 +2,7 @@
 import '../../css/Overview.css';
 import '../../css/Footer.css';
 
-
+import React from "react";
 import Header from '../Header/Header';
 import SideBar from '../SideBar/SideBar';
 
@@ -17,8 +17,8 @@ function WebAdmin() {
 
     return (
         <div >
-            <Header></Header>
-            <SideBar></SideBar>
+            <Header ></Header>
+            <SideBar ></SideBar>
             <div className="container-body">
                 <RouterURL></RouterURL>
             </div>

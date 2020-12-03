@@ -1,18 +1,18 @@
 import '../../css/Overview.css';
 import '../../css/Form_Add.css';
-import React, {useState, useEffect} from 'react';
-import {Form, Button} from 'react-bootstrap';
-import {useHistory} from 'react-router-dom';
-import {useList} from 'react-firebase-hooks/database';
+import React, { useState, useEffect } from 'react';
+import { Form, Button } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
+import { useList } from 'react-firebase-hooks/database';
 
 import VouchersService from '../../Service/VouchersService';
 import UserService from '../../Service/UserService';
 import User_VouchersService from '../../Service/User_VouchersService';
 
-function FormInsert_EditVouchers () {
-  const [dataUser, loading, error] = useList (UserService.getAll ());
-  console.log ('-------------------------dataUser--------------------');
-  console.log (dataUser);
+function FormInsert_EditVouchers() {
+  const [dataUser, loading, error] = useList(UserService.getAll());
+  // console.log('-------------------------dataUser--------------------');
+  // console.log(dataUser);
 
   const initialFieldValues = {
     code: '',
@@ -23,59 +23,59 @@ function FormInsert_EditVouchers () {
     status: '',
   };
 
-  const [valuesVouchers, setValuesVouchers] = useState (initialFieldValues);
-  const [submitted, setSubmitted] = useState (false);
-  const history = useHistory ();
+  const [valuesVouchers, setValuesVouchers] = useState(initialFieldValues);
+  const [submitted, setSubmitted] = useState(false);
+  const history = useHistory();
 
   const handleInputChange = e => {
-    var {name, value} = e.target;
-    setValuesVouchers ({...valuesVouchers, [name]: value});
+    var { name, value } = e.target;
+    setValuesVouchers({ ...valuesVouchers, [name]: value });
   };
 
   const saveVouchers = () => {
-    var promise = new Promise (function (resolve, reject) {
+    var promise = new Promise(function (resolve, reject) {
       var data = {
         code: valuesVouchers.code,
-        discount: valuesVouchers.discount,
+        discount: parseFloat(valuesVouchers.discount),
         description: valuesVouchers.description,
         dateStart: valuesVouchers.dateStart,
         dateEnd: valuesVouchers.dateEnd,
         status: 0,
       };
-      var voucher = VouchersService.create (data);
+      var voucher = VouchersService.create(data);
 
-      resolve (voucher);
+      resolve(voucher);
     });
 
     promise
-      .then (function (voucher) {
-        console.log ('voucher2');
-        console.log (voucher);
-       
+      .then(function (voucher) {
+        console.log('voucher2');
+        console.log(voucher);
+
         for (var user of dataUser) {
-          console.log ('user');
-          console.log (user);
-          console.log (user.val().userID);
+          // console.log('user');
+          // console.log(user);
+          // console.log(user.val().userID);
           var dataUserVouchers = {
             userID: user.val().userID,
             voucherId: voucher.key,
             status: 0,
           };
-          User_VouchersService.create (dataUserVouchers).then (() => {
-            console.log ('create User_VouchersService Success!!!!!');
-            setSubmitted (true);
-            history.push (`/webadmin/vouchers`);
+          User_VouchersService.create(dataUserVouchers).then(() => {
+            console.log('create User_VouchersService Success!!!!!');
+            setSubmitted(true);
+            history.push(`/webadmin/vouchers`);
           });
         }
       })
-      .catch (function (error) {
-        console.log (error);
+      .catch(function (error) {
+        console.log(error);
       });
   };
 
   const hanleFormSubmit = e => {
-    setValuesVouchers (initialFieldValues);
-    setSubmitted (false);
+    setValuesVouchers(initialFieldValues);
+    setSubmitted(false);
   };
 
   return (

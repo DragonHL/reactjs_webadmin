@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MDBDataTable } from 'mdbreact';
 
 import { useList } from "react-firebase-hooks/database";
@@ -10,12 +10,14 @@ import { Button } from 'react-bootstrap';
 
 
 const TableContentUserVouchers = (props) => {
+  const [voucherId, setVoucherID] = useState(props.voucherId);
 
-  const [dataUserVouchers, loadingUserVouchers, errorUserVouchers] = useList(User_VouchersService.getAllFollowVoucherId(props.voucherId));
+  const [dataUserVouchers, loadingUserVouchers, errorUserVouchers] = useList(User_VouchersService.getAllFollowVoucherId(voucherId));
   // const [dataUser, loadingUser, errorUser] = useList(UserService.getAll());
   const [dataUser, loadingUser, errorUser] = useList(UserService.getAllFollowStatus(0));
 
-  console.log(dataUser)
+  // console.log("voucherId",voucherId)
+  // console.log("dataUserVouchers",dataUserVouchers)
 
   const rows = dataUserVouchers.map((dataUV, index) => ({
    
@@ -30,18 +32,19 @@ const TableContentUserVouchers = (props) => {
   function name(dataUV) {
     var nameU;
     dataUser.forEach(function (user) {
-      // console.log("user.key ", user.key )
+      // console.log("user.key ", user.val().userID )
       // console.log("dataUV.val().userID ", dataUV.val().userID)
       // console.log("user.val().nameUser ",user.val().nameUser)
-      if (user.key === dataUV.val().userID) {
+      if (user.val().userID === dataUV.val().userID) {
         nameU = user.val().nameUser;
       }
     })
     return nameU;
   }
 
-  console.log("rows")
-  console.log(rows.user)
+  
+  // console.log("rows")
+  // console.log(rows.user)
  
 
   const data = {

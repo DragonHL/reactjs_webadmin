@@ -12,18 +12,28 @@
 
 .box-date {
     display: flex;
+    width: 51%;
     justify-content: space-around;
+    margin-bottom: 20px;
+    
 }
 
-.statistical_month_year{
+.box-date input {
+    border-radius: 10px;
+    padding-left: 10px;
+    height: 35px;
+    border: 2px solid #8781e6;
+}
+
+.statistical_day_month_year{
     width: 100%;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
 }
 
-.statistical_month_year>.statistical_month , .statistical_year{
-    width: 35%;
+.statistical_day_month_year>.statistical_day, .statistical_month , .statistical_year{
+    width: 25%;
     height: 100%;
     padding: 1%;
     border-radius: 25px;
@@ -34,35 +44,37 @@
     border-right: 0.5px solid #efefef;
 }
 
-
-
-
-.statistical_month_year>.statistical_month>.title_statistical{
+.statistical_day_month_year>.statistical_day>.title_statistical{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.statistical_day_month_year>.statistical_month>.title_statistical{
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 
-.statistical_month_year>.statistical_year>.title_statistical{
+.statistical_day_month_year>.statistical_year>.title_statistical{
     display: flex;
     justify-content: space-between;
     align-items: center;
     
 }
-.statistical_month_year .Month_Year, .fa-dollar-sign{
+.statistical_day_month_year .Day_Month_Year, .fa-dollar-sign{
     font-size: 2em;
     font-weight: bold;
 }
-.statistical_month_year .Month_Year{
+.statistical_day_month_year .Day_Month_Year{
     color: #0020FF;
 }
-.statistical_month_year .fa-dollar-sign{
+.statistical_day_month_year .fa-dollar-sign{
     color: #02BF08;
     font-size: 2.8em;
 }
 
-.statistical_month_year .money{
+.statistical_day_month_year .money{
     font-size: 1.8em;
     font-weight: bold;
 }
@@ -105,9 +117,23 @@
 
 }
 
+@media screen and (max-width: 1024px) {
+
+    .box-date {
+        width: 100%;
+    }
+
+    .statistical_day_month_year>.statistical_day, .statistical_month , .statistical_year{
+        width: 60%;
+        margin-bottom: 5%;
+    }
+
+
+}
+
 
 @media screen and (max-width: 768px) {
-    .statistical_month_year>.statistical_month , .statistical_year{
+    .statistical_day_month_year>.statistical_day, .statistical_month , .statistical_year{
         width: 100%;
         margin-bottom: 5%;
     }
@@ -115,8 +141,10 @@
 
 }
 
-@media screen and (max-width: 480px) {
-
+@media screen and (max-width: 425px) {
+    .box-date {
+        display: block;
+    }
 }
 
 @media screen and (max-width: 320px) {

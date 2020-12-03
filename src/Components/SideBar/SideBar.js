@@ -31,7 +31,6 @@ import { GiStarsStack } from "react-icons/gi";
 function SideBar ()  {
     const [open, setOpen] = useState(false);
 
-
     const { currentUser, logout } = useAuth();
     const  history  = useHistory();
 
@@ -47,11 +46,11 @@ function SideBar ()  {
     }
 
     return (
-        
-            <div className="body">
+        // ref={}
+            <div className="body" >
 
                 {/* side-bar */}
-                <div className="side-bar">
+                <div className="side-bar" >
 
                     <div class="informationAdmin-SideBar"
                         onClick={() => setOpen(!open)}

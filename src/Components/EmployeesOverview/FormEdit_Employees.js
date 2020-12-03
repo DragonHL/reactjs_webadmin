@@ -9,10 +9,11 @@ import React, { useState } from 'react';
 
 import ServiceEmployee from "../../Service/EmployeeService"
 
-
+import { useHistory } from "react-router-dom";
 
 
 const FormEdit_Employees = (props) => {
+
 
     const initialFieldValues = {
         name: props.location.state.name,
@@ -29,6 +30,7 @@ const FormEdit_Employees = (props) => {
     const [valuesEmployees, setValuesEmployees] = useState(initialFieldValues);
     const [submitted, setSubmitted] = useState(false);
     const [image, setImage] = useState(null);
+    const history = useHistory();
 
     const handleInputChange = e => {
         var { name, value } = e.target;
@@ -65,19 +67,20 @@ const FormEdit_Employees = (props) => {
                                 role: valuesEmployees.role,
                                 imageUrl: url
                             } : {
-                                name: valuesEmployees.name,
-                                phone: valuesEmployees.phone,
-                                address: valuesEmployees.address,
-                                birthday: valuesEmployees.birthday,
-                                startWork: valuesEmployees.startWork,
-                                endWork: valuesEmployees.endWork,
-                                role: valuesEmployees.role
-                            };
+                                    name: valuesEmployees.name,
+                                    phone: valuesEmployees.phone,
+                                    address: valuesEmployees.address,
+                                    birthday: valuesEmployees.birthday,
+                                    startWork: valuesEmployees.startWork,
+                                    endWork: valuesEmployees.endWork,
+                                    role: valuesEmployees.role
+                                };
 
                             ServiceEmployee.update(valuesEmployees.key, data)
                                 .then(() => {
                                     setSubmitted(true);
                                     console.log("Update Employee Success!!!")
+                                    history.push(`/webadmin/employees`);
                                 })
                                 .catch(e => {
                                     console.log(e);
@@ -97,14 +100,16 @@ const FormEdit_Employees = (props) => {
                 role: valuesEmployees.role
             };
 
-            ServiceEmployee.create(data)
+            ServiceEmployee.update(valuesEmployees.key, data)
                 .then(() => {
                     setSubmitted(true);
                     console.log("Update Employee Success!!!")
+                    history.push(`/webadmin/employees`);
                 })
                 .catch(e => {
                     console.log(e);
                 });
+
         }
     }
 

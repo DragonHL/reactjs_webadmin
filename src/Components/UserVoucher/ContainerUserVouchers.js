@@ -4,8 +4,12 @@ import '../../css/DataTable.css';
 
 import TableContentUserVouchers from './TableContentUserVouchers';
 
+import React, { useState } from 'react';
+
 function ContainerUserVouchers(props) {
     // oucherId={props.location.state.key} code={props.location.state.code}
+    const [valueVoucherId, setVoucherID] = useState(props.location.state.key);
+    const [valueCode, setCode] = useState(props.location.state.code);
 
     return (
         <div className="sub-container">
@@ -13,8 +17,8 @@ function ContainerUserVouchers(props) {
             <h1 class="titleTable">User Vouchers</h1>
 
             <TableContentUserVouchers 
-            voucherId={props.location.state.key} 
-            code={props.location.state.code} 
+            voucherId={valueVoucherId} 
+            code={valueCode} 
             />
 
         </div>

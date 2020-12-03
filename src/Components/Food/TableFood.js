@@ -85,7 +85,7 @@ const TableFood = (props) => {
   const data = {
     columns: [
       {
-        label: '',
+        label: '#',
         field: 'stt',
         sort: 'asc',
         width: 100
