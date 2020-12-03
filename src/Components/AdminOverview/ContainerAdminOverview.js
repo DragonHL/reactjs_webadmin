@@ -53,36 +53,80 @@ function ContainerAdminOverview() {
     // console.log("arrayEndDate ====> ", arrayEndDate)
     // console.log("arrayStartDate[1] ====> ", arrayEndDate[1])
 
-    // function arrayStatisticalFollowMonth() {
+    function arrayStatisticalFollowMonthOne(month) {
+        var totalPrice = 0;
+        var count = 0;
+        // var month = 0;
+        var arrayDateOfOrder = 0;
+        for (var item of dataOrder) {
+            arrayDateOfOrder = (item.val().date).match(/\d+/g);
+            if (
+                (parseFloat(arrayDateOfOrder[1]) === month) &&
+                (parseFloat(arrayStartDate[2]) <= parseFloat(arrayDateOfOrder[2])) && (parseFloat(arrayEndDate[2]) <= parseFloat(arrayDateOfOrder[2]))
+            ) {
+                totalPrice += item.val().totalprice;
+                count++;
+            }
+        }
+        return totalPrice;
+    }
 
-    //     var totalPrice = 0;
-    //     var count = 0;
-    //     var month = 0;
-    //     var arrayDateOfOrder = 0;
-    //     for (var item of dataOrder) {
-    //         arrayDateOfOrder = (item.val().date).match(/\d+/g);
-            
-    //             console.log("arrayStartDate[1] ====> ", arrayStartDate[1])
-    //             console.log("arrayEndDate[1] ====> ", arrayEndDate[1])
-    //             console.log("arrayDateOfOrder[1] ====> ", item.val().date)
-    //         if (
-    //             // (parseFloat(arrayDateOfOrder[1]) === 1) &&
-    //             (parseFloat(arrayDateOfOrder[1]) === parseFloat(arrayStartDate[1])) && (parseFloat(arrayDateOfOrder[1]) === parseFloat(arrayEndDate[1])) &&
-    //             (parseFloat(arrayStartDate[2]) <= parseFloat(arrayDateOfOrder[2])) && (parseFloat(arrayEndDate[2]) <= parseFloat(arrayDateOfOrder[2]))) {
-    //             totalPrice += item.val().totalprice;
-    //             month++;
-    //             count++;
-               
-    //         }
-    //          console.log("count ====> ", count)
-    //             console.log("month ====> ", month)
 
-    //     }
+    var StatisticalFollowMonth = {
 
-    //     // return totalPrice;
-    // }
+       
 
-    // console.log("arrayStatisticalFollowMonth ====> ", arrayStatisticalFollowMonth())
+        // january: arrayStatisticalFollowMonthOne(1),
+        // february: arrayStatisticalFollowMonthOne(2),
+        // march: arrayStatisticalFollowMonthOne(3),
+        // april: arrayStatisticalFollowMonthOne(4),
+        // may: arrayStatisticalFollowMonthOne(5),
+        // june: arrayStatisticalFollowMonthOne(6),
+        // july: arrayStatisticalFollowMonthOne(7),
+        // august: arrayStatisticalFollowMonthOne(8),
+        // september: arrayStatisticalFollowMonthOne(9),
+        // october: arrayStatisticalFollowMonthOne(10),
+        // november: arrayStatisticalFollowMonthOne(11),
+        // december: arrayStatisticalFollowMonthOne(12)
+    }
+
+    var dataStatisticalFollowMonth = [
+        arrayStatisticalFollowMonthOne(1),
+        arrayStatisticalFollowMonthOne(2),
+        arrayStatisticalFollowMonthOne(3),
+        arrayStatisticalFollowMonthOne(4),
+        arrayStatisticalFollowMonthOne(5),
+        arrayStatisticalFollowMonthOne(6),
+        arrayStatisticalFollowMonthOne(7),
+        arrayStatisticalFollowMonthOne(8),
+        arrayStatisticalFollowMonthOne(9),
+        arrayStatisticalFollowMonthOne(10),
+        arrayStatisticalFollowMonthOne(11),
+        arrayStatisticalFollowMonthOne(12),
+    ];
+
+    // dataStatisticalFollowMonth.push(StatisticalFollowMonth);
+
+
+
+    // console.log("dataStatisticalFollowMonth ====> ", dataStatisticalFollowMonth)
+    // console.log("arrayStatisticalFollowMonthOne(12) ====> ", arrayStatisticalFollowMonthOne(12))
+
+
+    // arrayStatisticalFollowMonthOne(1),
+    //     arrayStatisticalFollowMonthOne(2),
+    //     arrayStatisticalFollowMonthOne(3),
+    //     arrayStatisticalFollowMonthOne(4),
+    //     arrayStatisticalFollowMonthOne(5),
+    //     arrayStatisticalFollowMonthOne(6),
+    //     arrayStatisticalFollowMonthOne(7),
+    //     arrayStatisticalFollowMonthOne(8),
+    //     arrayStatisticalFollowMonthOne(9),
+    //     arrayStatisticalFollowMonthOne(10),
+    //     arrayStatisticalFollowMonthOne(11),
+    //     arrayStatisticalFollowMonthOne(12),
+
+
 
 
 
@@ -205,7 +249,7 @@ function ContainerAdminOverview() {
             <div className="chart">
 
                 <div id="curve_chart">
-                    <CurveChart />
+                    <CurveChart arrayStatistical={dataStatisticalFollowMonth} />
                 </div>
 
                 <div id="piechart_3d">
