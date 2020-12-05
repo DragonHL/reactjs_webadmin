@@ -17,7 +17,7 @@ const TableContentUser = () => {
     phoneUser:dataU.val().phoneUser,
     addressUser:dataU.val().address,
     imageUser:<img src={dataU.val().imageUser} alt="" />,
-    status:(dataU.val().status === "") ? <Button variant="success">Activate</Button> : <Button variant="danger"> Delete </Button>,
+    status:(dataU.val().status === 0) ? <Button variant="success">Activate</Button> : <Button variant="danger"> Delete </Button>,
     dateCreated:dataU.val().dateCreate,
     dateUpdate:dataU.val().dateUpdate,
 

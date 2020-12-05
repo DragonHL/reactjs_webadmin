@@ -3,8 +3,8 @@ import { Chart } from "react-google-charts";
 import React, { useState } from 'react';
 function CurveChart(props) {
 
-    console.log("props.arrayStart ==>", props.arrayStatistical)
-    console.log("props.arrayStatistical[0] ==>", (props.arrayStatistical[0]))
+    // console.log("props.arrayStart ==>", props.arrayStatistical)
+    // console.log("props.arrayStatistical[0] ==>", (props.arrayStatistical[0]))
 
 
 
@@ -15,23 +15,12 @@ function CurveChart(props) {
     }
     
 
-    console.log("valueArrayStatistical0 ==>", arrayStatistical()[0][0])
+    // console.log("valueArrayStatistical0 ==>", arrayStatistical()[0][0])
 
-
-    // function statisticalMax() {
-    //     var numberMax = props.arrayStatistical[0];
-    //     for (var item in props.arrayStatistical) {
-    //         console.log("item ==>", item)
-    //         if (numberMax < props.arrayStatistical[item]) {
-    //             numberMax = props.arrayStatistical[item];
-    //         }
-    //     }
-    //     return numberMax;
-    // }
     function statisticalMax() {
         var numberMax = arrayStatistical()[0][0];
         for (var item in arrayStatistical()[0]) {
-            console.log("item ==>", item + "==> " +arrayStatistical()[0][item])
+            // console.log("item ==>", item + "==> " +arrayStatistical()[0][item])
             if (numberMax < arrayStatistical()[0][item]) {
                 numberMax = arrayStatistical()[0][item];
             }
@@ -39,14 +28,14 @@ function CurveChart(props) {
         return numberMax;
     }
 
-    console.log("numberMax ==>", statisticalMax())
+    // console.log("numberMax ==>", statisticalMax())
 
     return (
 
-        <div className="body">
-            <Chart
-                width={'600px'}
-                height={'400px'}
+        <>
+            <Chart 
+                width={'100%'}
+                height={'350px'}
                 chartType="LineChart"
                 loader={<div>Loading Chart</div>}
 
@@ -75,12 +64,12 @@ function CurveChart(props) {
                         maxValue: statisticalMax()
                     },
                     legend: { position: 'top' },
-                    chartArea: { width: '80%', right: 40, top: 35 }
+                    chartArea: { width: '80%', right: 50}
                 }}
                 rootProps={{ 'data-testid': '1' }}
             />
 
-        </div>
+        </>
 
     );
 }

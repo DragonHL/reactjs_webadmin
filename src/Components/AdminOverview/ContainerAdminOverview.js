@@ -4,16 +4,14 @@ import '../../css/Container_Body_Admin.css';
 
 import CurveChart from './CurveChart';
 import Piechart3d from './Piechart3d';
+import TableContent_StatisticsBestSelling_FollowDay from './TableContent_StatisticsBestSelling_FollowDay';
+
 
 import React, { useState, useEffect } from 'react';
 
-// import DatePicker from 'react-date-picker';
+
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { registerLocale, setDefaultLocale } from "react-datepicker";
-// registerLocale('es', es)
-// import subDays from "date-fns/subDays";
-import { subDays, addDays } from "date-fns";
 
 import OrderService from '../../Service/OrderService';
 
@@ -27,7 +25,7 @@ import {
 
 function ContainerAdminOverview() {
 
-    const [valueDateStart, setChangeDateStart] = useState(new Date());
+    const [valueToDay, setChangeToDay] = useState(new Date());
 
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
@@ -42,7 +40,7 @@ function ContainerAdminOverview() {
     // console.log("dataOrderadaf ======> ", dataOrder)
 
 
-    var formtDateNow = moment(new Date()).format('DD-MM-YYYY');
+    var formtDateNow = moment(valueToDay).format('DD-MM-YYYY');
     var formatStartDate = moment(startDate).format('DD-MM-YYYY');
     var formatEndDate = moment(endDate).format('DD-MM-YYYY');
     var arrayDateNow = formtDateNow.match(/\d+/g);
@@ -55,8 +53,7 @@ function ContainerAdminOverview() {
 
     function arrayStatisticalFollowMonthOne(month) {
         var totalPrice = 0;
-        var count = 0;
-        // var month = 0;
+        // var count = 0;
         var arrayDateOfOrder = 0;
         for (var item of dataOrder) {
             arrayDateOfOrder = (item.val().date).match(/\d+/g);
@@ -65,29 +62,10 @@ function ContainerAdminOverview() {
                 (parseFloat(arrayStartDate[2]) <= parseFloat(arrayDateOfOrder[2])) && (parseFloat(arrayEndDate[2]) <= parseFloat(arrayDateOfOrder[2]))
             ) {
                 totalPrice += item.val().totalprice;
-                count++;
+                // count++;
             }
         }
         return totalPrice;
-    }
-
-
-    var StatisticalFollowMonth = {
-
-       
-
-        // january: arrayStatisticalFollowMonthOne(1),
-        // february: arrayStatisticalFollowMonthOne(2),
-        // march: arrayStatisticalFollowMonthOne(3),
-        // april: arrayStatisticalFollowMonthOne(4),
-        // may: arrayStatisticalFollowMonthOne(5),
-        // june: arrayStatisticalFollowMonthOne(6),
-        // july: arrayStatisticalFollowMonthOne(7),
-        // august: arrayStatisticalFollowMonthOne(8),
-        // september: arrayStatisticalFollowMonthOne(9),
-        // october: arrayStatisticalFollowMonthOne(10),
-        // november: arrayStatisticalFollowMonthOne(11),
-        // december: arrayStatisticalFollowMonthOne(12)
     }
 
     var dataStatisticalFollowMonth = [
@@ -128,7 +106,7 @@ function ContainerAdminOverview() {
 
 
 
-
+    // 
 
     function statisticalMonth() {
 
@@ -137,7 +115,7 @@ function ContainerAdminOverview() {
         var arrayDateOfOrder = 0;
         for (var item of dataOrder) {
             arrayDateOfOrder = (item.val().date).match(/\d+/g);
-            if ((parseFloat(arrayStartDate[0]) <= parseFloat(arrayDateOfOrder[0])) && (parseFloat(arrayDateOfOrder[0]) <= parseFloat(arrayEndDate[0])) &&
+            if (
                 (parseFloat(arrayDateOfOrder[1]) === parseFloat(arrayStartDate[1])) && (parseFloat(arrayDateOfOrder[1]) === parseFloat(arrayEndDate[1])) &&
                 (parseFloat(arrayStartDate[2]) <= parseFloat(arrayDateOfOrder[2])) && (parseFloat(arrayEndDate[2]) <= parseFloat(arrayDateOfOrder[2]))) {
                 totalPrice += item.val().totalprice;
@@ -175,7 +153,11 @@ function ContainerAdminOverview() {
         var arrayDateOfOrder = 0;
         for (var item of dataOrder) {
             arrayDateOfOrder = (item.val().date).match(/\d+/g);
-            if ((parseFloat(arrayDateNow[0]) === parseFloat(arrayDateOfOrder[0]))) {
+            if (
+                (parseFloat(arrayStartDate[0]) <= parseFloat(arrayDateOfOrder[0])) && (parseFloat(arrayDateOfOrder[0]) <= parseFloat(arrayEndDate[0])) &&
+                (parseFloat(arrayDateOfOrder[1]) === parseFloat(arrayStartDate[1])) && (parseFloat(arrayDateOfOrder[1]) === parseFloat(arrayEndDate[1])) &&
+                (parseFloat(arrayStartDate[2]) <= parseFloat(arrayDateOfOrder[2])) && (parseFloat(arrayEndDate[2]) <= parseFloat(arrayDateOfOrder[2]))
+            ) {
                 totalPrice += item.val().totalprice;
                 count++;
             }
@@ -184,12 +166,28 @@ function ContainerAdminOverview() {
         return totalPrice;
     }
 
+    // function statisticalDay() {
+    //     var totalPrice = 0;
+    //     var count = 0;
+    //     var arrayDateOfOrder = 0;
+    //     for (var item of dataOrder) {
+    //         arrayDateOfOrder = (item.val().date).match(/\d+/g);
+    //         if ((parseFloat(arrayDateNow[0]) === parseFloat(arrayDateOfOrder[0]))) {
+    //             totalPrice += item.val().totalprice;
+    //             count++;
+    //         }
+    //     }
+    //     // console.log("count ====> ", count)
+    //     return totalPrice;
+    // }
+
+
 
 
     return (
         <div className="sub-container">
 
-            <h1 className="titleTable">Admin Overview</h1>
+            <h1 className="titleTable">Statistical</h1>
             <div className="box-date">
                 <div className="dateStart">
                     <h6 className="titleTable">Date Start</h6>
@@ -218,8 +216,6 @@ function ContainerAdminOverview() {
                     />
                 </div>
             </div>
-            {/* {startDate} */}
-            {/* {Statistical()} +  */}
 
             <div className="statistical_day_month_year">
                 <div className="statistical_day">
@@ -252,11 +248,18 @@ function ContainerAdminOverview() {
                     <CurveChart arrayStatistical={dataStatisticalFollowMonth} />
                 </div>
 
-                <div id="piechart_3d">
+                {/* <div id="piechart_3d">
                     <Piechart3d />
-                </div>
+                </div> */}
 
             </div>
+
+            <div className="table-statistics-best-selling">
+                <h3>Statistics of best-selling dishes</h3>
+                
+                <TableContent_StatisticsBestSelling_FollowDay bill={dataOrder}  arrayStartDate= {arrayStartDate} arrayEndDate = {arrayEndDate}/>
+            </div>
+
 
 
         </div>

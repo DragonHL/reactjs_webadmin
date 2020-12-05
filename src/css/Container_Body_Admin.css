@@ -1,8 +1,8 @@
 *{
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     margin: 0;
     padding: 0;
-    
+
 }
 
 /* .container-body .sub-container{ */
@@ -30,6 +30,7 @@
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    font-size: 18px;
 }
 
 .statistical_day_month_year>.statistical_day, .statistical_month , .statistical_year{
@@ -81,17 +82,23 @@
 
 
 .chart{
+    
+    /* display: flex;
+    /* justify-content: space-between;
+    flex-wrap: wrap;  */
+    
+    /* position: relative; */
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin-top: 2%;
 }
 
 
 
-#curve_chart, #piechart_3d{
+/* #curve_chart, #piechart_3d{
     width: 45%;
+} */
+#curve_chart{
+    width: 100%;
+    /* position: absolute; */
 }
 
 
@@ -103,19 +110,40 @@
     /* padding: 10px 0 10px 10px; */
 }
 
+/* @media screen and (max-width: 1440px) {
+    .statistical_day_month_year .Day_Month_Year, .fa-dollar-sign{
+        font-size: 1.8em;
 
-@media screen and (max-width: 1330px) {
-
-
-    #curve_chart, #piechart_3d {
-        width: 100%;
-        margin-bottom: 5%;
-        text-align: -webkit-center;
-        text-align:-moz-center;
-        margin: 0 auto;
     }
 
-}
+    .statistical_day_month_year .fa-dollar-sign{
+        font-size: 2.3em;
+    }
+
+    .statistical_day_month_year .money{
+        font-size: 1.5em;
+
+    }
+} */
+
+
+/* @media screen and (max-width: 1355px) {
+    .statistical_day_month_year .Day_Month_Year, .fa-dollar-sign{
+        font-size: 1.5em;
+
+    }
+
+    .statistical_day_month_year .fa-dollar-sign{
+        font-size: 1.8em;
+    }
+
+    .statistical_day_month_year .money{
+        font-size: 1.3em;
+
+    }
+
+
+} */
 
 @media screen and (max-width: 1024px) {
 

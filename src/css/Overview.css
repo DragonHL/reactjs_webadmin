@@ -111,7 +111,9 @@
 
 .informationAdmin .nameAdminHeader {
     margin-right: 1em;
-    
+    font-size: 1.1em;
+    font-weight: 700;
+    color: #6d6d6d;
 }
 
 .side-bar {

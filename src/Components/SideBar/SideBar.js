@@ -97,7 +97,7 @@ function SideBar ()  {
                         <li>
                             <Link to="/webadmin/admin" className="linkSideBar">
                                 <FaChartPie className="fas fa-chart-pie i" />
-                                <p>Admin Overview</p>
+                                <p>Statistical</p>
                             </Link>
                         </li>
                         <li>
@@ -134,7 +134,7 @@ function SideBar ()  {
                         <li>
                             <Link to="/webadmin/vouchers" className="linkSideBar">
                                 <FaUserTag className="fas fa-user-tag i" />
-                                <p>Discount</p>
+                                <p>Vouchers</p>
                             </Link>
                         </li>
                         <li>

@@ -23,7 +23,7 @@ const TableContentUserVouchers = (props) => {
    
     stt: (index + 1),
     voucher: props.code,
-    // user: name(dataUV) + dataUV.val().userID, // check User
+    idUser: dataUV.val().userID,
     user: name(dataUV),
     status: (dataUV.val().status === 0) ? <Button variant="success">Not Used</Button> : <Button variant="danger">Used</Button>,
 
@@ -50,7 +50,7 @@ const TableContentUserVouchers = (props) => {
   const data = {
     columns: [
       {
-        label: '',
+        label: '#',
         field: 'stt',
         sort: 'asc',
         width: 100
@@ -60,6 +60,12 @@ const TableContentUserVouchers = (props) => {
         field: 'voucher',
         sort: 'asc',
         width: 170
+      },
+      {
+        label: 'ID User',
+        field: 'idUser',
+        sort: 'asc',
+        width: 100
       },
       {
         label: 'User',

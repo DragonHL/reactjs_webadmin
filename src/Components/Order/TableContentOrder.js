@@ -57,9 +57,6 @@ const TableContentOrder = props => {
   function nameUser(data) {
     var nameU;
     dataUser.forEach(function (user) {
-      // console.log("user.key ", user.val().userID )
-      // console.log("dataUV.val().userID ", dataUV.val().userID)
-      // console.log("user.val().nameUser ",user.val().nameUser)
       if (user.val().userID === data.val().userID) {
         nameU = user.val().nameUser;
       }

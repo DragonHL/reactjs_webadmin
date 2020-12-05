@@ -11,17 +11,17 @@ const TableContentOrderDetail = (props) => {
 
   const [dataDetail, setDataDetail] = useState(props.cart);
 
-
-  var OrderDetail = [];
+  console.log("dataDetail", dataDetail)
+  var orderDetail = [];
   for (var i in dataDetail) {
     dataDetail[i].product.quantity = dataDetail[i].quantity;
-    OrderDetail.push(dataDetail[i].product);
-    // console.log(dataDetail[i].quantity, "i")
+    orderDetail.push(dataDetail[i].product);
+    // console.log(dataDetail[i], "i")
   }
 
   function nameKindFood() {
     var name = "";
-    for (var o of OrderDetail) {
+    for (var o of orderDetail) {
       for (var d of dataKindFood) {
         // console.log('d.key', d.key)
         // console.log('o.kindFoodID', o.kindFoodID)
@@ -33,9 +33,9 @@ const TableContentOrderDetail = (props) => {
     }
     return name;
   }
-  // console.log("nameKindFood()", OrderDetail)
+  // console.log("nameKindFood()", orderDetail)
 
-  const rows = OrderDetail.map((dataOD, index) => ({
+  const rows = orderDetail.map((dataOD, index) => ({
     stt: (index + 1),
     kindFood: nameKindFood(),
     nameFood: dataOD.nameFood,

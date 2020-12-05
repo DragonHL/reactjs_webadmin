@@ -41,7 +41,7 @@ function Header (){
                         <div className="informationAdmin">
                             <p className="nameAdminHeader">Bill Gates</p>
                             <img src="https://image.thanhnien.vn/1080/uploaded/nthanhluan/2020_04_18/billgates_dlid.jpg"
-                                alt="imageadmin" width="37px" height="37px" className="imageAdminHeader" />
+                                alt="imageadmin" width="60px" height="60px" className="imageAdminHeader" />
                         </div>
                     </div>
                 </div>

@@ -6,6 +6,10 @@ const getAll = () => {
   return db;
 };
 
+const getAllCart = () => {
+  return db.orderByChild("cart");
+};
+
 const updateStatus = (key, value) => {
   return db.child(key).update({status: value});
 }
@@ -13,5 +17,6 @@ const updateStatus = (key, value) => {
 
 export default {
     getAll,
+    getAllCart,
     updateStatus
 }
