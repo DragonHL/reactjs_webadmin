@@ -8,14 +8,35 @@ function CurveChart(props) {
 
 
 
-    function arrayStatistical(){
+
+    const arrayStatisticalFollowMonth = props.arrayStatistical.map((dataS, index, array) => ({
+        january: array[0],
+        february: array[1],
+        march: array[2],
+        april: array[3],
+        may: array[4],
+        june: array[5],
+        july: array[6],
+        august: array[7],
+        september: array[8],
+        october: array[9],
+        november: array[10],
+        december: array[11]
+    }))
+
+    // console.log("arrayStatistical2 ==>", arrayStatisticalFollowMonth)
+    // console.log("arrayStatisticalFollowMonth[0].january ==>", arrayStatisticalFollowMonth[0].january)
+    // console.log("arrayStatisticalFollowMonth ==>", arrayStatisticalFollowMonth[0].december)
+    // console.log("props.arrayStatistical ==>", props.arrayStatistical)
+    // console.log("valueArrayStatistical0 ==>", arrayStatistical()[0][0])
+
+    
+    function arrayStatistical() {
         var arrayStatistical = [];
         arrayStatistical.push(props.arrayStatistical)
         return arrayStatistical
     }
-    
 
-    // console.log("valueArrayStatistical0 ==>", arrayStatistical()[0][0])
 
     function statisticalMax() {
         var numberMax = arrayStatistical()[0][0];
@@ -30,10 +51,11 @@ function CurveChart(props) {
 
     // console.log("numberMax ==>", statisticalMax())
 
-    return (
 
+    return (
+// arrayStatistical()[0][6]
         <>
-            <Chart 
+            <Chart
                 width={'100%'}
                 height={'350px'}
                 chartType="LineChart"
@@ -41,18 +63,18 @@ function CurveChart(props) {
 
                 data={[
                     ['Month', 'Money'],
-                    [1, arrayStatistical()[0][0]],
-                    [2, arrayStatistical()[0][1]],
-                    [3, arrayStatistical()[0][2]],
-                    [4, arrayStatistical()[0][3]],
-                    [5, arrayStatistical()[0][4]],
-                    [6, arrayStatistical()[0][5]],
-                    [7, arrayStatistical()[0][6]],
-                    [8, arrayStatistical()[0][7]],
-                    [9, arrayStatistical()[0][8]],
-                    [10, arrayStatistical()[0][9]],
-                    [11, arrayStatistical()[0][10]],
-                    [12, arrayStatistical()[0][11]]
+                    [1, arrayStatisticalFollowMonth[0].january],
+                    [2, arrayStatisticalFollowMonth[0].february],
+                    [3, arrayStatisticalFollowMonth[0].march],
+                    [4, arrayStatisticalFollowMonth[0].april],
+                    [5, arrayStatisticalFollowMonth[0].may],
+                    [6, arrayStatisticalFollowMonth[0].june],
+                    [7, arrayStatisticalFollowMonth[0].july],
+                    [8, arrayStatisticalFollowMonth[0].august],
+                    [9, arrayStatisticalFollowMonth[0].september],
+                    [10, arrayStatisticalFollowMonth[0].october],
+                    [11, arrayStatisticalFollowMonth[0].november],
+                    [12, arrayStatisticalFollowMonth[0].december]
                 ]
                 }
                 options={{
@@ -64,7 +86,7 @@ function CurveChart(props) {
                         maxValue: statisticalMax()
                     },
                     legend: { position: 'top' },
-                    chartArea: { width: '80%', right: 50}
+                    chartArea: { width: '80%', right: 50 }
                 }}
                 rootProps={{ 'data-testid': '1' }}
             />

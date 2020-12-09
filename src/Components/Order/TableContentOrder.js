@@ -20,6 +20,7 @@ const TableContentOrder = props => {
 
   const rows = dataBill.map((data, index) => ({
     stt: index + 1,
+    orderID: data.val().billid,
     userID: data.val().userID,
     nameUser: nameUser(data),
     address: data.val().address,
@@ -27,7 +28,7 @@ const TableContentOrder = props => {
     date: data.val().date,
     payment: data.val().payment,
     phone: data.val().phone,
-    status: data.val().status,
+    // status: data.val().status,
     totalprice: data.val().totalprice,
     detail: (
       <Link
@@ -43,13 +44,15 @@ const TableContentOrder = props => {
         Show
       </Link>
     ),
-
+    //     <p className="text-white bg-primary my-auto" style={StyleStatus}>Delivery</p>
+    // <p className="text-white bg-info my-auto " style={StyleStatus} >Preparing</p>
     confirm: (
       // <p className="text-white btn-confirm btn-success" >Confirm</p>
-      (data.val().status === 1) ? <Button onClick={() => OrderService.updateStatus(data.key, 2)} variant="warning">Ordered</Button> :
-        (data.val().status === 2) ? <Button onClick={() => OrderService.updateStatus(data.key, 3)} variant="secondary">Pending</Button> :
-          (data.val().status === 3) ? <p className="text-white bg-info my-auto " style={StyleStatus} >Preparing</p> :
-            (data.val().status === 4) ? <p className="text-white bg-primary my-auto" style={StyleStatus}>Delivery</p> : <p className="text-white bg-success my-auto" style={StyleStatus}>Received</p>
+      (data.val().status === 0) ? <Button onClick={() => OrderService.updateStatus(data.key, 1)} variant="warning">Ordered</Button> :
+        (data.val().status === 1) ? <Button onClick={() => OrderService.updateStatus(data.key, 2)} variant="secondary">Pending</Button> :
+          (data.val().status === 2) ? <Button onClick={() => OrderService.updateStatus(data.key, 3)} variant="info">Preparing</Button> :
+            (data.val().status === 3) ?  <p className="text-white bg-primary my-auto" style={StyleStatus}>Delivery</p> : 
+             <p className="text-white bg-success my-auto" style={StyleStatus}>Received</p>
     ),
   }));
 
@@ -71,6 +74,12 @@ const TableContentOrder = props => {
         field: 'stt',
         sort: 'asc',
         width: 100,
+      },
+      {
+        label: 'ID Order',
+        field: 'orderID',
+        sort: 'asc',
+        width: 270,
       },
       {
         label: 'User ID',
@@ -108,13 +117,15 @@ const TableContentOrder = props => {
         field: 'phone',
         sort: 'asc',
         width: 100,
-      },
-      {
-        label: 'Status',
-        field: 'status',
-        sort: 'asc',
-        width: 100,
-      },
+      }
+      // ,
+      // {
+      //   label: 'Status',
+      //   field: 'status',
+      //   sort: 'asc',
+      //   width: 100,
+      // }
+      ,
       {
         label: 'Total',
         field: 'totalprice',

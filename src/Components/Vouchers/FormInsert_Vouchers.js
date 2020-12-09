@@ -49,8 +49,8 @@ function FormInsert_EditVouchers() {
 
     promise
       .then(function (voucher) {
-        console.log('voucher2');
-        console.log(voucher);
+        // console.log('voucher2');
+        // console.log(voucher);
 
         for (var user of dataUser) {
           // console.log('user');

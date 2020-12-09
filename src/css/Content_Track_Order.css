@@ -19,14 +19,27 @@
 
 
 .search-order {
-    width: 25%;
-    height: fit-content;
+    width: 50%;
+    /* height: fit-content; */
     display: flex;
-    margin-right: 15em;
+    /* margin-right: 15em; */
 }
 
 .track-order {
-    width: 30%;
+    width: 50%;
+
+}
+
+/* label {
+
+    font-weight: 600;
+    font-size: 1.2vw;
+    margin-right: 5px;
+} */
+
+.btn-track {
+    height: fit-content;
+    /* margin-top: 2px; */
 }
 
 .multi-steps {
@@ -40,8 +53,8 @@
     color: #000000;
     width: 100%;
     text-align: center;
+    font-size: 1.2vw;
 }
-
 
 
 .multi-steps>li:before {
@@ -112,11 +125,12 @@
 .title-infromation-search>h4 {
     width: 50%;
     margin-left: 5%;
+    font-size: 1.5vw;
 }
 
 .title-infromation-search>.text-value-track-order {
     text-align: center;
-    background-color: #FFC107;
+    /* background-color: #FFC107; */
     padding: 0.4em;
     font-weight: bold;
     margin: 0 1% 0 5%;
@@ -198,6 +212,7 @@
     .search-track-order {
         padding: 3%;
         margin: 1% 0 0% 1%;
+        display: inline-block;
     }
 
     .search-track-order>h5 {
@@ -205,14 +220,22 @@
     }
 
     .search-order {
-        width: 30%;
+        width: 100%;
         margin: 0;
     }
 
     .track-order {
-        width: 50%;
+        width: 100%;
     }
 
+    .search-trackOrder {
+        width: 60%;
+    }
+
+    .multi-steps>li {
+
+        font-size: 1.5vw;
+    }
 
 }
 
@@ -226,7 +249,7 @@
     }
 
     .search-order {
-        width: 50%;
+        width: 100%;
         margin-bottom: 5%;
     }
 
@@ -269,12 +292,12 @@
     }
 
 
-    .search-track-order .input-group-append {
+    /* .search-track-order .input-group-append {
         width: 32%;
 
-    }
+    } */
 
-    .search-track-order .input-group-append .btn-track {
+    .search-track-order .btn-track {
         width: 100%;
         font-size: 0.8em;
     }
@@ -288,14 +311,14 @@
         width: 98%;
     }
 
-    .title-infromation-search>h4 {
+    /* .title-infromation-search>h4 {
         width: 45%;
-        font-size: 0.8em;
+        font-size: 1vw;
     }
 
     .title-infromation-search .text-value-track-order {
         font-size: 0.8em;
-    }
+    } */
 
 
     .body-information-search>.name-user {
@@ -323,7 +346,8 @@
     .icon-date-order {
         margin-right: 2em;
     }
-    .body-information-search  .icon-date-order {
+
+    .body-information-search .icon-date-order {
         margin-right: 1em;
     }
 
@@ -336,7 +360,4 @@
 
 
 /*Mobile phone, vertical display(320 x 640)*/
-@media screen and (max-width: 320px) {
-    
-
-}
+@media screen and (max-width: 320px) {}

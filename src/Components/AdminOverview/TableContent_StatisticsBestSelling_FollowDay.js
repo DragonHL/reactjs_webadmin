@@ -4,9 +4,7 @@ import { MDBDataTable } from 'mdbreact';
 
 import EmployeeService from "../../Service/EmployeeService";
 import OrderService from "../../Service/OrderService";
-import { Button } from 'react-bootstrap';
 
-import { Link } from "react-router-dom";
 
 const TableContent_StatisticsBestSelling_FollowDay = (props) => {
 
@@ -22,7 +20,7 @@ const TableContent_StatisticsBestSelling_FollowDay = (props) => {
     setBill(props.bill)
     setArrayStartDate(props.arrayStartDate)
     setArrayEndDate(props.arrayEndDate)
-  }, [props.bill,props.arrayStartDate, props.arrayEndDate ])
+  }, [props.bill, props.arrayStartDate, props.arrayEndDate])
 
   function billDetail() {
     var newBillDetail = []
@@ -43,46 +41,47 @@ const TableContent_StatisticsBestSelling_FollowDay = (props) => {
     return newBillDetail;
   }
 
-  // console.log("billDetail =====> ", billDetail())
 
-  // count = 0;
-  var arrayDateOfBillDetail = 0;
-  // var arrayBillDetailSort = []
-  for (var i in billDetail()) {
-    arrayDateOfBillDetail = (billDetail()[i].date).match(/\d+/g);
-    // console.log(" arrayDateOfBillDetail =====> ", arrayDateOfBillDetail)
-    // console.log(" arrayStartDate =====> ", arrayStartDate)
-    // console.log(" arrayEndDate =====> ", arrayEndDate)
-
-    if (
-      (parseFloat(arrayStartDate[0]) <= parseFloat(arrayDateOfBillDetail[0])) && (parseFloat(arrayDateOfBillDetail[0]) <= parseFloat(arrayEndDate[0])) &&
-      (parseFloat(arrayDateOfBillDetail[1]) === parseFloat(arrayStartDate[1])) && (parseFloat(arrayDateOfBillDetail[1]) === parseFloat(arrayEndDate[1])) &&
-      (parseFloat(arrayStartDate[2]) <= parseFloat(arrayDateOfBillDetail[2])) && (parseFloat(arrayEndDate[2]) <= parseFloat(arrayDateOfBillDetail[2]))
-    ) {
-      // arrayBillDetailSort= billDetail().sort(function(a, b){
-      //     return ( b.totalPrice - a.totalPrice );
-      //   })
-    }
-    // console.log(" arrayDateOfBillDetail =====> ", arrayDateOfBillDetail)
-    // console.log(" billDetail()[i].totalPrice =====> ", billDetail()[i].totalPrice)
-    // console.log(" billDetail() =====> ", billDetail())
-  }
-
-var arrayBillDetailSort= billDetail().sort(function(a, b){
-  console.log("   billDetail().date =====> ",   billDetail().date)
-    return ( b.totalPrice - a.totalPrice );
+  var arrayBillDetailSort = billDetail().sort(function (a, b) {
+    // console.log("   billDetail().date =====> ",   billDetail().date)
+    return (b.totalPrice - a.totalPrice);
   })
 
-  // console.log("   billDetail() =====> ",   arrayBillDetailSort)
+  // console.log("   arrayBillDetailSort =====> ", arrayBillDetailSort)
+
+
+
+  function arrayFoodBestSelling() {
+    var arrayDateOfBillDetail = [];
+    var arrFoodBestSelling = []
+    for (var i in arrayBillDetailSort) {
+      arrayDateOfBillDetail = (arrayBillDetailSort[i].date).match(/\d+/g);
+      if (
+        (parseFloat(arrayStartDate[0]) <= arrayDateOfBillDetail[0]) && (arrayDateOfBillDetail[0] <= parseFloat(arrayEndDate[0])) &&
+        (parseFloat(arrayDateOfBillDetail[1]) === parseFloat(arrayStartDate[1])) && (parseFloat(arrayDateOfBillDetail[1]) === parseFloat(arrayEndDate[1])) &&
+        (parseFloat(arrayStartDate[2]) <= parseFloat(arrayDateOfBillDetail[2])) && (parseFloat(arrayEndDate[2]) <= parseFloat(arrayDateOfBillDetail[2]))
+      ) {
+        arrFoodBestSelling.push(arrayBillDetailSort[i]);
+      }
+      if (i === 2) {
+        break;
+      }
+    }
+    return arrFoodBestSelling;
+  }
 
 
 
 
-  const rows = arrayBillDetailSort.map((dataBDS, index) => ({
+
+
+
+
+  const rows = arrayFoodBestSelling().map((dataBDS, index) => ({
     stt: (index + 1),
     idFood: dataBDS.id,
     nameFood: dataBDS.nameFood,
-    imagesFood:  <img src={dataBDS.imagesFood} alt=""/>,
+    imagesFood: <img src={dataBDS.imagesFood} alt="" />,
     totalPrice: dataBDS.totalPrice
 
   }));
@@ -123,7 +122,7 @@ var arrayBillDetailSort= billDetail().sort(function(a, b){
         sort: 'disabled',
         width: 100
       }
-      
+
     ],
 
     rows: rows
@@ -139,6 +138,7 @@ var arrayBillDetailSort= billDetail().sort(function(a, b){
       entries={5}
       pagesAmount={5}
       small
+      pagesAmount={2}
     // data={{ columns: data.columns, rows: rows }} 
     // bordered
 
