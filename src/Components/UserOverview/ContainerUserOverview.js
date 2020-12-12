@@ -13,7 +13,7 @@ function ContainerUserOverview() {
     return (
         <div className="sub-container">
 
-            <h1 class="titleTable">User Overview</h1>
+            <h1 class="titleTable">Khách hàng</h1>
 
             <TableContentUser />
 

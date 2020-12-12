@@ -19,11 +19,17 @@ function ContainerTrackOrder() {
         status: ''
     }
 
+
+
     const [valueTrackOrder, setValueTrackOrder] = useState(initialFieldValues);
     const [dataOrder, loadingOrder, errorOrder] = useList(OrderService.getAll());
     const [submitted, setSubmitted] = useState(false);
 
     const [dataUser, loadingUser, errorUser] = useList(UserService.getAllFollowStatus(0));
+
+    useEffect(() => {
+        search();
+    }, [valueTrackOrder])
 
 
     const handleInputChange = e => {
@@ -55,7 +61,7 @@ function ContainerTrackOrder() {
         })
 
 
-        console.log("arrTrackOrder =====> ", arrTrackOrder);
+        // console.log("arrTrackOrder =====> ", arrTrackOrder);
 
         arrTrackOrder.forEach(function (item) {
 
@@ -85,7 +91,7 @@ function ContainerTrackOrder() {
         return (
             <div className="sub-container">
 
-                <h1 className="titleTable">Track Order</h1>
+                <h1 className="titleTable">Theo dõi đơn hàng</h1>
 
                 <div class="search-track-order">
                     <Form className="search-order" onSubmit={hanleFormSubmit}>
@@ -99,18 +105,18 @@ function ContainerTrackOrder() {
                                 onChange={handleInputChange} />
                         </Form.Group>
                         <Button className="btn btn-primary btn-track" onClick={search} >
-                            Track
+                            Tìm
                     </Button>
                     </Form>
 
                     <div class="track-order">
                         <div class="steps">
                             <ul class="list-unstyled multi-steps">
-                                <li class="is-active">Ordered</li>
-                                <li>Pending</li>
-                                <li>Preparing</li>
-                                <li>Delivery</li>
-                                <li>Received</li>
+                                <li class="is-active">Đặt hàng</li>
+                                <li>Chờ xử lý</li>
+                                <li>Chuẩn bị</li>
+                                <li>Giao</li>
+                                <li>Nhận</li>
                             </ul>
                         </div>
                     </div>
@@ -119,8 +125,8 @@ function ContainerTrackOrder() {
                 <div class="information-search-order">
                     <div class="information-order">
                         <div class="title-infromation-search">
-                            <h4>ORDER- {valueTrackOrder.idOrder}</h4>
-                            <p class="text-value-track-order bg-warning">Order</p>
+                            <h4>Hóa đơn- {valueTrackOrder.idOrder}</h4>
+                            <p class="text-value-track-order bg-warning">Đặt hàng</p>
                         </div>
                         <div class="body-information-search">
                             <div class="name-user">
@@ -129,7 +135,7 @@ function ContainerTrackOrder() {
                                         alt="" />
                                 </div>
                                 <div class="title-user">
-                                    <p class="title-value-search ">ORDER HANDED BY</p>
+                                    <p class="title-value-search ">Tên khách hàng</p>
                                     <p class="text-value-search ">{valueTrackOrder.nameUser}</p>
                                 </div>
                             </div>
@@ -138,7 +144,7 @@ function ContainerTrackOrder() {
                                     <i class="fas fa-dollar-sign"></i>
                                 </div>
                                 <div class="order-total-user">
-                                    <p class="title-value-search ">ORDER TOTAL</p>
+                                    <p class="title-value-search ">Tổng</p>
                                     <p class="text-value-search ">{valueTrackOrder.totalPrice}</p>
                                 </div>
                             </div>
@@ -148,7 +154,7 @@ function ContainerTrackOrder() {
                                     <i class="far fa-clock"></i>
                                 </div>
                                 <div class="date-order-user">
-                                    <p class="title-value-search ">ORDERED ON</p>
+                                    <p class="title-value-search ">Ngày</p>
                                     <p class="text-value-search ">{valueTrackOrder.date}</p>
                                 </div>
                             </div>
@@ -156,11 +162,11 @@ function ContainerTrackOrder() {
                         <div class="track-order track-order-information">
                             <div class="steps">
                                 <ul class="list-unstyled multi-steps">
-                                    <li class="is-active">Ordered </li>
-                                    <li>Pending</li>
-                                    <li>Preparing</li>
-                                    <li>Delivery</li>
-                                    <li>Received</li>
+                                    <li class="is-active">Đặt hàng</li>
+                                    <li>Chờ xử lý</li>
+                                    <li>Chuẩn bị</li>
+                                    <li>Giao</li>
+                                    <li>Nhận</li>
                                 </ul>
                             </div>
                         </div>
@@ -174,7 +180,7 @@ function ContainerTrackOrder() {
         return (
             <div className="sub-container">
 
-                <h1 className="titleTable">Track Order</h1>
+                <h1 className="titleTable">Theo dõi đơn hàng</h1>
 
                 <div class="search-track-order">
                     <Form className="search-order" onSubmit={hanleFormSubmit}>
@@ -195,11 +201,11 @@ function ContainerTrackOrder() {
                     <div class="track-order">
                         <div class="steps">
                             <ul class="list-unstyled multi-steps">
-                                <li class="is-active">Ordered</li>
-                                <li class="is-active">Pending</li>
-                                <li>Preparing</li>
-                                <li>Delivery</li>
-                                <li>Received</li>
+                                <li class="is-active">Đặt hàng</li>
+                                <li class="is-active">Chờ xử lý</li>
+                                <li>Chuẩn bị</li>
+                                <li>Giao</li>
+                                <li>Nhận</li>
                             </ul>
                         </div>
                     </div>
@@ -208,8 +214,8 @@ function ContainerTrackOrder() {
                 <div class="information-search-order">
                     <div class="information-order">
                         <div class="title-infromation-search">
-                            <h4>ORDER- {valueTrackOrder.idOrder}</h4>
-                            <p class="text-value-track-order bg-secondary" >Pending</p>
+                            <h4>Hóa đơn- {valueTrackOrder.idOrder}</h4>
+                            <p class="text-value-track-order bg-secondary" >Chờ xử lý</p>
                         </div>
                         <div class="body-information-search">
                             <div class="name-user">
@@ -218,7 +224,7 @@ function ContainerTrackOrder() {
                                         alt="" />
                                 </div>
                                 <div class="title-user">
-                                    <p class="title-value-search ">ORDER HANDED BY</p>
+                                    <p class="title-value-search ">Tên khách hàng</p>
                                     <p class="text-value-search ">{valueTrackOrder.nameUser}</p>
                                 </div>
                             </div>
@@ -227,7 +233,7 @@ function ContainerTrackOrder() {
                                     <i class="fas fa-dollar-sign"></i>
                                 </div>
                                 <div class="order-total-user">
-                                    <p class="title-value-search ">ORDER TOTAL</p>
+                                    <p class="title-value-search ">Tổng</p>
                                     <p class="text-value-search ">{valueTrackOrder.totalPrice}</p>
                                 </div>
                             </div>
@@ -237,7 +243,7 @@ function ContainerTrackOrder() {
                                     <i class="far fa-clock"></i>
                                 </div>
                                 <div class="date-order-user">
-                                    <p class="title-value-search ">ORDERED ON</p>
+                                    <p class="title-value-search ">Ngày</p>
                                     <p class="text-value-search ">{valueTrackOrder.date}</p>
                                 </div>
                             </div>
@@ -246,11 +252,11 @@ function ContainerTrackOrder() {
                         <div class="track-order track-order-information">
                             <div class="steps">
                                 <ul class="list-unstyled multi-steps">
-                                    <li class="is-active">Ordered </li>
-                                    <li class="is-active">Pending</li>
-                                    <li>Preparing</li>
-                                    <li >Delivery</li>
-                                    <li >Received</li>
+                                    <li class="is-active">Đặt hàng</li>
+                                    <li class="is-active">Chờ xử lý</li>
+                                    <li>Chuẩn bị</li>
+                                    <li>Giao</li>
+                                    <li>Nhận</li>
                                 </ul>
                             </div>
                         </div>
@@ -264,7 +270,7 @@ function ContainerTrackOrder() {
         return (
             <div className="sub-container">
 
-                <h1 className="titleTable">Track Order</h1>
+                <h1 className="titleTable">Theo dõi đơn hàng</h1>
 
                 <div class="search-track-order">
 
@@ -279,18 +285,18 @@ function ContainerTrackOrder() {
                                 onChange={handleInputChange} />
                         </Form.Group>
                         <Button className="btn btn-primary btn-track" onClick={search} >
-                            Track
+                            Tìm
                     </Button>
                     </Form>
 
                     <div class="track-order">
                         <div class="steps">
                             <ul class="list-unstyled multi-steps">
-                                <li class="is-active">Ordered</li>
-                                <li class="is-active">Pending</li>
-                                <li class="is-active">Preparing</li>
-                                <li>Delivery</li>
-                                <li>Received</li>
+                                <li class="is-active">Đặt hàng</li>
+                                <li class="is-active">Chờ xử lý</li>
+                                <li class="is-active">Chuẩn bị</li>
+                                <li>Giao</li>
+                                <li>Nhận</li>
                             </ul>
                         </div>
                     </div>
@@ -299,8 +305,8 @@ function ContainerTrackOrder() {
                 <div class="information-search-order">
                     <div class="information-order">
                         <div class="title-infromation-search">
-                            <h4>ORDER- {valueTrackOrder.idOrder}</h4>
-                            <p class="text-value-track-order bg-info">Preparing</p>
+                            <h4>Hóa đơn- {valueTrackOrder.idOrder}</h4>
+                            <p class="text-value-track-order bg-info">Chuẩn bị</p>
                         </div>
                         <div class="body-information-search">
                             <div class="name-user">
@@ -309,7 +315,7 @@ function ContainerTrackOrder() {
                                         alt="" />
                                 </div>
                                 <div class="title-user">
-                                    <p class="title-value-search ">ORDER HANDED BY</p>
+                                    <p class="title-value-search ">Tên khách hàng</p>
                                     <p class="text-value-search ">{valueTrackOrder.nameUser}</p>
                                 </div>
                             </div>
@@ -318,7 +324,7 @@ function ContainerTrackOrder() {
                                     <i class="fas fa-dollar-sign"></i>
                                 </div>
                                 <div class="order-total-user">
-                                    <p class="title-value-search ">ORDER TOTAL</p>
+                                    <p class="title-value-search ">Tổng</p>
                                     <p class="text-value-search ">{valueTrackOrder.totalPrice}</p>
                                 </div>
                             </div>
@@ -328,7 +334,7 @@ function ContainerTrackOrder() {
                                     <i class="far fa-clock"></i>
                                 </div>
                                 <div class="date-order-user">
-                                    <p class="title-value-search ">ORDERED ON</p>
+                                    <p class="title-value-search ">Ngày</p>
                                     <p class="text-value-search ">{valueTrackOrder.date}</p>
                                 </div>
                             </div>
@@ -337,11 +343,11 @@ function ContainerTrackOrder() {
                         <div class="track-order track-order-information">
                             <div class="steps">
                                 <ul class="list-unstyled multi-steps">
-                                    <li class="is-active">Ordered </li>
-                                    <li class="is-active">Pending</li>
-                                    <li class="is-active">Preparing</li>
-                                    <li >Delivery</li>
-                                    <li >Received</li>
+                                    <li class="is-active">Đặt hàng</li>
+                                    <li class="is-active">Chờ xử lý</li>
+                                    <li class="is-active">Chuẩn bị</li>
+                                    <li>Giao</li>
+                                    <li>Nhận</li>
                                 </ul>
                             </div>
                         </div>
@@ -355,7 +361,7 @@ function ContainerTrackOrder() {
         return (
             <div className="sub-container">
 
-                <h1 className="titleTable">Track Order</h1>
+                <h1 className="titleTable">Theo dõi đơn hàng</h1>
 
                 <div class="search-track-order">
 
@@ -370,18 +376,18 @@ function ContainerTrackOrder() {
                                 onChange={handleInputChange} />
                         </Form.Group>
                         <Button className="btn btn-primary btn-track" onClick={search} >
-                            Track
+                            Tìm
                     </Button>
                     </Form>
 
                     <div class="track-order">
                         <div class="steps">
                             <ul class="list-unstyled multi-steps">
-                                <li class="is-active">Ordered</li>
-                                <li class="is-active">Pending</li>
-                                <li class="is-active">Preparing</li>
-                                <li class="is-active">Delivery</li>
-                                <li>Received</li>
+                                <li class="is-active">Đặt hàng</li>
+                                <li class="is-active">Chờ xử lý</li>
+                                <li class="is-active">Chuẩn bị</li>
+                                <li class="is-active">Giao</li>
+                                <li>Nhận</li>
                             </ul>
                         </div>
                     </div>
@@ -390,8 +396,8 @@ function ContainerTrackOrder() {
                 <div class="information-search-order">
                     <div class="information-order">
                         <div class="title-infromation-search">
-                            <h4>ORDER- {valueTrackOrder.idOrder}</h4>
-                            <p class="text-value-track-order bg-primary">Delivery</p>
+                            <h4>Hóa đơn- {valueTrackOrder.idOrder}</h4>
+                            <p class="text-value-track-order bg-primary">Giao</p>
                         </div>
                         <div class="body-information-search">
                             <div class="name-user">
@@ -400,7 +406,7 @@ function ContainerTrackOrder() {
                                         alt="" />
                                 </div>
                                 <div class="title-user">
-                                    <p class="title-value-search ">ORDER HANDED BY</p>
+                                    <p class="title-value-search ">Tên khách hàng</p>
                                     <p class="text-value-search ">{valueTrackOrder.nameUser}</p>
                                 </div>
                             </div>
@@ -409,7 +415,7 @@ function ContainerTrackOrder() {
                                     <i class="fas fa-dollar-sign"></i>
                                 </div>
                                 <div class="order-total-user">
-                                    <p class="title-value-search ">ORDER TOTAL</p>
+                                    <p class="title-value-search ">Tổng</p>
                                     <p class="text-value-search ">{valueTrackOrder.totalPrice}</p>
                                 </div>
                             </div>
@@ -419,7 +425,7 @@ function ContainerTrackOrder() {
                                     <i class="far fa-clock"></i>
                                 </div>
                                 <div class="date-order-user">
-                                    <p class="title-value-search ">ORDERED ON</p>
+                                    <p class="title-value-search ">Ngày</p>
                                     <p class="text-value-search ">{valueTrackOrder.date}</p>
                                 </div>
                             </div>
@@ -431,7 +437,7 @@ function ContainerTrackOrder() {
                                     <li class="is-active">Ordered </li>
                                     <li class="is-active">Pending</li>
                                     <li class="is-active">Preparing</li>
-                                    <li class="is-active">Delivery</li>
+                                    <li class="is-active">Giao</li>
                                     <li >Received</li>
                                 </ul>
                             </div>
@@ -446,7 +452,7 @@ function ContainerTrackOrder() {
         return (
             <div className="sub-container">
 
-                <h1 className="titleTable">Track Order</h1>
+                <h1 className="titleTable">Theo dõi đơn hàng</h1>
 
                 <div class="search-track-order">
 
@@ -461,18 +467,18 @@ function ContainerTrackOrder() {
                                 onChange={handleInputChange} />
                         </Form.Group>
                         <Button className="btn btn-primary btn-track" onClick={search} >
-                            Track
+                            Tìm
                     </Button>
                     </Form>
 
                     <div class="track-order">
                         <div class="steps">
                             <ul class="list-unstyled multi-steps">
-                                <li class="is-active">Ordered</li>
-                                <li class="is-active">Pending</li>
-                                <li class="is-active">Preparing</li>
-                                <li class="is-active">Delivery</li>
-                                <li class="is-active">Received</li>
+                                <li class="is-active">Đặt hàng </li>
+                                <li class="is-active">Chờ sử lý</li>
+                                <li class="is-active">Chuẩn bị</li>
+                                <li class="is-active">Giao</li>
+                                <li class="is-active">Nhận</li>
                             </ul>
                         </div>
                     </div>
@@ -481,8 +487,8 @@ function ContainerTrackOrder() {
                 <div class="information-search-order">
                     <div class="information-order">
                         <div class="title-infromation-search">
-                            <h4>ORDER- {valueTrackOrder.idOrder}</h4>
-                            <p class="text-value-track-order bg-success">Received</p>
+                            <h4>Hóa đơn- {valueTrackOrder.idOrder}</h4>
+                            <p class="text-value-track-order bg-success">Nhận</p>
                         </div>
                         <div class="body-information-search">
                             <div class="name-user">
@@ -491,7 +497,7 @@ function ContainerTrackOrder() {
                                         alt="" />
                                 </div>
                                 <div class="title-user">
-                                    <p class="title-value-search ">ORDER HANDED BY</p>
+                                    <p class="title-value-search ">Tên khách hàng</p>
                                     <p class="text-value-search ">{valueTrackOrder.nameUser}</p>
                                 </div>
                             </div>
@@ -500,7 +506,7 @@ function ContainerTrackOrder() {
                                     <i class="fas fa-dollar-sign"></i>
                                 </div>
                                 <div class="order-total-user">
-                                    <p class="title-value-search ">ORDER TOTAL</p>
+                                    <p class="title-value-search ">Tổng</p>
                                     <p class="text-value-search ">{valueTrackOrder.totalPrice}</p>
                                 </div>
                             </div>
@@ -510,7 +516,7 @@ function ContainerTrackOrder() {
                                     <i class="far fa-clock"></i>
                                 </div>
                                 <div class="date-order-user">
-                                    <p class="title-value-search ">ORDERED ON</p>
+                                    <p class="title-value-search ">Ngày</p>
                                     <p class="text-value-search ">{valueTrackOrder.date}</p>
                                 </div>
                             </div>
@@ -519,11 +525,11 @@ function ContainerTrackOrder() {
                         <div class="track-order track-order-information">
                             <div class="steps">
                                 <ul class="list-unstyled multi-steps">
-                                    <li class="is-active">Ordered </li>
-                                    <li class="is-active">Pending</li>
-                                    <li class="is-active">Preparing</li>
-                                    <li class="is-active">Delivery</li>
-                                    <li class="is-active">Received</li>
+                                    <li class="is-active">Đặt hàng </li>
+                                    <li class="is-active">Chờ sử lý</li>
+                                    <li class="is-active">Chuẩn bị</li>
+                                    <li class="is-active">Giao</li>
+                                    <li class="is-active">Nhận</li>
                                 </ul>
                             </div>
                         </div>
@@ -537,7 +543,7 @@ function ContainerTrackOrder() {
         return (
             <div className="sub-container">
 
-                <h1 className="titleTable">Track Order</h1>
+                <h1 className="titleTable">Theo dõi đơn hàng</h1>
 
                 <div class="search-track-order">
                     {/* <h5>Track Order</h5> */}
@@ -553,27 +559,27 @@ function ContainerTrackOrder() {
                                 onChange={handleInputChange} />
                         </Form.Group>
                         <Button className="btn btn-primary btn-track" onClick={search} >
-                            Track
+                            Tìm
                     </Button>
                     </Form>
 
                     <div class="track-order">
                         <div class="steps">
                             <ul class="list-unstyled multi-steps">
-                                <li>Ordered</li>
-                                <li>Pending</li>
-                                <li>Preparing</li>
-                                <li>Delivery</li>
-                                <li>Received</li>
+                                <li>Đặt hàng</li>
+                                <li>Chờ sử lý</li>
+                                <li>Chuẩn bị</li>
+                                <li>Giao</li>
+                                <li>Nhận</li>
                             </ul>
                         </div>
                     </div>
                 </div>
-           
+
                 <div class="information-search-order">
                     <div class="information-order">
                         <div class="title-infromation-search">
-                            <h4>ORDER- {valueTrackOrder.idOrder}</h4>
+                            <h4>Khách hàng- {valueTrackOrder.idOrder}</h4>
                             <p class="text-value-track-order"></p>
                         </div>
                         <div class="body-information-search">
@@ -583,7 +589,7 @@ function ContainerTrackOrder() {
                                         alt="" />
                                 </div>
                                 <div class="title-user">
-                                    <p class="title-value-search ">ORDER HANDED BY</p>
+                                    <p class="title-value-search ">Tên khách hàng</p>
                                     <p class="text-value-search ">{valueTrackOrder.nameUser}</p>
                                 </div>
                             </div>
@@ -592,7 +598,7 @@ function ContainerTrackOrder() {
                                     <i class="fas fa-dollar-sign"></i>
                                 </div>
                                 <div class="order-total-user">
-                                    <p class="title-value-search ">ORDER TOTAL</p>
+                                    <p class="title-value-search ">Tổng</p>
                                     <p class="text-value-search ">{valueTrackOrder.totalPrice}</p>
                                 </div>
                             </div>
@@ -602,7 +608,7 @@ function ContainerTrackOrder() {
                                     <i class="far fa-clock"></i>
                                 </div>
                                 <div class="date-order-user">
-                                    <p class="title-value-search ">ORDERED ON</p>
+                                    <p class="title-value-search ">Date</p>
                                     <p class="text-value-search ">{valueTrackOrder.date}</p>
                                 </div>
                             </div>
@@ -611,11 +617,11 @@ function ContainerTrackOrder() {
                         <div class="track-order track-order-information">
                             <div class="steps">
                                 <ul class="list-unstyled multi-steps">
-                                    <li>Ordered </li>
-                                    <li>Pending</li>
-                                    <li>Preparing</li>
-                                    <li>Delivery</li>
-                                    <li>Received</li>
+                                    <li>Đặt hàng</li>
+                                    <li>Chờ sử lý</li>
+                                    <li>Chuẩn bị</li>
+                                    <li>Giao</li>
+                                    <li>Nhận</li>
                                 </ul>
                             </div>
                         </div>

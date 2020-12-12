@@ -101,11 +101,11 @@ function FormInsert_KindFood() {
 
     return (
         <div className="sub-container">
-            <h2 className="titleform">Form Add Kind Food</h2>
+            <h2 className="titleform">Thêm loại món</h2>
             <Form onSubmit={hanleFormSubmit}>
 
                 <Form.Group controlId="formName">
-                    <Form.Label> Name Kind Food: </Form.Label>
+                    <Form.Label> Tên loại món: </Form.Label>
                     <Form.Control 
                     name="nameKindFood"
                     type="text" 

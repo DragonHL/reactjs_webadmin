@@ -10,7 +10,7 @@ function ContainerOrderDetail(props) {
     return (
         <div className="sub-container">
 
-            <h1 class="titleTable">Detail</h1>
+            <h1 class="titleTable">Chi tiết hóa đơn</h1>
 
             <TableContentOrderDetail 
             // voucherId={props.location.state.key} 

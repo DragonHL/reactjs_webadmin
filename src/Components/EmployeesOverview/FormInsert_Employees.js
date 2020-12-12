@@ -11,6 +11,7 @@ import ServiceEmployee from "../../Service/EmployeeService"
 
 import { useHistory } from "react-router-dom";
 
+import moment from 'moment'
 
 const FormInsert_Employees = () => {
 
@@ -61,9 +62,9 @@ const FormInsert_Employees = () => {
                                 name: valuesEmployees.name,
                                 phone: valuesEmployees.phone,
                                 address: valuesEmployees.address,
-                                birthday: valuesEmployees.birthday,
-                                startWork: valuesEmployees.startWork,
-                                endWork: valuesEmployees.endWork,
+                                birthday: moment(valuesEmployees.birthday).format('DD-MM-YYYY'),
+                                startWork:  moment(valuesEmployees.startWork).format('DD-MM-YYYY'),
+                                endWork:   moment(valuesEmployees.endWork).format('DD-MM-YYYY'),
                                 role: valuesEmployees.role,
                                 imageUrl: url,
                                 status: 0
@@ -71,9 +72,9 @@ const FormInsert_Employees = () => {
                                     name: valuesEmployees.name,
                                     phone: valuesEmployees.phone,
                                     address: valuesEmployees.address,
-                                    birthday: valuesEmployees.birthday,
-                                    startWork: valuesEmployees.startWork,
-                                    endWork: valuesEmployees.endWork,
+                                    birthday: moment(valuesEmployees.birthday).format('DD-MM-YYYY'),
+                                    startWork: moment(valuesEmployees.startWork).format('DD-MM-YYYY'),
+                                    endWork: moment(valuesEmployees.endWork).format('DD-MM-YYYY'),
                                     role: valuesEmployees.role,
                                     imageUrl: null,
                                     status: 0
@@ -98,7 +99,7 @@ const FormInsert_Employees = () => {
                 name: valuesEmployees.name,
                 phone: valuesEmployees.phone,
                 address: valuesEmployees.address,
-                birthday: valuesEmployees.birthday,
+                birthday:  valuesEmployees.birthday,
                 startWork: valuesEmployees.startWork,
                 endWork: valuesEmployees.endWork,
                 role: valuesEmployees.role,
@@ -123,7 +124,7 @@ const FormInsert_Employees = () => {
 
     return (
         <div className="sub-container">
-            <h2 className="titleform">Form Add And Edit Food</h2>
+            <h2 className="titleform">Thêm mới nhân viên</h2>
             <Form onSubmit={hanleFormSubmit}>
 
                 <Form.Group controlId="formName">
@@ -211,7 +212,10 @@ const FormInsert_Employees = () => {
                 </Form.Group>
 
                 <Button onClick={saveEmployee} >
-                    Submit
+                    Thêm
+                </Button>
+                <Button className="btn-close" >
+                    Hủy
                 </Button>
             </Form>
 

@@ -1,10 +1,10 @@
 
-import React, {  useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import '../../css/Login.css';
 import { Form, Button, Card, Alert } from 'react-bootstrap';
 
 import { useAuth } from '../../Service/LoginService';
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 
 
@@ -26,8 +26,8 @@ export default function Login() {
       setError('');
       setLoading(true);
       await login(emailRef.current.value, passwordRef.current.value)
-        history.push("/webadmin/admin")
-      
+      history.push("/webadmin/admin")
+
     } catch {
       setError('Failed to log in');
     }
@@ -50,12 +50,15 @@ export default function Login() {
             </Form.Group>
 
             <Form.Group id="password" className="input_pass">
-              <Form.Control ref={passwordRef} className="form_login input_pass" type="password" placeholder="Password" required />
+              <Form.Control ref={passwordRef} className="form_login input_pass" type="password" placeholder="Mật khẩu" required />
             </Form.Group>
 
             <Button disabled={loading} className="button_login" type="submit" >
-              Log In
+              Đăng nhập
             </Button>
+            <Link to="/resetpassword" className="reset_pass">
+              <p>Đổi mật khẩu</p>
+            </Link>
           </Form>
 
         </Card.Body>

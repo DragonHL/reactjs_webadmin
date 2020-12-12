@@ -12,7 +12,7 @@ function ContainerRating() {
     return (
         <div className="sub-container">
 
-            <h1 class="titleTable">Rating</h1>
+            <h1 class="titleTable">Đánh giá</h1>
 
             <TableRating />
 

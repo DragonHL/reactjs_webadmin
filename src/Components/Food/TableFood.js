@@ -75,9 +75,9 @@ const TableFood = (props) => {
           price: dataF.val().price
         }
       }}
-      className="btn btn-success buttonEdit btn-table">Edit</Link>,
+      className="btn btn-success buttonEdit btn-table">Sửa</Link>,
 
-    delete: <Button className="btn btn-danger buttonEdit btn-table" onClick={() => deleteFood(dataF.key)} variant="danger">Delete</Button>
+    delete: <Button className="btn btn-danger buttonEdit btn-table" onClick={() => deleteFood(dataF.key)} variant="danger">Xóa</Button>
 
   }));
 
@@ -91,48 +91,48 @@ const TableFood = (props) => {
         width: 100
       },
       {
-        label: 'Name',
+        label: 'Tên',
         field: 'name',
         sort: 'asc',
         width: 270
       },
       {
-        label: 'Images',
+        label: 'Ảnh',
         field: 'images',
         sort: 'disabled',
         width: 100
       }
       ,
       {
-        label: 'Information',
+        label: 'Thông tin',
         field: 'information',
         sort: 'asc',
         width: 100
       }
       ,
       {
-        label: 'Kind Food',
+        label: 'Loại món',
         field: 'kindFood',
         sort: 'asc',
         width: 100
       }
       ,
       {
-        label: 'Price',
+        label: 'Giá',
         field: 'price',
         sort: 'asc',
         width: 100
       }
       ,
       {
-        label: 'Edit',
+        label: 'Sửa',
         field: 'edit',
         sort: 'disabled',
         width: 100
       }
       ,
       {
-        label: 'Delete',
+        label: 'Xóa',
         field: 'delete',
         sort: 'disabled',
         width: 100

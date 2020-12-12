@@ -16,8 +16,8 @@ function ContainerEmployeesOverview() {
             {/* <div class="container-body">
                 <div class="sub-container"> */}
                 <div class="title-button">
-                    <h1 class="titleTable">Employees Overview</h1>
-                    <Link to="/webadmin/formInsertEmployee" className="linkSideBar btn btn-warning buttonAdd">ADD</Link> 
+                    <h1 class="titleTable">Nhân viên</h1>
+                    <Link to="/webadmin/formInsertEmployee" className="linkSideBar btn btn-warning buttonAdd">Thêm mới</Link> 
                 </div>
                     
                     <TableContentEmployees />

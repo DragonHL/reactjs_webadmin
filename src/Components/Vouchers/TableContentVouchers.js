@@ -35,7 +35,7 @@ const TableContentVouchers = (props) => {
         code: dataD.val().code,
       }
     }}
-      className="btn btn-primary buttonEdit btn-table">Show</Link>,
+      className="btn btn-primary buttonEdit btn-table">Xem</Link>,
     edit: <Link to={{
       pathname: `/webadmin/formEditVouchers`,
       state: {
@@ -47,10 +47,10 @@ const TableContentVouchers = (props) => {
         dateEnd: dataD.val().dateEnd,
       }
     }}
-      className="btn btn-success buttonEdit btn-table ">Edit</Link>,
+      className="btn btn-success buttonEdit btn-table ">Sửa</Link>,
     delete: <Button
       className="btn btn-danger buttonEdit btn-table"
-      onClick={() => deleteTutorial(dataD.key)} >Delete</Button>
+      onClick={() => deleteTutorial(dataD.key)} >Xóa</Button>
 
   }));
 
@@ -64,53 +64,53 @@ const TableContentVouchers = (props) => {
         width: 100
       },
       {
-        label: 'Code',
+        label: 'Mã',
         field: 'code',
         sort: 'asc',
         width: 170
       },
       {
-        label: 'Discount',
+        label: 'Giảm giá',
         field: 'discount',
         sort: 'asc',
         width: 100
       },
       {
-        label: 'Description',
+        label: 'Mô tả',
         field: 'description',
         sort: 'asc',
         width: 100
       },
       {
-        label: 'Date Start',
+        label: 'Bắt đầu',
         field: 'dateStart',
         sort: 'asc',
         width: 150
       }
       ,
       {
-        label: 'Date End',
+        label: 'Kết thúc',
         field: 'dateEnd',
         sort: 'asc',
         width: 100
       }
       ,
       {
-        label: 'Show',
+        label: 'Xem',
         field: 'show',
         sort: 'disabled',
         width: 100
       }
       ,
       {
-        label: 'Edit',
+        label: 'Sửa',
         field: 'edit',
         sort: 'disabled',
         width: 100
       }
       ,
       {
-        label: 'Delete',
+        label: 'Xóa',
         field: 'delete',
         sort: 'disabled',
         width: 100

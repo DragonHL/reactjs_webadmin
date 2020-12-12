@@ -17,7 +17,7 @@ const TableContentUser = () => {
     phoneUser:dataU.val().phoneUser,
     addressUser:dataU.val().address,
     imageUser:<img src={dataU.val().imageUser} alt="" />,
-    status:(dataU.val().status === 0) ? <Button variant="success">Activate</Button> : <Button variant="danger"> Delete </Button>,
+    status:(dataU.val().status === 0) ? <Button variant="success">Hoạt động</Button> : <Button variant="danger"> Không hoạt động </Button>,
     dateCreated:dataU.val().dateCreate,
     dateUpdate:dataU.val().dateUpdate,
 
@@ -34,14 +34,14 @@ const TableContentUser = () => {
         // width: 100
       },
       {
-        label: 'ID User',
+        label: 'ID Khách hàng',
         field: 'userID',
         sort: 'asc',
         // width: 500
       }
       ,
       {
-        label: 'Name',
+        label: 'Tên',
         field: 'nameUser',
         sort: 'asc',
         // width: 150
@@ -53,40 +53,40 @@ const TableContentUser = () => {
         // width: 100
       },
       {
-        label: 'Phone',
+        label: 'SĐT',
         field: 'phoneUser',
         sort: 'asc',
         // width: 100
       },
       {
-        label: 'Address',
+        label: 'Địa chỉ',
         field: 'addressUser',
         sort: 'asc',
         // width: 150
       },
       {
-        label: 'Images',
+        label: 'Ảnh',
         field: 'imageUser',
         sort: 'disabled',
         // width: 100
       }
       ,
       {
-        label: 'Status',
+        label: 'Trạng thái',
         field: 'status',
         sort: 'disabled',
         // width: 100
       }
       ,
       {
-        label: 'Date Created',
+        label: 'Ngày tạo',
         field: 'dateCreated',
         sort: 'asc',
         // width: 100
       }
       ,
       {
-        label: 'Date Update',
+        label: 'Cập nhật',
         field: 'dateUpdate',
         sort: 'asc',
         // width: 100

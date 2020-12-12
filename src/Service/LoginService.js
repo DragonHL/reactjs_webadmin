@@ -16,7 +16,7 @@ export function AuthProvider({ children }){
     
     
     function login(email, password){
-        if(email === "admin@gmail.com"){
+        if(email === "addragon79@gmail.com"){
             return auth.signInWithEmailAndPassword(email, password);
         }
     }
@@ -24,6 +24,10 @@ export function AuthProvider({ children }){
     function logout(){
         return auth.signOut();
     }
+
+    function resetPassword (email) {
+        return auth.sendPasswordResetEmail (email);
+      }
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(admin => {
@@ -38,7 +42,8 @@ export function AuthProvider({ children }){
     const value = {
         currentUser,
         login,
-        logout
+        logout,
+        resetPassword
     };
 
     return(

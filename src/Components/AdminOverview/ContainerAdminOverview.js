@@ -32,13 +32,9 @@ function ContainerAdminOverview() {
 
     const [dataOrder, loadingOrder, errorOrder] = useList(OrderService.getAll());
 
+// console.log("dataOrder", dataOrder)
+
     // moment(addDays(endDate, 1)).format('DD-MM-YYYY')
-
-    // console.log("startDate ====> ", moment(startDate).format('DD-MM-YYYY'))
-    // console.log("endDate ====> ", moment(endDate).format('DD-MM-YYYY'))
-
-    // console.log("dataOrderadaf ======> ", dataOrder)
-
 
     var formtDateNow = moment(valueToDay).format('DD-MM-YYYY');
     var formatStartDate = moment(startDate).format('DD-MM-YYYY');
@@ -46,10 +42,7 @@ function ContainerAdminOverview() {
     var arrayDateNow = formtDateNow.match(/\d+/g);
     var arrayStartDate = formatStartDate.match(/\d+/g);
     var arrayEndDate = formatEndDate.match(/\d+/g);
-    // console.log("arrayDateNow ====> ", arrayDateNow)
-    // console.log("arrayStartDate ====> ", arrayStartDate)
-    // console.log("arrayEndDate ====> ", arrayEndDate)
-    // console.log("arrayStartDate[1] ====> ", arrayEndDate[1])
+
 
     function arrayStatisticalFollowMonthOne(month) {
         var totalPrice = 0;
@@ -84,35 +77,10 @@ function ContainerAdminOverview() {
     ];
 
 
-    // dataStatisticalFollowMonth.push(StatisticalFollowMonth);
-
-
-
-    // console.log("dataStatisticalFollowMonth ====> ", dataStatisticalFollowMonth)
-    // console.log("arrayStatisticalFollowMonthOne(12) ====> ", arrayStatisticalFollowMonthOne(12))
-
-
-    // arrayStatisticalFollowMonthOne(1),
-    //     arrayStatisticalFollowMonthOne(2),
-    //     arrayStatisticalFollowMonthOne(3),
-    //     arrayStatisticalFollowMonthOne(4),
-    //     arrayStatisticalFollowMonthOne(5),
-    //     arrayStatisticalFollowMonthOne(6),
-    //     arrayStatisticalFollowMonthOne(7),
-    //     arrayStatisticalFollowMonthOne(8),
-    //     arrayStatisticalFollowMonthOne(9),
-    //     arrayStatisticalFollowMonthOne(10),
-    //     arrayStatisticalFollowMonthOne(11),
-    //     arrayStatisticalFollowMonthOne(12),
-
-
-
-    // 
-
     function statisticalMonth() {
 
         var totalPrice = 0;
-        var count = 0;
+        // var count = 0;
         var arrayDateOfOrder = 0;
         for (var item of dataOrder) {
             arrayDateOfOrder = (item.val().date).match(/\d+/g);
@@ -120,10 +88,10 @@ function ContainerAdminOverview() {
                 (parseFloat(arrayDateOfOrder[1]) === parseFloat(arrayStartDate[1])) && (parseFloat(arrayDateOfOrder[1]) === parseFloat(arrayEndDate[1])) &&
                 (parseFloat(arrayStartDate[2]) <= parseFloat(arrayDateOfOrder[2])) && (parseFloat(arrayEndDate[2]) <= parseFloat(arrayDateOfOrder[2]))) {
                 totalPrice += item.val().totalprice;
-                count++;
+                // count++;
             }
         }
-        // console.log("count ====> ", count)
+
         return totalPrice;
     }
 
@@ -142,11 +110,10 @@ function ContainerAdminOverview() {
                 count++;
             }
         }
-        // console.log("count ====> ", count)
+
         return totalPrice;
     }
 
-    // console.log("statisticalYear ====> ", statisticalYear())
 
     function statisticalDay() {
         var totalPrice = 0;
@@ -163,7 +130,7 @@ function ContainerAdminOverview() {
                 count++;
             }
         }
-        // console.log("count ====> ", count)
+
         return totalPrice;
     }
 
@@ -188,10 +155,10 @@ function ContainerAdminOverview() {
     return (
         <div className="sub-container">
 
-            <h1 className="titleTable">Statistical</h1>
+            <h1 className="titleTable">Thống Kê</h1>
             <div className="box-date">
                 <div className="dateStart">
-                    <h6 className="titleTable">Date Start</h6>
+                    <h6 className="titleTable">Từ ngày</h6>
                     <DatePicker
                         dateFormat="dd-MM-yyyy"
                         selected={startDate}
@@ -203,7 +170,7 @@ function ContainerAdminOverview() {
                 </div>
 
                 <div className="dateEnd">
-                    <h6 className="titleTable">Date End</h6>
+                    <h6 className="titleTable">Đến ngày</h6>
                     <DatePicker
                         dateFormat="dd-MM-yyyy"
                         selected={endDate}
@@ -221,14 +188,14 @@ function ContainerAdminOverview() {
             <div className="statistical_day_month_year">
                 <div className="statistical_day">
                     <div className="title_statistical">
-                        <p className="Day_Month_Year">Day</p>
+                        <p className="Day_Month_Year">Ngày</p>
                         <FaDollarSign className="fas fa-dollar-sign" />
                     </div>
                     <p className="money">{statisticalDay()}</p>
                 </div>
                 <div className="statistical_month">
                     <div className="title_statistical">
-                        <p className="Day_Month_Year">Month</p>
+                        <p className="Day_Month_Year">Tháng</p>
                         <FaDollarSign className="fas fa-dollar-sign" />
                     </div>
                     <p className="money">{statisticalMonth()}</p>
@@ -236,7 +203,7 @@ function ContainerAdminOverview() {
 
                 <div className="statistical_year">
                     <div className="title_statistical">
-                        <p className="Day_Month_Year">Year</p>
+                        <p className="Day_Month_Year">Năm</p>
                         <FaDollarSign className="fas fa-dollar-sign" />
                     </div>
                     <p className="money">{statisticalYear()}</p>
@@ -256,9 +223,9 @@ function ContainerAdminOverview() {
             </div>
 
             <div className="table-statistics-best-selling">
-                <h3>Statistics of best-selling dishes</h3>
-                
-                <TableContent_StatisticsBestSelling_FollowDay bill={dataOrder}  arrayStartDate= {arrayStartDate} arrayEndDate = {arrayEndDate}/>
+                <h3>Top 10 món ăn bán chạy</h3>
+{/*  */}
+                <TableContent_StatisticsBestSelling_FollowDay bill={dataOrder} arrayStartDate={arrayStartDate} arrayEndDate={arrayEndDate} />
             </div>
 
 

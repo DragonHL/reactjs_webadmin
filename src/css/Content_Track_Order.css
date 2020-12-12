@@ -134,6 +134,7 @@
     padding: 0.4em;
     font-weight: bold;
     margin: 0 1% 0 5%;
+    color: #ffffff;
 }
 
 .body-information-search {
@@ -300,6 +301,10 @@
     .search-track-order .btn-track {
         width: 100%;
         font-size: 0.8em;
+    }
+
+    .search-track-order .btn-track:hover {
+        background-color: #3e52ff;
     }
 
     .search-track-order>.track-order {

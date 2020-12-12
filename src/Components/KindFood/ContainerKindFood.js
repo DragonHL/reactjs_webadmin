@@ -15,11 +15,11 @@ function ContainerKindFood( ) {
         <div className="sub-container">
 
             <div class="title-button">
-                <h1 class="titleTable">Kind Food</h1>
+                <h1 class="titleTable">Loại món</h1>
 
                 <Link 
                 to = "/webadmin/formInsertKindFood" 
-                className = "linkSideBar btn btn-warning buttonAdd">ADD</Link> 
+                className = "linkSideBar btn btn-warning buttonAdd">Thêm mới</Link> 
                     
             </div>
 

@@ -11,6 +11,8 @@ import ServiceEmployee from "../../Service/EmployeeService"
 
 import { useHistory } from "react-router-dom";
 
+import moment from 'moment'
+
 
 const FormEdit_Employees = (props) => {
 
@@ -162,7 +164,7 @@ const FormEdit_Employees = (props) => {
                         name="birthday"
                         type="text"
                         placeholder="Birthday"
-                        value={valuesEmployees.birthday}
+                        value={valuesEmployees.birthday} 
                         onChange={handleInputChange}
                     />
                 </Form.Group>

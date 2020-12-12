@@ -61,7 +61,7 @@ function FormEditFood(props) {
                                 informationFood: valuesFood.informationFood,
                                 nameKindFood: valuesFood.nameKindFood,
                                 price: valuesFood.price,
-                                imageUrl: url
+                                imagesFood: url
                             } : {
                                     nameFood: valuesFood.nameFood,
                                     informationFood: valuesFood.informationFood,

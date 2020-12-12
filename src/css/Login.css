@@ -66,7 +66,7 @@
 }
 
 /* Button Login */
-.button_login {
+.button_login , .button_reset_pass, .button_cancel {
     border-radius: 10px!important;
     border: 0px;
     color: #ffffff;
@@ -78,12 +78,27 @@
     height: 2.5em!important;
     transition: 1s;
     display: block;
-    margin: 2% 7% 6% 7% !important;
+    /* margin: 2% 7% 6% 7% !important; */
+    margin: 2% 7% 2% 7% !important;
     text-decoration: none;
     
 }
 
+.button_cancel {
+    margin-bottom: 5% !important;
+}
 
+
+.reset_pass {
+    text-align: end;
+    
+    font-weight: 600;
+    text-decoration: none !important;
+}
+
+.reset_pass>p{
+    padding-right: 7% !important;
+}
 
 
 /* responsive */

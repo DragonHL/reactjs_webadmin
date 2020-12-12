@@ -48,6 +48,18 @@ tbody+thead {
     background-color: white;
 }
 
+.btn-close {
+    margin-left: 20px;
+    width: 65px;
+    padding: 8px 0 !important;
+    background-color: #5a5a5a !important;
+    border: none !important;
+}
+
+.btn-close:hover {
+    background-color: #797979 !important;
+}
+
 
 /* button confirm of order */
 .btn-confirm {

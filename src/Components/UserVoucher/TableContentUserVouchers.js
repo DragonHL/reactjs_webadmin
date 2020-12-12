@@ -19,13 +19,16 @@ const TableContentUserVouchers = (props) => {
   // console.log("voucherId",voucherId)
   // console.log("dataUserVouchers",dataUserVouchers)
 
+
+
+
   const rows = dataUserVouchers.map((dataUV, index) => ({
    
     stt: (index + 1),
     voucher: props.code,
     idUser: dataUV.val().userID,
     user: name(dataUV),
-    status: (dataUV.val().status === 0) ? <Button variant="success">Not Used</Button> : <Button variant="danger">Used</Button>,
+    status: (dataUV.val().status === 0) ? <Button variant="success">Not Used</Button> : <Button variant="danger" style={{width: "92.6px"}} >Used</Button>,
 
   }));
 
@@ -56,27 +59,27 @@ const TableContentUserVouchers = (props) => {
         width: 100
       },
       {
-        label: 'Voucher',
+        label: 'Giảm giá',
         field: 'voucher',
         sort: 'asc',
         width: 170
       },
       {
-        label: 'ID User',
+        label: 'ID khách hàng',
         field: 'idUser',
         sort: 'asc',
         width: 100
       },
       {
-        label: 'User',
+        label: 'Tên khách hàng',
         field: 'user',
         sort: 'asc',
         width: 100
       },
       {
-        label: 'Status',
+        label: 'Trạng thái',
         field: 'status',
-        sort: 'asc',
+        sort: 'disabled',
         width: 100
       }
 

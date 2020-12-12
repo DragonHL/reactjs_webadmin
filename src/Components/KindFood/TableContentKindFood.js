@@ -39,7 +39,7 @@ const TableContentKindFood = (props) => {
           keyKindFood: dataKF.key
         }
       }}
-      className="btn btn-primary buttonShow btn-table">Show</Link>,
+      className="btn btn-primary buttonShow btn-table" style={{padding: "6px 0"}}>Món ăn</Link>,
     edit:
       <Link to={{
         pathname: `/webadmin/formEditKindFood/${dataKF.val().nameKindFood}&&${dataKF.key}`,
@@ -50,8 +50,8 @@ const TableContentKindFood = (props) => {
           imagesUrl: dataKF.val().imagesKindFood
         }
       }}
-        className="btn btn-success buttonEdit btn-table">Edit</Link>,
-    delete: <Button className="btn btn-danger buttonEdit btn-table" onClick={() => deleteKindFood(dataKF.key)} variant="danger">Delete</Button>
+        className="btn btn-success buttonEdit btn-table">Sửa</Link>,
+    delete: <Button className="btn btn-danger buttonEdit btn-table" onClick={() => deleteKindFood(dataKF.key)} variant="danger">Xóa</Button>
 
   }));
 
@@ -64,41 +64,41 @@ const TableContentKindFood = (props) => {
         width: 100
       },
       {
-        label: 'Name',
+        label: 'Tên',
         field: 'name',
         sort: 'asc',
         width: 270
       },
       {
-        label: 'Images',
+        label: 'Ảnh',
         field: 'images',
         sort: 'disabled',
         width: 100
       }
       ,
       {
-        label: 'Quantity',
+        label: 'Số lượng',
         field: 'quantity',
         sort: 'asc',
         width: 100
       }
       ,
       {
-        label: 'Show Food',
+        label: 'Món ăn',
         field: 'show',
         sort: 'disabled',
         width: 100
       }
       ,
       {
-        label: 'Edit',
+        label: 'Sửa',
         field: 'edit',
         sort: 'disabled',
         width: 100
       }
       ,
       {
-        label: 'Delete',
+        label: 'Xóa',
         field: 'delete',
         sort: 'disabled',
         width: 100

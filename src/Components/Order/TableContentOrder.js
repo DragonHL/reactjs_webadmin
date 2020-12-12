@@ -11,7 +11,8 @@ const TableContentOrder = props => {
   const [dataUser, loadingUser, errorUser] = useList(UserService.getAllFollowStatus(0));
 
   const StyleStatus = {
-    height: '38px',
+    
+    height: '62px',
     padding: 'inherit',
     borderRadius: '4px',
 
@@ -41,18 +42,18 @@ const TableContentOrder = props => {
         }}
         className="btn btn-primary buttonEdit btn-table"
       >
-        Show
+        Xem
       </Link>
     ),
     //     <p className="text-white bg-primary my-auto" style={StyleStatus}>Delivery</p>
     // <p className="text-white bg-info my-auto " style={StyleStatus} >Preparing</p>
     confirm: (
       // <p className="text-white btn-confirm btn-success" >Confirm</p>
-      (data.val().status === 0) ? <Button onClick={() => OrderService.updateStatus(data.key, 1)} variant="warning">Ordered</Button> :
-        (data.val().status === 1) ? <Button onClick={() => OrderService.updateStatus(data.key, 2)} variant="secondary">Pending</Button> :
-          (data.val().status === 2) ? <Button onClick={() => OrderService.updateStatus(data.key, 3)} variant="info">Preparing</Button> :
-            (data.val().status === 3) ?  <p className="text-white bg-primary my-auto" style={StyleStatus}>Delivery</p> : 
-             <p className="text-white bg-success my-auto" style={StyleStatus}>Received</p>
+      (data.val().status === 0) ? <Button onClick={() => OrderService.updateStatus(data.key, 1)} variant="warning" style={StyleStatus}>Đặt hàng</Button> :
+        (data.val().status === 1) ? <Button onClick={() => OrderService.updateStatus(data.key, 2)} variant="secondary" style={StyleStatus}>Chờ xử lý</Button> :
+          (data.val().status === 2) ? <Button onClick={() => OrderService.updateStatus(data.key, 3)} variant="info" style={StyleStatus}>Chuẩn bị</Button> :
+            (data.val().status === 3) ?  <p className="text-white bg-primary my-auto" style={StyleStatus}>Giao hàng</p> : 
+             <p className="text-white bg-success my-auto" style={StyleStatus}>Nhận hàng</p>
     ),
   }));
 
@@ -76,44 +77,44 @@ const TableContentOrder = props => {
         width: 100,
       },
       {
-        label: 'ID Order',
+        label: 'ID đặt hàng',
         field: 'orderID',
         sort: 'asc',
         width: 270,
       },
       {
-        label: 'User ID',
+        label: 'ID khách hàng',
         field: 'userID',
         sort: 'asc',
         width: 270,
       },
       {
-        label: 'Name User',
+        label: 'Tên khách hàng',
         field: 'nameUser',
         sort: 'asc',
         width: 270,
       }
       ,
       {
-        label: 'Address',
+        label: 'Địa chỉ',
         field: 'address',
         sort: 'asc',
         width: 200,
       },
       {
-        label: 'Date',
+        label: 'Ngày',
         field: 'date',
         sort: 'asc',
         width: 100,
       },
       {
-        label: 'Payment',
+        label: 'Thanh toán',
         field: 'payment',
         sort: 'asc',
         width: 150,
       },
       {
-        label: 'Phone',
+        label: 'SĐT',
         field: 'phone',
         sort: 'asc',
         width: 100,
@@ -127,19 +128,19 @@ const TableContentOrder = props => {
       // }
       ,
       {
-        label: 'Total',
+        label: 'Tổng giá',
         field: 'totalprice',
         sort: 'asc',
         width: 270,
       },
       {
-        label: 'Detail',
+        label: 'Chi tiết',
         field: 'detail',
         sort: 'disabled',
         width: 100,
       },
       {
-        label: 'Confirm',
+        label: 'Xác nhận',
         field: 'confirm',
         sort: 'disabled',
         width: 100,

@@ -19,7 +19,7 @@ function ContainerFood(props) {
 
         <div class="sub-container">
             <div class="title-button">
-                <h1 class="titleTable">Food</h1>
+                <h1 class="titleTable">Món ăn</h1>
 
                 <Link to={{
                     pathname: `/webadmin/formInsertFood`,
@@ -28,7 +28,7 @@ function ContainerFood(props) {
                         nameKindFood: props.location.state.nameKindFood
                     }
                 }}
-                    className="btn btn-warning buttonAdd">ADD</Link>
+                    className="btn btn-warning buttonAdd">Thêm mới</Link>
 
             </div>
 

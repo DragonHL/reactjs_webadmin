@@ -12,7 +12,7 @@ function ContainerOrder() {
     return (
         <div className="sub-container">
 
-            <h1 class="titleTable">Order</h1>
+            <h1 class="titleTable">Hóa đơn</h1>
 
             <TableContentOrder />
             

@@ -10,10 +10,11 @@ import '../../css/Font_Google.css';
 // library react-icons/bi or react-icons/fa ....
 // import { BiSearch } from 'react-icons/bi';
 // import { GoThreeBars } from "react-icons/go";
+import { useAuth } from '../../Service/LoginService'
 
 
 function Header (){
- 
+    const { currentUser } = useAuth();
     
 
         return (
@@ -39,7 +40,7 @@ function Header (){
     
                         {/* <!-- information --> */}
                         <div className="informationAdmin">
-                            <p className="nameAdminHeader">Bill Gates</p>
+                            <p className="nameAdminHeader">Dragon</p>
                             <img src="https://image.thanhnien.vn/1080/uploaded/nthanhluan/2020_04_18/billgates_dlid.jpg"
                                 alt="imageadmin" width="60px" height="60px" className="imageAdminHeader" />
                         </div>

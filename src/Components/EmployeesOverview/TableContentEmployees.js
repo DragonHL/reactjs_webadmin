@@ -42,8 +42,8 @@ const TableContentEmployees = (props) => {
         startWork: dataE.val().startWork, endWork: dataE.val().endWork, role: dataE.val().role,
       }
     }}
-      className="btn btn-success buttonEdit btn-table">Edit</Link>,
-    delete: <Button className="btn btn-danger btn-table" onClick={() => deleteEmployee(dataE.key)} >Delete</Button>
+      className="btn btn-success buttonEdit btn-table">Sửa</Link>,
+    delete: <Button className="btn btn-danger btn-table" onClick={() => deleteEmployee(dataE.key)} >Xóa</Button>
     
     
   }));
@@ -60,61 +60,61 @@ const TableContentEmployees = (props) => {
       }
       ,
       {
-        label: 'Name',
+        label: 'Tên',
         field: 'name',
         sort: 'asc',
         width: 170
       },
       {
-        label: 'Phone',
+        label: 'SĐT',
         field: 'phone',
         sort: 'asc',
         width: 150
       },
       {
-        label: 'Address',
+        label: 'Địa chỉ',
         field: 'address',
         sort: 'asc',
         width: 100
       },
       {
-        label: 'Birthday',
+        label: 'Ngày sinh',
         field: 'birthday',
         sort: 'asc',
         width: 100
       },
       {
-        label: 'Images',
+        label: 'Ảnh',
         field: 'images',
         sort: 'disabled',
         width: 100
       },
       {
-        label: 'Start Work',
+        label: 'Bắt đầu',
         field: 'startWork',
         sort: 'asc',
         width: 100
       },
       {
-        label: 'End Work',
+        label: 'Kết thúc',
         field: 'endWork',
         sort: 'asc',
         width: 100
       },
       {
-        label: 'Role',
+        label: 'Quyền',
         field: 'role',
         sort: 'asc',
         width: 100
       },
       {
-        label: 'Edit',
+        label: 'Sửa',
         field: 'edit',
         sort: 'disabled',
         width: 100
       },
       {
-        label: 'Delete',
+        label: 'Xóa',
         field: 'delete',
         sort: 'disabled',
         width: 100

@@ -14,9 +14,9 @@ function ContainerVouchers() {
         <div className="sub-container">
             
             <div class="title-button">
-                <h1 class="titleTable">Vouchers</h1>
+                <h1 class="titleTable">Giảm giá</h1>
 
-                <Link to="/webadmin/formInsertVouchers" className="btn btn-warning buttonAdd">ADD</Link>
+                <Link to="/webadmin/formInsertVouchers" className="btn btn-warning buttonAdd">Thêm mới</Link>
                 
             </div>
 

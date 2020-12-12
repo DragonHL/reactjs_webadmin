@@ -34,40 +34,40 @@ const TableRating = () => {
         width: 50
       },
       {
-        label: 'User',
+        label: 'Tên khách hàng',
         field: 'nameUser',
         sort: 'asc',
         width: 150
       },
       {
-        label: 'Comments',
+        label: 'Bình luận',
         field: 'comments',
         sort: 'asc',
         width: 100
       },
       {
-        label: 'Food',
+        label: 'Món ăn',
         field: 'food',
         sort: 'asc',
         width: 100
       }
       ,
       {
-        label: 'Favorite',
+        label: 'Yêu thích',
         field: 'favorite',
-        sort: 'asc',
+        sort: 'disabled',
         width: 150
       }
       ,
       {
-        label: 'Star',
+        label: 'Số Sao',
         field: 'star',
         sort: 'asc',
         width: 50
       }
       ,
       {
-        label: 'Date',
+        label: 'Ngày',
         field: 'date',
         sort: 'asc',
         width: 100

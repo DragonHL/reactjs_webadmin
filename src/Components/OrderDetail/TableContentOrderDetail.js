@@ -23,8 +23,8 @@ const TableContentOrderDetail = (props) => {
     var name = "";
     for (var o of orderDetail) {
       for (var d of dataKindFood) {
-        // console.log('d.key', d.key)
-        // console.log('o.kindFoodID', o.kindFoodID)
+        console.log('d.key', d.key)
+        console.log('o.kindFoodID', o.kindFoodID)
         if (d.key === o.kindFoodID) {
           name = d.val().nameKindFood;
           // console.log('d.kindFoodID', d.kindFoodID)
@@ -53,26 +53,26 @@ const TableContentOrderDetail = (props) => {
         width: 100
       },
       {
-        label: 'Kind Food',
+        label: 'Loại món',
         field: 'kindFood',
         sort: 'asc',
         width: 170
       },
       {
-        label: 'Name Food',
+        label: 'Tên món',
         field: 'nameFood',
         sort: 'asc',
         width: 100
       },
       {
-        label: 'Images Food',
+        label: 'Ảnh',
         field: 'imagesFood',
-        sort: 'asc',
+        sort: 'disabled',
         width: 100
       }
       ,
       {
-        label: 'Price',
+        label: 'Giá',
         field: 'price',
         sort: 'asc',
         width: 100

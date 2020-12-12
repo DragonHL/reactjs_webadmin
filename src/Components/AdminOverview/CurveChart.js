@@ -3,12 +3,6 @@ import { Chart } from "react-google-charts";
 import React, { useState } from 'react';
 function CurveChart(props) {
 
-    // console.log("props.arrayStart ==>", props.arrayStatistical)
-    // console.log("props.arrayStatistical[0] ==>", (props.arrayStatistical[0]))
-
-
-
-
     const arrayStatisticalFollowMonth = props.arrayStatistical.map((dataS, index, array) => ({
         january: array[0],
         february: array[1],
@@ -24,13 +18,6 @@ function CurveChart(props) {
         december: array[11]
     }))
 
-    // console.log("arrayStatistical2 ==>", arrayStatisticalFollowMonth)
-    // console.log("arrayStatisticalFollowMonth[0].january ==>", arrayStatisticalFollowMonth[0].january)
-    // console.log("arrayStatisticalFollowMonth ==>", arrayStatisticalFollowMonth[0].december)
-    // console.log("props.arrayStatistical ==>", props.arrayStatistical)
-    // console.log("valueArrayStatistical0 ==>", arrayStatistical()[0][0])
-
-    
     function arrayStatistical() {
         var arrayStatistical = [];
         arrayStatistical.push(props.arrayStatistical)
@@ -62,7 +49,7 @@ function CurveChart(props) {
                 loader={<div>Loading Chart</div>}
 
                 data={[
-                    ['Month', 'Money'],
+                    ['Tháng', 'Tiền'],
                     [1, arrayStatisticalFollowMonth[0].january],
                     [2, arrayStatisticalFollowMonth[0].february],
                     [3, arrayStatisticalFollowMonth[0].march],
@@ -79,10 +66,10 @@ function CurveChart(props) {
                 }
                 options={{
                     hAxis: {
-                        title: 'Month',
+                        title: 'Tháng',
                     },
                     vAxis: {
-                        title: 'Money',
+                        title: 'Tiền',
                         maxValue: statisticalMax()
                     },
                     legend: { position: 'top' },

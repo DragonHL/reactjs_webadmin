@@ -14,7 +14,7 @@ function ContainerUserVouchers(props) {
     return (
         <div className="sub-container">
 
-            <h1 class="titleTable">User Vouchers</h1>
+            <h1 class="titleTable">Danh sách giảm giá</h1>
 
             <TableContentUserVouchers 
             voucherId={valueVoucherId} 
