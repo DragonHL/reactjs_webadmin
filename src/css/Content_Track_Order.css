@@ -3,6 +3,11 @@
     background-color: #efefef;
 } */
 
+.sub-container .line-top-track-order {
+    border-top: 10px solid #efefef;
+    margin-top: 5%;
+}
+
 .search-track-order {
     width: 98%;
     display: flex;

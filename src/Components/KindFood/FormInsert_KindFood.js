@@ -20,7 +20,7 @@ function FormInsert_KindFood() {
 
     }
 
-    const [valuesKindFood, setValueKindFood] = useState (initialFieldValues);
+    const [valuesKindFood, setValueKindFood] = useState(initialFieldValues);
     const [submitted, setSubmitted] = useState(false);
     const [image, setImage] = useState(null);
     const history = useHistory();
@@ -30,50 +30,50 @@ function FormInsert_KindFood() {
         setValueKindFood({ ...valuesKindFood, [name]: value })
     }
 
-    const handleChange = e =>{
-        if(e.target.files[0]){
+    const handleChange = e => {
+        if (e.target.files[0]) {
             setImage(e.target.files[0]);
         }
     }
 
     const saveKindFood = () => {
         if (image !== null) {
-        const uploadTask = storage.ref(`imagesKindFood/${image.name}`).put(image);
-        uploadTask.on(
-            "state_changed",
-            snapshot => { },
-            error => {
-                console.log(error);
-            },
-            () => {
-                storage.ref("imagesKindFood")
-                    .child(image.name)
-                    .getDownloadURL()
-                    .then(url => {
-                        var data = (url !== null) ? {
-                            nameKindFood: valuesKindFood.nameKindFood,
-                            quantity: valuesKindFood.quantity,
-                            imagesKindFood: url,
-                            status: 0
-                        } : {
-                            name: valuesKindFood.nameKindFood,
-                            quantity: valuesKindFood.quantity,
-                            imagesKindFood: null,
-                            status: 0
-                        };
+            const uploadTask = storage.ref(`imagesKindFood/${image.name}`).put(image);
+            uploadTask.on(
+                "state_changed",
+                snapshot => { },
+                error => {
+                    console.log(error);
+                },
+                () => {
+                    storage.ref("imagesKindFood")
+                        .child(image.name)
+                        .getDownloadURL()
+                        .then(url => {
+                            var data = (url !== null) ? {
+                                nameKindFood: valuesKindFood.nameKindFood,
+                                quantity: valuesKindFood.quantity,
+                                imagesKindFood: url,
+                                status: 0
+                            } : {
+                                    name: valuesKindFood.nameKindFood,
+                                    quantity: valuesKindFood.quantity,
+                                    imagesKindFood: null,
+                                    status: 0
+                                };
 
-                        ServiceKindFood.create(data)
-                            .then(() => {
-                                setSubmitted(true);
-                                history.push(`/webadmin/kindFood`);
-                            })
-                            .catch(e => {
-                                console.log(e);
-                            });
+                            ServiceKindFood.create(data)
+                                .then(() => {
+                                    setSubmitted(true);
+                                    history.push(`/webadmin/kindFood`);
+                                })
+                                .catch(e => {
+                                    console.log(e);
+                                });
 
-                    })
-            }
-        )
+                        })
+                }
+            )
         } else {
             var data = {
                 nameKindFood: valuesKindFood.nameKindFood,
@@ -94,6 +94,10 @@ function FormInsert_KindFood() {
         }
     }
 
+    function close() {
+        history.push('/webadmin/kindFood')
+    }
+
     const hanleFormSubmit = e => {
         setValueKindFood(initialFieldValues);
         setSubmitted(false);
@@ -102,44 +106,33 @@ function FormInsert_KindFood() {
     return (
         <div className="sub-container">
             <h2 className="titleform">Thêm loại món</h2>
-            <Form onSubmit={hanleFormSubmit}>
+            <Form onSubmit={hanleFormSubmit} className="form-insert-edit">
 
-                <Form.Group controlId="formName">
+                <Form.Group controlId="formName" className=" form__long">
                     <Form.Label> Tên loại món: </Form.Label>
-                    <Form.Control 
-                    name="nameKindFood"
-                    type="text" 
-                    placeholder="Name Kind Food"
-                    value={valuesKindFood.nameKindFood}
-                    onChange={handleInputChange}
-                    />
-                </Form.Group>
-
-                {/* <Form.Group controlId="formQuantity">
-                    <Form.Label> Quantity: </Form.Label>
                     <Form.Control
-                    name="quantity"
-                    value={valuesKindFood.quantity}
-                    onChange={handleInputChange} 
-                    type="text" 
-                    placeholder="Quantity" />
-                </Form.Group> */}
-
-                <Form.Group>
-                    <Form.File 
-                    id="fileImageKindFood" 
-                    label="Choose Image:"
-                    onChange={handleChange} 
+                        name="nameKindFood"
+                        type="text"
+                        placeholder="Name Kind Food"
+                        value={valuesKindFood.nameKindFood}
+                        onChange={handleInputChange}
                     />
                 </Form.Group>
 
-                <Button 
-                onClick={saveKindFood}
-                // variant="primary" 
-                // type="submit"
-                >
-                    Submit
-                </Button>
+                <Form.Group className=" form__short fileImageAddress margin-form" >
+                    <Form.Label>Chọn ảnh: </Form.Label>
+                    <Form.File
+                        id="fileImageAddress"
+                        onChange={handleChange}
+                    // label="Choose Image:" 
+                    />
+                </Form.Group>
+
+                <Form.Group className="row form__button" >
+                    <Button onClick={saveKindFood} className="btn-add">Đồng ý</Button>
+                    <Button onClick={close} className="btn-close" >Hủy</Button>
+                </Form.Group>
+
             </Form>
 
 

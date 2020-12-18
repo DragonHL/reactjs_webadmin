@@ -14,6 +14,8 @@ import Collapse from 'react-bootstrap/Collapse';
 import Modal from "react-bootstrap/Modal";
 
 
+
+
 // library react-icons/bi or react-icons/fa ....
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
@@ -30,7 +32,7 @@ import {
 import { GiStarsStack } from "react-icons/gi";
 
 
-function SideBar() {
+function SideBar(props) {
     const [open, setOpen] = useState(false);
 
     const { currentUser, logout } = useAuth();
@@ -54,7 +56,6 @@ function SideBar() {
 
     const StyleModal = {
         margin: "150px 0 0 0",
-        
     };
 
     const StyleLinkProfile = {
@@ -69,11 +70,21 @@ function SideBar() {
     const [loading, setLoading] = useState(false)
 
 
+    //show and hide tab sidebar
+    const styleSideBar = {
+        display: "none",
+        transition: "1s"
+    };
+    if (props.openSideBar) {
+        styleSideBar.display = "block";
 
-    const [isShow, setIsShow] = useState(false)
+    } else {
+        styleSideBar.display = "none";
+    }
+    //----------------------------------
+
 
     async function handleSubmit(e) {
-        console.log("alo")
         e.preventDefault();
 
         try {
@@ -94,10 +105,12 @@ function SideBar() {
 
     return (
         // ref={}
-        <div className="body" >
+        <>
+        {/* < className="body" > */}
+
 
             {/* side-bar */}
-            <div className="side-bar" >
+            <div className="side-bar" style={styleSideBar} >
 
                 <div class="informationAdmin-SideBar"
                     onClick={() => setOpen(!open)}
@@ -124,8 +137,8 @@ function SideBar() {
                         <ul className="nav flex-column">
                             <li className="nav-item-vertical">
                                 <a className="nav-link-vertical active link-profile" onClick={handleShow} style={StyleLinkProfile}>Đổi mật khẩu</a>
-                                
-                                
+
+
                                 <Modal show={show} onHide={handleClose} style={StyleModal} >
                                     <Modal.Header closeButton>
                                         <Modal.Title>Đổi mật khẩu</Modal.Title>
@@ -138,7 +151,7 @@ function SideBar() {
                                             <Button className="w-100" type="submit" className="button_reset_pass" >
                                                 Gửi
                                             </Button>
-                                            <Button onClick={handleClose} className="w-100  mt-4 mb-5"  className="button_cancel">
+                                            <Button onClick={handleClose} className="w-100  mt-4 mb-5" className="button_cancel">
                                                 Hủy
                                             </Button>
                                         </Form>
@@ -203,12 +216,12 @@ function SideBar() {
                             <p>Hóa đơn</p>
                         </Link>
                     </li>
-                    <li>
+                    {/* <li>
                         <Link to="/webadmin/trackOrder" className="linkSideBar">
                             <FaTruck className="fas fa-truck i" />
                             <p>Theo dõi đơn hàng</p>
                         </Link>
-                    </li>
+                    </li> */}
                     <li>
                         <Link to="/webadmin/vouchers" className="linkSideBar">
                             <FaUserTag className="fas fa-user-tag i" />
@@ -225,7 +238,9 @@ function SideBar() {
 
             </div>
 
-        </div>
+        </>
+
+
 
     );
 }

@@ -3,6 +3,9 @@ import '../../css/Container_Body_Table.css';
 import '../../css/DataTable.css';
 
 import TableContentOrderDetail from './TableContentOrderDetail';
+import ContainerTrackOrder from './ContainerTrackOrder';
+
+
 
 function ContainerOrderDetail(props) {
     // oucherId={props.location.state.key} code={props.location.state.code}
@@ -17,7 +20,11 @@ function ContainerOrderDetail(props) {
             // code={props.location.state.code} 
             cart= {props.location.state.cart}
             />
-
+            <div className="line-top-track-order"></div>
+            <ContainerTrackOrder 
+            orderID = {props.location.state.orderID}
+            userID= {props.location.state.userID}
+            />
         </div>
     );
 }

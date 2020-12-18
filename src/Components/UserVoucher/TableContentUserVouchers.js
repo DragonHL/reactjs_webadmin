@@ -13,13 +13,8 @@ const TableContentUserVouchers = (props) => {
   const [voucherId, setVoucherID] = useState(props.voucherId);
 
   const [dataUserVouchers, loadingUserVouchers, errorUserVouchers] = useList(User_VouchersService.getAllFollowVoucherId(voucherId));
-  // const [dataUser, loadingUser, errorUser] = useList(UserService.getAll());
+
   const [dataUser, loadingUser, errorUser] = useList(UserService.getAllFollowStatus(0));
-
-  // console.log("voucherId",voucherId)
-  // console.log("dataUserVouchers",dataUserVouchers)
-
-
 
 
   const rows = dataUserVouchers.map((dataUV, index) => ({

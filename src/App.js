@@ -10,7 +10,7 @@ import { AuthProvider } from "./Service/LoginService";
 
 function App() {
   return (
-    <div>
+    <>
       <AuthProvider>
         <Switch>
           <Route exact path="/" component={Login} />
@@ -19,7 +19,7 @@ function App() {
         </Switch>
       </AuthProvider>
 
-    </div>
+    </>
   );
 }
 

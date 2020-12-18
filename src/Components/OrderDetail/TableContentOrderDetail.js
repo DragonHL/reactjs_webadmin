@@ -11,29 +11,25 @@ const TableContentOrderDetail = (props) => {
 
   const [dataDetail, setDataDetail] = useState(props.cart);
 
-  console.log("dataDetail", dataDetail)
+
   var orderDetail = [];
   for (var i in dataDetail) {
     dataDetail[i].product.quantity = dataDetail[i].quantity;
     orderDetail.push(dataDetail[i].product);
-    // console.log(dataDetail[i], "i")
   }
 
   function nameKindFood() {
     var name = "";
     for (var o of orderDetail) {
       for (var d of dataKindFood) {
-        console.log('d.key', d.key)
-        console.log('o.kindFoodID', o.kindFoodID)
         if (d.key === o.kindFoodID) {
           name = d.val().nameKindFood;
-          // console.log('d.kindFoodID', d.kindFoodID)
         }
       }
     }
     return name;
   }
-  // console.log("nameKindFood()", orderDetail)
+
 
   const rows = orderDetail.map((dataOD, index) => ({
     stt: (index + 1),

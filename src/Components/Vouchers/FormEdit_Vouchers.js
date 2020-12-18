@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import VouchersService from "../../Service/VouchersService";
 import { useHistory } from "react-router-dom";
+import moment from 'moment';
 
 function FormEdit_Vouchers(props) {
 
@@ -12,8 +13,8 @@ function FormEdit_Vouchers(props) {
         code: props.location.state.code,
         discount: props.location.state.discount,
         description: props.location.state.description,
-        dateStart: props.location.state.dateStart,
-        dateEnd: props.location.state.dateEnd,
+        dateStart: moment(props.location.state.dateStart, 'DD/MM/YYYY').format('YYYY-MM-DD'),
+        dateEnd: moment(props.location.state.dateEnd, 'DD/MM/YYYY').format('YYYY-MM-DD'),
         key: props.location.state.key,
     }
 
@@ -31,8 +32,8 @@ function FormEdit_Vouchers(props) {
             code: valuesDiscounts.code,
             discount: valuesDiscounts.discount,
             description: valuesDiscounts.description,
-            dateStart: valuesDiscounts.dateStart,
-            dateEnd: valuesDiscounts.dateEnd
+            dateStart: moment(valuesDiscounts.dateStart).format('DD-MM-YYYY'),
+            dateEnd: moment(valuesDiscounts.dateEnd).format('DD-MM-YYYY')
         };
 
         VouchersService.update(valuesDiscounts.key, data)
@@ -46,6 +47,10 @@ function FormEdit_Vouchers(props) {
             });
     }
 
+    function close() {
+        history.push('/webadmin/vouchers')
+    }
+
     const hanleFormSubmit = e => {
         setValuesDiscount(initialFieldValues);
         setSubmitted(false);
@@ -54,12 +59,12 @@ function FormEdit_Vouchers(props) {
     return (
         <div className="sub-container">
 
-            <h2 className="titleform">Form Edit Vouchers</h2>
+            <h2 className="titleform">Cập nhật thông tin giảm giá</h2>
 
-            <Form onSubmit={hanleFormSubmit}>
+            <Form onSubmit={hanleFormSubmit} className="form-insert-edit">
 
-                <Form.Group controlId="formCode">
-                    <Form.Label> Code: </Form.Label>
+                <Form.Group controlId="formCode" className="form__long margin-form">
+                    <Form.Label> Mã: </Form.Label>
                     <Form.Control
                         name="code"
                         type="text"
@@ -69,8 +74,8 @@ function FormEdit_Vouchers(props) {
                     />
                 </Form.Group>
 
-                <Form.Group controlId="formDiscount">
-                    <Form.Label> Discount: </Form.Label>
+                <Form.Group controlId="formDiscount" className="form__long margin-form">
+                    <Form.Label> Giảm giá: </Form.Label>
                     <Form.Control
                         name="discount"
                         type="text"
@@ -80,43 +85,50 @@ function FormEdit_Vouchers(props) {
                     />
                 </Form.Group>
 
-                <Form.Group controlId="formDescription">
-                    <Form.Label> Description: </Form.Label>
+                <Form.Group controlId="formDescription" className="form__long margin-form">
+                    <Form.Label> Thông tin: </Form.Label>
                     <Form.Control
                         name="description"
                         type="text"
                         placeholder="Description"
                         value={valuesDiscounts.description}
                         onChange={handleInputChange}
+                        as="textarea" rows={3}
                     />
                 </Form.Group>
 
-                <Form.Group controlId="formDateStart">
-                    <Form.Label> Date Start: </Form.Label>
-                    <Form.Control
-                        name="dateStart"
-                        type="text"
-                        placeholder="Date Start"
-                        value={valuesDiscounts.dateStart}
-                        onChange={handleInputChange}
-                    />
+                <Form.Group className="row margin-form" >
+                    <Form.Group controlId="formDateStart" className="form__short">
+                        <Form.Label> Ngày bắt đầu: </Form.Label>
+                        <Form.Control
+                            name="dateStart"
+                            type="date"
+                            placeholder="Date Start"
+                            value={valuesDiscounts.dateStart}
+                            onChange={handleInputChange}
+                        />
+                    </Form.Group>
+
+                    <Form.Group controlId="formDateEnd" className="form__short ">
+                        <Form.Label> Ngày kết thúc: </Form.Label>
+                        <Form.Control
+                            name="dateEnd"
+                            type="date"
+                            placeholder="Date End"
+                            value={valuesDiscounts.dateEnd}
+                            onChange={handleInputChange}
+                        />
+                    </Form.Group>
                 </Form.Group>
 
-                <Form.Group controlId="formDateEnd">
-                    <Form.Label> Date End: </Form.Label>
-                    <Form.Control
-                        name="dateEnd"
-                        type="text"
-                        placeholder="Date End"
-                        value={valuesDiscounts.dateEnd}
-                        onChange={handleInputChange}
-                    />
-                </Form.Group>
 
-                <Button onClick={saveDiscount}>
-                    Submit
-                </Button>
+
+                <Form.Group className="row form__button" >
+                    <Button onClick={saveDiscount} className="btn-add">Đồng ý</Button>
+                    <Button onClick={close} className="btn-close">Hủy</Button>
+                </Form.Group>
             </Form>
+
 
         </div>
     );

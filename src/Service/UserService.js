@@ -9,6 +9,9 @@ const getAll = () => {
 const getAllFollowStatus = (status) => {
     return db.orderByChild('status').equalTo(status);
 }
+const getUserFollowUserID = (userID) => {
+    return db.orderByChild('userID').equalTo(userID);
+}
 
 const create = (data) => {
     return db.push(data);
@@ -27,5 +30,6 @@ export default {
     create,
     update,
     remove,
-    getAllFollowStatus
+    getAllFollowStatus,
+    getUserFollowUserID
 }

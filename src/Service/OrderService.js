@@ -10,6 +10,11 @@ const getAllCart = () => {
   return db.orderByChild("cart");
 };
 
+const getBillFollowBillId = (billid) => {
+  return db.orderByChild("billid").equalTo(billid);
+
+};
+
 const updateStatus = (key, value) => {
   return db.child(key).update({status: value});
 }
@@ -18,5 +23,6 @@ const updateStatus = (key, value) => {
 export default {
     getAll,
     getAllCart,
-    updateStatus
+    updateStatus,
+    getBillFollowBillId
 }

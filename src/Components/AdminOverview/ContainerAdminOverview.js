@@ -3,7 +3,7 @@
 import '../../css/Container_Body_Admin.css';
 
 import CurveChart from './CurveChart';
-import Piechart3d from './Piechart3d';
+
 import TableContent_StatisticsBestSelling_FollowDay from './TableContent_StatisticsBestSelling_FollowDay';
 
 

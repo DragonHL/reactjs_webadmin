@@ -16,10 +16,16 @@ function FormEditFood(props) {
     // console.log(props.location.state) // get param on address web
     // console.log(props.location.state.price) 
 
+    // const [valuesNameKindFood, setValueNameKindFood] = useState(props.location.state.nameKindFood);
+    // const [valuesKindFoodID, setValueKindFoodID] = useState(props.location.state.keyKindFood);
+    const [valuesNameKindFood, setValueNameKindFood] = useState(props.location.state.nameKindFood);
+    const [valuesKindFoodID, setValueKindFoodID] = useState(props.location.state.keyKindFood);
+
+
     const initialFieldValues = {
         nameFood: props.location.state.nameFood,
         informationFood: props.location.state.informationFood,
-        nameKindFood: props.location.state.nameKindFood,
+        nameKindFood: valuesNameKindFood,
         imagesFood: props.location.state.imagesFood,
         price: props.location.state.price,
         key: props.location.state.key
@@ -73,7 +79,7 @@ function FormEditFood(props) {
                                 .then(() => {
                                     setSubmitted(true);
                                     console.log("success!!!")
-                                    history.push('/webadmin/food', { keyKindFood: props.location.state.keyKindFood, nameKindFood: props.location.state.nameKindFood })
+                                    history.push('/webadmin/food', { keyKindFood: valuesKindFoodID, nameKindFood: valuesNameKindFood })
                                 })
                                 .catch(e => {
                                     console.log(e);
@@ -94,12 +100,16 @@ function FormEditFood(props) {
                 .then(() => {
                     setSubmitted(true);
                     console.log("success!!!")
-                    history.push('/webadmin/food', { keyKindFood: props.location.state.keyKindFood, nameKindFood: props.location.state.nameKindFood })
+                    history.push('/webadmin/food', { keyKindFood: valuesKindFoodID, nameKindFood: valuesNameKindFood })
                 })
                 .catch(e => {
                     console.log(e);
                 });
         }
+    }
+
+    function close() {
+        history.push('/webadmin/food', { keyKindFood: valuesKindFoodID, nameKindFood: valuesNameKindFood })
     }
 
     const hanleFormSubmit = e => {
@@ -110,66 +120,72 @@ function FormEditFood(props) {
 
     return (
         <div className="sub-container">
-            <h2 className="titleform">Form Edit Food</h2>
-            <Form onSubmit={hanleFormSubmit}>
+            <h2 className="titleform">Cập nhật thông tin món ăn</h2>
+            
+            <Form onSubmit={hanleFormSubmit} className="form-insert-edit">
 
-                <Form.Group controlId="formName">
-                    <Form.Label>Name: </Form.Label>
+                <Form.Group controlId="formName" className="form__long margin-form" >
+                    <Form.Label>Tên món ăn: </Form.Label>
                     <Form.Control
                         name="nameFood"
                         type="text"
-                        placeholder="Name Food"
+                        // placeholder="Name Food"
                         value={valuesFood.nameFood}
                         onChange={handleInputChange}
                     />
                 </Form.Group>
 
-                <Form.Group controlId="formInformation">
-                    <Form.Label>Information: </Form.Label>
+                <Form.Group controlId="formInformation" className="form__long margin-form">
+                    <Form.Label>Thông tin: </Form.Label>
                     <Form.Control
                         name="informationFood"
                         type="text"
-                        placeholder="Information"
+                        // placeholder="Information"
                         value={valuesFood.informationFood}
                         onChange={handleInputChange}
+                        as="textarea" rows={3}
                     />
                 </Form.Group>
 
-                <Form.Group controlId="formPriceFood">
-                    <Form.Label>Price Food: </Form.Label>
+                <Form.Group controlId="formPriceFood" className="form__short margin-form">
+                    <Form.Label>Giá: </Form.Label>
                     <Form.Control
                         name="price"
                         type="text"
-                        placeholder="Price Food"
+                        // placeholder="Price Food"
                         value={valuesFood.price}
                         onChange={handleInputChange}
                     />
                 </Form.Group>
 
-                <Form.Group controlId="formKindFood">
-                    <Form.Label>Kind Food: </Form.Label>
+                <Form.Group controlId="formKindFood" className="form__short margin-form">
+                    <Form.Label>Loại món ăn: </Form.Label>
                     <Form.Control
                         type="text"
-                        placeholder="Kind Food"
-                        value={props.location.state.nameKindFood}
+                        // placeholder="Kind Food"
+                        value={valuesFood.nameKindFood}
                         onChange={handleInputChange}
                     />
                 </Form.Group>
 
-                <Form.Group>
+                <Form.Group className=" form__short fileImageAddress margin-form">
+                    <Form.Label>Chọn ảnh: </Form.Label>
                     <Form.File
                         id="fileImageKindFood"
-                        label="Choose Image:"
+                        // label="Choose Image:"
                         onChange={handleChange}
                     />
                 </Form.Group>
 
-                <Button onClick={saveKindFood}>
-                    Submit
-                </Button>
+                <Form.Group className="row form__button" >
+                    <Button onClick={saveKindFood} className="btn-add">
+                        Đồng ý
+                    </Button>
+                    <Button onClick={close} className="btn-close" >
+                        Hủy
+                    </Button>
+                </Form.Group>
             </Form>
-
-
         </div>
     );
 }

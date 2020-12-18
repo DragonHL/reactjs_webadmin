@@ -28,7 +28,7 @@ const TableContent_StatisticsBestSelling_FollowDay = (props) => {
 
     // setFoodSort(arrayFoodBestSelling())
 
-  }, [props.bill, props.arrayStartDate, props.arrayEndDate, arrayBillDetailSort])
+  }, [props.bill, props.arrayStartDate, props.arrayEndDate])
 
   function billDetail() {
     if (bill !== null) {
@@ -52,42 +52,131 @@ const TableContent_StatisticsBestSelling_FollowDay = (props) => {
 
   }
 
-
-  var arrayBillDetailSort = billDetail().sort(function (a, b) {
-    // console.log("   billDetail().date =====> ",   billDetail().date)
-    return (b.totalPrice - a.totalPrice);
-  })
-
+  // var billDetail()  = billDetail().sort(function (a, b) {
+  //   // console.log("   billDetail().date =====> ",   billDetail().date)
+  //   return (b.totalPrice - a.totalPrice);
+  // })
 
 
 
 
-  function arrayFoodBestSelling() {
+
+  function arrayFoodFollowDate() {
     var arrayDateOfBillDetail = [];
-    var arrFoodBestSelling = []
+    var arrFoodFollowDate = []
 
-    for (var i in arrayBillDetailSort) {
-      arrayDateOfBillDetail = (arrayBillDetailSort[i].date).match(/\d+/g);
-
-      // if (i <= 9) {
+    for (var i in billDetail()) {
+      arrayDateOfBillDetail = (billDetail()[i].date).match(/\d+/g);
       if (
         (parseFloat(arrayStartDate[0]) <= arrayDateOfBillDetail[0]) && (arrayDateOfBillDetail[0] <= parseFloat(arrayEndDate[0])) &&
         (parseFloat(arrayDateOfBillDetail[1]) === parseFloat(arrayStartDate[1])) && (parseFloat(arrayDateOfBillDetail[1]) === parseFloat(arrayEndDate[1])) &&
         (parseFloat(arrayStartDate[2]) <= parseFloat(arrayDateOfBillDetail[2])) && (parseFloat(arrayEndDate[2]) <= parseFloat(arrayDateOfBillDetail[2]))
       ) {
-        arrFoodBestSelling.push(arrayBillDetailSort[i]);
+        arrFoodFollowDate.push(billDetail()[i]);
       }
     }
+
+
+
+
+
+
+    // let totalPrice = 0;
+    // let totalQuantity = 0;
+    // let count = 0;
+    // let index = 0;
+    // var arrayFood = [];
+    // var arrayFood2 = [];
+    // let totalPriceFollowNameFood = null;
+    // for (var item1 in arrFoodFollowDate) {
+    //   for (var item2 in arrFoodFollowDate) {
+    //     if (arrFoodFollowDate[item1].nameFood === arrFoodFollowDate[item2].nameFood) {
+
+
+    //       arrFoodFollowDate[item1].totalPrice += arrFoodFollowDate[item2].totalPrice;
+    //       arrFoodFollowDate[item1].totalQuantity += arrFoodFollowDate[item2].quantity;
+
+
+    //       // console.log("count =====> ", arrFoodFollowDate [item1].nameFood + "/" + arrFoodFollowDate [item1].date + "/" + "---------------->" + arrFoodFollowDate [item2].totalPrice)
+    //       // console.log("totalPrice =====> ",arrFoodFollowDate [item1].nameFood + "/" + arrFoodFollowDate [item1].date + "/" + "---=============---->" + totalPrice + "====> " + totalQuantity)
+
+    //       count++;
+
+    //       if (count === 1) {
+    //         arrayFood.push(arrFoodFollowDate[item1])
+    //       }
+
+    //       // totalPriceFollowNameFood = {
+    //       //   id: arrFoodFollowDate[item1].id,
+    //       //   imagesFood: arrFoodFollowDate[item1].imagesFood,
+    //       //   informationFood: arrFoodFollowDate[item1].informationFood,
+    //       //   nameFood: arrFoodFollowDate[item1].nameFood,
+    //       //   price: arrFoodFollowDate[item1].price,
+    //       //   quantity: totalQuantity,
+    //       //   totalPrice: totalPrice
+    //       // }
+
+
+    //     }
+
+
+    //   }
+
+
+
+    //   // arrayFood.push(totalPriceFollowNameFood);
+
+    //   console.log("arrayFood =====> ", arrayFood);
+
+
+
+
+
+    //   totalPrice = 0;
+    //   totalQuantity = 0;
+    //   count = 0;
     // }
-    return arrFoodBestSelling;
+
+
+
+    return arrFoodFollowDate;
   }
 
-  var rows = arrayFoodBestSelling().map((dataBDS, index) => ({
+
+  var arrayFoodFollowNameFood = arrayFoodFollowDate().reduce((accumulator, currentValue) => {
+    var existItem = accumulator.find((item) => item.nameFood === currentValue.nameFood);
+    if (existItem) {
+      existItem.quantity += currentValue.quantity;
+      existItem.totalPrice += currentValue.totalPrice;
+      return accumulator;
+    }
+    accumulator.push(currentValue);
+    return accumulator;
+  }, []);
+
+
+  var arrayFoodSort = arrayFoodFollowNameFood.sort((a, b) => {
+
+    if (a.totalPrice < b.totalPrice) {
+      return 1;
+    }
+    if (a.totalPrice > b.totalPrice) {
+      return -1;
+    }
+    return 0;
+  });
+
+
+  var rows = arrayFoodSort.filter(function (item, index) {
+    if (index <= 9) {
+      return item;
+    }
+  }).map((item, index) => ({
     stt: (index + 1),
-    idFood: dataBDS.id,
-    nameFood: dataBDS.nameFood,
-    imagesFood: <img src={dataBDS.imagesFood} alt="" />,
-    totalPrice: dataBDS.totalPrice
+    nameFood: item.nameFood,
+    imagesFood: <img src={item.imagesFood} alt="" />,
+    quantity: item.quantity,
+    totalPrice: item.totalPrice
   }));
 
   const data = {
@@ -100,31 +189,30 @@ const TableContent_StatisticsBestSelling_FollowDay = (props) => {
       }
       ,
       {
-        label: 'ID Food',
-        field: 'idFood',
-        sort: 'asc',
-        width: 170
-      },
-      {
-        label: 'Name Food',
+        label: 'Món ăn',
         field: 'nameFood',
         sort: 'asc',
         width: 150
       },
       {
-        label: 'Images',
+        label: 'Ảnh',
         field: 'imagesFood',
         sort: 'disabled',
         width: 100
       }
       ,
       {
-        label: 'Total Price',
+        label: 'Số lượng',
+        field: 'quantity',
+        sort: 'asc',
+        width: 170
+      },
+      {
+        label: 'Tổng',
         field: 'totalPrice',
         sort: 'disabled',
         width: 100
       }
-
     ],
 
     rows: rows

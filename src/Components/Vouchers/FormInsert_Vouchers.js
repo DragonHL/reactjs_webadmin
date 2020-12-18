@@ -8,11 +8,11 @@ import { useList } from 'react-firebase-hooks/database';
 import VouchersService from '../../Service/VouchersService';
 import UserService from '../../Service/UserService';
 import User_VouchersService from '../../Service/User_VouchersService';
+import moment from 'moment';
 
 function FormInsert_EditVouchers() {
   const [dataUser, loading, error] = useList(UserService.getAll());
-  // console.log('-------------------------dataUser--------------------');
-  // console.log(dataUser);
+
 
   const initialFieldValues = {
     code: '',
@@ -38,8 +38,8 @@ function FormInsert_EditVouchers() {
         code: valuesVouchers.code,
         discount: parseFloat(valuesVouchers.discount),
         description: valuesVouchers.description,
-        dateStart: valuesVouchers.dateStart,
-        dateEnd: valuesVouchers.dateEnd,
+        dateStart: moment(valuesVouchers.dateStart).format('DD-MM-YYYY'),
+        dateEnd: moment(valuesVouchers.dateEnd).format('DD-MM-YYYY'),
         status: 0,
       };
       var voucher = VouchersService.create(data);
@@ -49,13 +49,9 @@ function FormInsert_EditVouchers() {
 
     promise
       .then(function (voucher) {
-        // console.log('voucher2');
-        // console.log(voucher);
 
         for (var user of dataUser) {
-          // console.log('user');
-          // console.log(user);
-          // console.log(user.val().userID);
+
           var dataUserVouchers = {
             userID: user.val().userID,
             voucherId: voucher.key,
@@ -73,6 +69,10 @@ function FormInsert_EditVouchers() {
       });
   };
 
+  function close() {
+    history.push('/webadmin/vouchers')
+  }
+
   const hanleFormSubmit = e => {
     setValuesVouchers(initialFieldValues);
     setSubmitted(false);
@@ -81,12 +81,12 @@ function FormInsert_EditVouchers() {
   return (
     <div className="sub-container">
 
-      <h2 className="titleform">Form Add Vouchers</h2>
+      <h2 className="titleform">Thêm phiếu giảm giá</h2>
 
-      <Form onSubmit={hanleFormSubmit}>
+      <Form onSubmit={hanleFormSubmit} className="form-insert-edit">
 
-        <Form.Group controlId="formCode">
-          <Form.Label> Code: </Form.Label>
+        <Form.Group controlId="formCode" className="form__long margin-form">
+          <Form.Label> Mã: </Form.Label>
           <Form.Control
             name="code"
             type="text"
@@ -96,8 +96,8 @@ function FormInsert_EditVouchers() {
           />
         </Form.Group>
 
-        <Form.Group controlId="formDiscount">
-          <Form.Label> Discount: </Form.Label>
+        <Form.Group controlId="formDiscount" className="form__long margin-form">
+          <Form.Label> Giảm giá: </Form.Label>
           <Form.Control
             name="discount"
             type="text"
@@ -107,42 +107,46 @@ function FormInsert_EditVouchers() {
           />
         </Form.Group>
 
-        <Form.Group controlId="formDescription">
-          <Form.Label> Description: </Form.Label>
+        <Form.Group controlId="formDescription" className="form__long margin-form">
+          <Form.Label> Thông tin: </Form.Label>
           <Form.Control
             name="description"
             type="text"
             placeholder="Description"
             value={valuesVouchers.description}
             onChange={handleInputChange}
+            as="textarea" rows={3}
           />
         </Form.Group>
 
-        <Form.Group controlId="formDateStart">
-          <Form.Label> Date Start: </Form.Label>
-          <Form.Control
-            name="dateStart"
-            type="text"
-            placeholder="Date Start"
-            value={valuesVouchers.dateStart}
-            onChange={handleInputChange}
-          />
+        <Form.Group className="row margin-form" >
+          <Form.Group controlId="formDateStart" className="form__short">
+            <Form.Label> Ngày bắt đầu: </Form.Label>
+            <Form.Control
+              name="dateStart"
+              type="date"
+              placeholder="Date Start"
+              value={valuesVouchers.dateStart}
+              onChange={handleInputChange}
+            />
+          </Form.Group>
+
+          <Form.Group controlId="formDateEnd" className="form__short ">
+            <Form.Label> Ngày kết thúc: </Form.Label>
+            <Form.Control
+              name="dateEnd"
+              type="date"
+              placeholder="Date End"
+              value={valuesVouchers.dateEnd}
+              onChange={handleInputChange}
+            />
+          </Form.Group>
         </Form.Group>
 
-        <Form.Group controlId="formDateEnd">
-          <Form.Label> Date End: </Form.Label>
-          <Form.Control
-            name="dateEnd"
-            type="text"
-            placeholder="Date End"
-            value={valuesVouchers.dateEnd}
-            onChange={handleInputChange}
-          />
+        <Form.Group className="row form__button" >
+          <Button onClick={saveVouchers} className="btn-add">Thêm </Button>
+          <Button onClick={close} className="btn-close">Hủy</Button>
         </Form.Group>
-
-        <Button onClick={saveVouchers}>
-          Submit
-        </Button>
       </Form>
 
     </div>

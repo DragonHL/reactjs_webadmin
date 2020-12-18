@@ -36,16 +36,15 @@ function CurveChart(props) {
         return numberMax;
     }
 
-    // console.log("numberMax ==>", statisticalMax())
 
 
     return (
-// arrayStatistical()[0][6]
         <>
             <Chart
                 width={'100%'}
                 height={'350px'}
                 chartType="LineChart"
+                
                 loader={<div>Loading Chart</div>}
 
                 data={[
@@ -74,6 +73,7 @@ function CurveChart(props) {
                     },
                     legend: { position: 'top' },
                     chartArea: { width: '80%', right: 50 }
+
                 }}
                 rootProps={{ 'data-testid': '1' }}
             />

@@ -1,6 +1,5 @@
 
-// import React,{Component} from 'react';
-import React from "react";
+import React, { useState } from "react";
 
 import '../../css/Overview.css';
 import '../../css/Container_Body_Admin.css';
@@ -9,16 +8,24 @@ import '../../css/Font_Google.css';
 
 // library react-icons/bi or react-icons/fa ....
 // import { BiSearch } from 'react-icons/bi';
-// import { GoThreeBars } from "react-icons/go";
-import { useAuth } from '../../Service/LoginService'
+import { GoThreeBars } from "react-icons/go";
+import { useAuth } from '../../Service/LoginService';
 
 
-function Header (){
+
+
+function Header (props){
     const { currentUser } = useAuth();
+
+    
+    function open() {
+        props.setOpenSideBar(!props.openSideBar);
+    }
+
     
 
         return (
-            <div >
+            < >
     
                 <div className="header">
     
@@ -28,10 +35,10 @@ function Header (){
                     </div>
     
                     <div className="navbar-header">
-                        {/* <div className="iconMenu">
-                            <GoThreeBars className="fas fa-bars" /> 
+                        <div className="iconMenu">
+                            <GoThreeBars className="fas fa-bars" onClick={()=>open()} /> 
+                        </div>
 
-                        </div> */}
                         {/* <!-- Search form --> */}
                         {/* <div className="search">
                             <input className="form-control iSearch" type="text" placeholder="Search..." aria-label="Search" />
@@ -40,13 +47,13 @@ function Header (){
     
                         {/* <!-- information --> */}
                         <div className="informationAdmin">
-                            <p className="nameAdminHeader">Dragon</p>
+                            <p className="nameAdminHeader">Admin</p>
                             <img src="https://image.thanhnien.vn/1080/uploaded/nthanhluan/2020_04_18/billgates_dlid.jpg"
                                 alt="imageadmin" width="60px" height="60px" className="imageAdminHeader" />
                         </div>
                     </div>
                 </div>
-            </div>
+            </>
         );
     
 }

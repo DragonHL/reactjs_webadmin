@@ -11,7 +11,9 @@ import ServiceEmployee from "../../Service/EmployeeService"
 
 import { useHistory } from "react-router-dom";
 
-import moment from 'moment'
+import moment from 'moment';
+
+
 
 const FormInsert_Employees = () => {
 
@@ -63,8 +65,8 @@ const FormInsert_Employees = () => {
                                 phone: valuesEmployees.phone,
                                 address: valuesEmployees.address,
                                 birthday: moment(valuesEmployees.birthday).format('DD-MM-YYYY'),
-                                startWork:  moment(valuesEmployees.startWork).format('DD-MM-YYYY'),
-                                endWork:   moment(valuesEmployees.endWork).format('DD-MM-YYYY'),
+                                startWork: moment(valuesEmployees.startWork).format('DD-MM-YYYY'),
+                                endWork: moment(valuesEmployees.endWork).format('DD-MM-YYYY'),
                                 role: valuesEmployees.role,
                                 imageUrl: url,
                                 status: 0
@@ -84,8 +86,8 @@ const FormInsert_Employees = () => {
                                 .then(() => {
                                     setSubmitted(true);
                                     history.push(`/webadmin/employees`);
-                                   
-                                    
+
+
                                 })
                                 .catch(e => {
                                     console.log(e);
@@ -99,9 +101,9 @@ const FormInsert_Employees = () => {
                 name: valuesEmployees.name,
                 phone: valuesEmployees.phone,
                 address: valuesEmployees.address,
-                birthday:  valuesEmployees.birthday,
-                startWork: valuesEmployees.startWork,
-                endWork: valuesEmployees.endWork,
+                birthday: moment(valuesEmployees.birthday).format('DD-MM-YYYY'),
+                startWork: moment(valuesEmployees.startWork).format('DD-MM-YYYY'),
+                endWork: moment(valuesEmployees.endWork).format('DD-MM-YYYY'),
                 role: valuesEmployees.role,
                 imageUrl: null,
                 status: 0
@@ -117,6 +119,10 @@ const FormInsert_Employees = () => {
         }
     }
 
+    function close() {
+            history.push('/webadmin/employees')
+    }
+
     const hanleFormSubmit = e => {
         setValuesEmployees(initialFieldValues);
         setSubmitted(false);
@@ -125,76 +131,83 @@ const FormInsert_Employees = () => {
     return (
         <div className="sub-container">
             <h2 className="titleform">Thêm mới nhân viên</h2>
-            <Form onSubmit={hanleFormSubmit}>
+            <Form onSubmit={hanleFormSubmit} className="form-insert-edit">
 
-                <Form.Group controlId="formName">
-                    <Form.Label>Name: </Form.Label>
-                    <Form.Control
-                        name="name"
-                        type="text"
-                        placeholder="Name Food"
-                        value={valuesEmployees.name}
-                        onChange={handleInputChange}
-                    />
+                <Form.Group className="row">
+                    <Form.Group controlId="formName" className="form__long">
+                        <Form.Label>Tên: </Form.Label>
+                        <Form.Control
+                            name="name"
+                            type="text"
+                            placeholder="Name Food"
+                            value={valuesEmployees.name}
+                            onChange={handleInputChange}
+                        />
+                    </Form.Group>
+                    <Form.Group controlId="formBirthday" className="form__short">
+                        <Form.Label>Ngày sinh: </Form.Label>
+                        <Form.Control
+                            name="birthday"
+                            type="date"
+                            placeholder="Birthday"
+                            // value={valuesEmployees.birthday}
+                            value={valuesEmployees.birthday}
+                            onChange={handleInputChange}
+                        />
+                    </Form.Group>
                 </Form.Group>
 
-                <Form.Group controlId="formPhone">
-                    <Form.Label>Phone: </Form.Label>
-                    <Form.Control
-                        name="phone"
-                        type="text"
-                        placeholder="Phone"
-                        value={valuesEmployees.phone}
-                        onChange={handleInputChange}
-                    />
+                <Form.Group className="row">
+                    <Form.Group controlId="formAddress" className="form__long">
+                        <Form.Label>Địa chỉ: </Form.Label>
+                        <Form.Control
+                            name="address"
+                            type="text"
+                            placeholder="Address"
+                            value={valuesEmployees.address}
+                            onChange={handleInputChange}
+                        />
+                    </Form.Group>
+                    <Form.Group controlId="formPhone" className="form__short">
+                        <Form.Label>Số điện thoại: </Form.Label>
+                        <Form.Control
+                            name="phone"
+                            type="text"
+                            placeholder="Phone"
+                            value={valuesEmployees.phone}
+                            onChange={handleInputChange}
+                        />
+                    </Form.Group>
                 </Form.Group>
 
-                <Form.Group controlId="formAddress">
-                    <Form.Label>Address: </Form.Label>
-                    <Form.Control
-                        name="address"
-                        type="text"
-                        placeholder="Address"
-                        value={valuesEmployees.address}
-                        onChange={handleInputChange}
-                    />
+
+
+                <Form.Group className="row" >
+                    <Form.Group controlId="formStartWork" className="form__short">
+                        <Form.Label>Ngày bắt đầu làm việc: </Form.Label>
+                        <Form.Control
+                            name="startWork"
+                            type="date"
+                            placeholder="Start Work"
+                            value={valuesEmployees.startWork}
+                            onChange={handleInputChange}
+                        />
+                    </Form.Group>
+
+                    <Form.Group controlId="formEndWork" className="form__short">
+                        <Form.Label>Ngày kết thúc làm việc: </Form.Label>
+                        <Form.Control
+                            name="endWork"
+                            type="date"
+                            placeholder="End Work"
+                            value={valuesEmployees.endWork}
+                            onChange={handleInputChange}
+                        />
+                    </Form.Group>
                 </Form.Group>
 
-                <Form.Group controlId="formBirthday">
-                    <Form.Label>Birthday: </Form.Label>
-                    <Form.Control
-                        name="birthday"
-                        type="text"
-                        placeholder="Birthday"
-                        value={valuesEmployees.birthday}
-                        onChange={handleInputChange}
-                    />
-                </Form.Group>
-
-                <Form.Group controlId="formStartWork">
-                    <Form.Label>StartWork: </Form.Label>
-                    <Form.Control
-                        name="startWork"
-                        type="text"
-                        placeholder="Start Work"
-                        value={valuesEmployees.startWork}
-                        onChange={handleInputChange}
-                    />
-                </Form.Group>
-
-                <Form.Group controlId="formEndWork">
-                    <Form.Label>EndWork: </Form.Label>
-                    <Form.Control
-                        name="endWork"
-                        type="text"
-                        placeholder="End Work"
-                        value={valuesEmployees.endWork}
-                        onChange={handleInputChange}
-                    />
-                </Form.Group>
-
-                <Form.Group controlId="formRole">
-                    <Form.Label>Role: </Form.Label>
+                <Form.Group controlId="formRole" className="form__short" >
+                    <Form.Label>Quyền: </Form.Label>
                     <Form.Control
                         name="role"
                         type="text"
@@ -204,19 +217,24 @@ const FormInsert_Employees = () => {
                     />
                 </Form.Group>
 
-                <Form.Group>
+                <Form.Group className=" form__short fileImageAddress margin-form" >
+                <Form.Label>Chọn ảnh: </Form.Label>
                     <Form.File
                         id="fileImageAddress"
                         onChange={handleChange}
-                        label="Choose Image:" />
+                        // label="Choose Image:" 
+                        />
                 </Form.Group>
 
-                <Button onClick={saveEmployee} >
-                    Thêm
-                </Button>
-                <Button className="btn-close" >
-                    Hủy
-                </Button>
+                <Form.Group className="row form__button" >
+                    <Button onClick={saveEmployee} className="btn-add">
+                        Thêm
+                    </Button>
+                    <Button onClick={close} className="btn-close" >
+                        Hủy
+                    </Button>
+                </Form.Group>
+
             </Form>
 
             {/* variant="primary" type="submit" */}

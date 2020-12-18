@@ -5,7 +5,7 @@ import { Form, Button } from 'react-bootstrap';
 
 import { storage } from "../../FirebaseCofig/Firebase";
 
-import React, {useState } from 'react';
+import React, { useState } from 'react';
 
 import ServiceKindFood from "../../Service/KindFoodService";
 
@@ -56,7 +56,7 @@ function FormInsert_EditKindFood(props) {
                                 quantity: valuesKindFood.quantity,
                                 imagesKindFood: url
                             } : {
-                                nameKindFood: valuesKindFood.nameKindFood,
+                                    nameKindFood: valuesKindFood.nameKindFood,
                                     quantity: valuesKindFood.quantity,
                                 };
 
@@ -93,6 +93,10 @@ function FormInsert_EditKindFood(props) {
         }
     }
 
+    function close() {
+        history.push('/webadmin/kindFood')
+}
+
     const hanleFormSubmit = e => {
         setValueKindFood(initialFieldValues);
         setSubmitted(false);
@@ -100,11 +104,12 @@ function FormInsert_EditKindFood(props) {
 
     return (
         <div className="sub-container">
-            <h2 className="titleform">Form Edit Kind Food</h2>
-            <Form onSubmit={hanleFormSubmit}>
+            <h2 className="titleform">Cập nhật thông tin loại món ăn</h2>
+          
+            <Form onSubmit={hanleFormSubmit} className="form-insert-edit">
 
-                <Form.Group controlId="formName">
-                    <Form.Label> Name Kind Food: </Form.Label>
+                <Form.Group controlId="formName" className=" form__long">
+                    <Form.Label> Tên loại món: </Form.Label>
                     <Form.Control
                         name="nameKindFood"
                         type="text"
@@ -114,29 +119,20 @@ function FormInsert_EditKindFood(props) {
                     />
                 </Form.Group>
 
-                {/* <Form.Group controlId="formQuantity">
-                    <Form.Label> Quantity: </Form.Label>
-                    <Form.Control
-                        name="quantity"
-                        value={valuesKindFood.quantity}
-                        onChange={handleInputChange}
-                        type="text"
-                        placeholder="Quantity" />
-                </Form.Group> */}
-
-                <Form.Group>
+                <Form.Group className=" form__short fileImageAddress margin-form" >
+                    <Form.Label>Chọn ảnh: </Form.Label>
                     <Form.File
-                        id="fileImageKindFood"
-                        label="Choose Image:"
+                        id="fileImageAddress"
                         onChange={handleChange}
+                    // label="Choose Image:" 
                     />
                 </Form.Group>
 
-                <Button
-                    onClick={saveKindFood}
-                >
-                    Submit
-                </Button>
+                <Form.Group className="row form__button" >
+                    <Button onClick={saveKindFood} className="btn-add">Đồng ý</Button>
+                    <Button onClick={close} className="btn-close" >Hủy</Button>
+                </Form.Group>
+
             </Form>
 
 

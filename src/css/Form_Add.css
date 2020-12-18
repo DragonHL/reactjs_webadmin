@@ -1,8 +1,44 @@
 .titleform{
     color: #0026ff;
-    margin: 0 0 35px 0;
+    margin: 0 0 2% 5%;
 }
 
 .form-group>label{
     font-weight: bold;
 }
+
+
+
+.form-insert-edit .row {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    
+}
+
+.form-insert-edit .form__long {
+    width: 40%;
+   
+}
+
+.form-insert-edit .form__short {
+    width: 20%;
+}
+
+.form-insert-edit .form__long, .form-insert-edit .form__short {
+     margin: 0 5%;
+}
+
+.form-insert-edit .margin-form {
+    margin-top: 2%;
+}
+
+.form-insert-edit .form__button {
+    margin: 2% 5% 0 5%;
+}
+
+.form-insert-edit .form__button .btn-add, .btn-close {
+    width: 150px;
+}
+
+

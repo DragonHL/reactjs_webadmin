@@ -18,20 +18,26 @@ function FormInsertFood(props) {
     // console.log("-----------------------id---------------------")
     // console.log(props.location.state.keyKindFood)
 
+    // const [valuesNameKindFood, setValueNameKindFood] = useState(valuesNameKindFood);
+    //     const [valuesKindFoodID, setValueKindFoodID] = useState(props.location.state.keyKindFood);
+    const [valuesNameKindFood, setValueNameKindFood] = useState(props.location.state.nameKindFood);
+    const [valuesKindFoodID, setValueKindFoodID] = useState(props.location.state.keyKindFood);
 
     const initialFieldValues = {
         name: '',
         information: '',
-        nameKindFood: props.location.state.nameKindFood,
-        kindFoodID: props.location.state.keyKindFood,
+        nameKindFood: valuesNameKindFood,
+        kindFoodID: valuesKindFoodID,
         price: '',
         imageUrl: '',
     }
 
+
+
     const [valuesFood, setValueFood] = useState(initialFieldValues);
     const [submitted, setSubmitted] = useState(false);
     const [image, setImage] = useState(null);
-     const history = useHistory();
+    const history = useHistory();
 
     const handleInputChange = e => {
         var { name, value } = e.target;
@@ -62,23 +68,23 @@ function FormInsertFood(props) {
                                 nameFood: valuesFood.name,
                                 informationFood: valuesFood.information,
                                 // nameKindFood: valuesFood.nameKindFood,
-                                kindFoodID: props.location.state.keyKindFood,
+                                kindFoodID: valuesKindFoodID,
                                 price: parseFloat(valuesFood.price),
                                 imagesFood: url,
                                 status: 0
                             } : {
-                                nameFood: valuesFood.name,
-                                informationFood: valuesFood.information,
-                                kindFoodID: props.location.state.keyKindFood,
-                                imagesFood: null,
-                                price: parseFloat(valuesFood.price),
-                                status: 0
-                            };
+                                    nameFood: valuesFood.name,
+                                    informationFood: valuesFood.information,
+                                    kindFoodID: valuesKindFoodID,
+                                    imagesFood: null,
+                                    price: parseFloat(valuesFood.price),
+                                    status: 0
+                                };
 
                             FoodService.create(data)
                                 .then(() => {
                                     setSubmitted(true);
-                                    history.push('/webadmin/food', { keyKindFood: props.location.state.keyKindFood, nameKindFood: props.location.state.nameKindFood })
+                                    history.push('/webadmin/food', { keyKindFood: valuesKindFoodID, nameKindFood: valuesNameKindFood })
                                 })
                                 .catch(e => {
                                     console.log(e);
@@ -92,7 +98,7 @@ function FormInsertFood(props) {
             var data = {
                 nameFood: valuesFood.name,
                 informationFood: valuesFood.information,
-                kindFoodID: props.location.state.keyKindFood,
+                kindFoodID: valuesKindFoodID,
                 imagesFood: null,
                 price: parseFloat(valuesFood.price),
                 status: 0
@@ -101,12 +107,16 @@ function FormInsertFood(props) {
             FoodService.create(data)
                 .then(() => {
                     setSubmitted(true);
-                    history.push('/webadmin/food', { nameKindFood: props.location.state.nameKindFood })
+                    history.push('/webadmin/food', { nameKindFood: valuesNameKindFood })
                 })
                 .catch(e => {
                     console.log(e);
                 });
         }
+    }
+
+    function close() {
+        history.push('/webadmin/food', { keyKindFood: valuesKindFoodID, nameKindFood: valuesNameKindFood })
     }
 
     const hanleFormSubmit = e => {
@@ -117,63 +127,70 @@ function FormInsertFood(props) {
 
     return (
         <div className="sub-container">
-            <h2 className="titleform">Form Add Food</h2>
-            <Form onSubmit={hanleFormSubmit}>
+            <h2 className="titleform">Thêm món ăn</h2>
+            <Form onSubmit={hanleFormSubmit} className="form-insert-edit">
 
-                <Form.Group controlId="formName">
-                    <Form.Label>Name: </Form.Label>
+                <Form.Group controlId="formName" className="form__long margin-form" >
+                    <Form.Label>Tên món ăn: </Form.Label>
                     <Form.Control
                         name="name"
                         type="text"
-                        placeholder="Name Food"
+                        // placeholder="Name Food"
                         value={valuesFood.name}
                         onChange={handleInputChange}
                     />
                 </Form.Group>
 
-                <Form.Group controlId="formInformation">
-                    <Form.Label>Information: </Form.Label>
+                <Form.Group controlId="formInformation" className="form__long margin-form">
+                    <Form.Label>Thông tin: </Form.Label>
                     <Form.Control
                         name="information"
                         type="text"
-                        placeholder="Information"
+                        // placeholder="Information"
                         value={valuesFood.information}
                         onChange={handleInputChange}
+                        as="textarea" rows={3}
                     />
                 </Form.Group>
 
-                <Form.Group controlId="formPriceFood">
-                    <Form.Label>Price Food: </Form.Label>
+                <Form.Group controlId="formPriceFood" className="form__short margin-form">
+                    <Form.Label>Giá: </Form.Label>
                     <Form.Control
                         name="price"
                         type="text"
-                        placeholder="Price Food"
+                        // placeholder="Price Food"
                         value={valuesFood.price}
                         onChange={handleInputChange}
                     />
                 </Form.Group>
 
-                <Form.Group controlId="formKindFood">
-                    <Form.Label>Kind Food: </Form.Label>
+                <Form.Group controlId="formKindFood" className="form__short margin-form">
+                    <Form.Label>Loại món ăn: </Form.Label>
                     <Form.Control
                         type="text"
-                        placeholder="Kind Food"
+                        // placeholder="Kind Food"
                         value={valuesFood.nameKindFood}
                         onChange={handleInputChange}
                     />
                 </Form.Group>
 
-                <Form.Group>
+                <Form.Group className=" form__short fileImageAddress margin-form">
+                    <Form.Label>Chọn ảnh: </Form.Label>
                     <Form.File
                         id="fileImageKindFood"
-                        label="Choose Image:"
+                        // label="Choose Image:"
                         onChange={handleChange}
                     />
                 </Form.Group>
 
-                <Button onClick={saveKindFood}>
-                    Submit
-                </Button>
+                <Form.Group className="row form__button" >
+                    <Button onClick={saveKindFood} className="btn-add">
+                        Thêm
+                    </Button>
+                    <Button onClick={close} className="btn-close" >
+                        Hủy
+                    </Button>
+                </Form.Group>
             </Form>
 
 
