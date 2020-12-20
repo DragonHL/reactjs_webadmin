@@ -1,0 +1,142 @@
+*{
+    /* box-sizing: border-box; */
+    margin: 0;
+    padding: 0;
+
+}
+
+.box-date {
+    display: flex;
+    width: 51%;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    
+}
+
+.box-date input {
+    border-radius: 10px;
+    padding-left: 10px;
+    height: 35px;
+    border: 2px solid #8781e6;
+}
+
+.statistical_day_month_year{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    font-size: 18px;
+}
+
+.statistical_day_month_year>.statistical_day, .statistical_month , .statistical_year{
+    width: 25%;
+    height: 100%;
+    padding: 1%;
+    border-radius: 25px;
+    background-color: #ffffff;
+    border-left: 10px solid #007bff;
+    border-bottom: 1px solid #efefef;
+    border-top: 1px solid #efefef;
+    border-right: 0.5px solid #efefef;
+}
+
+.statistical_day_month_year>.statistical_day>.title_statistical{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.statistical_day_month_year>.statistical_month>.title_statistical{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.statistical_day_month_year>.statistical_year>.title_statistical{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+.statistical_day_month_year .Day_Month_Year, .fa-dollar-sign{
+    font-size: 2em;
+    font-weight: bold;
+}
+.statistical_day_month_year .Day_Month_Year{
+    color: #0020FF;
+}
+.statistical_day_month_year .fa-dollar-sign{
+    color: #02BF08;
+    font-size: 2.8em;
+}
+
+.statistical_day_month_year .money{
+    font-weight: bold;
+    font-size: 2vw;
+}
+
+
+#curve_chart{
+    /* width: 100%; */
+    /* position: absolute; */
+    /* min-width: 1194px;
+    max-width: 1194px; */
+    width: 1000px;
+    margin: auto;
+}
+
+
+
+.lineChart>h5{
+    color: #5F73DF;
+    font-weight: bold;
+
+    /* padding: 10px 0 10px 10px; */
+}
+
+
+.table-statistics-best-selling {
+    border-top: 10px solid #efefef;
+}
+
+.table-statistics-best-selling>h3 {
+    color: #5F73DF;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+
+@media screen and (max-width: 1024px) {
+
+    .box-date {
+        width: 100%;
+    }
+
+    .statistical_day_month_year>.statistical_day, .statistical_month , .statistical_year{
+        width: 60%;
+        margin-bottom: 5%;
+    }
+
+
+}
+
+
+@media screen and (max-width: 768px) {
+    .statistical_day_month_year>.statistical_day, .statistical_month , .statistical_year{
+        width: 100%;
+        margin-bottom: 5%;
+    }
+
+
+}
+
+@media screen and (max-width: 425px) {
+    .box-date {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 320px) {
+}
+
+

@@ -1,0 +1,154 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+.body_login {
+    background-image: url("https://cdn.vox-cdn.com/thumbor/-kFfdZ6Lo_2Ymf1werDGHnqP_CA=/0x0:4256x2832/1820x1024/filters:focal(1788x1076:2468x1756):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/65023313/The_Rose_Venice_Exterior.0.jpg");
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.container_card{
+    margin: 0% 32.5% !important;
+    border: 10px solid #dcdada !important;
+    border-radius: 30px !important;
+    transition: 1s;
+    background-color: rgba(255, 255, 255, 0.9)!important;
+
+}
+
+.container_login{
+    text-align: center;
+    padding: 0 1.5% !important;
+    border-radius: 30px;
+    transition: 1s;
+}
+
+/* title */
+.title_login {
+    font-family: sans-serif;
+    padding: 20px 0 0 0;
+    transition: 1s ;
+    font-weight: bold;
+}
+
+/* form login */
+.form_login {
+    width: 86%!important;
+    height: 3.3em!important;
+    margin: 0% 7%!important;
+    border-radius: 10px!important;
+    border: 2px solid #c5bfbf!important;
+    padding: 0 10px 0 10px!important;
+}
+
+.input_email{
+    margin-top: 5% !important;
+}
+
+.input_pass{
+    margin-top: 5% !important;
+}
+
+/* Button Login */
+.button_login , .button_reset_pass, .button_cancel {
+    border-radius: 10px!important;
+    border: 0px;
+    color: #ffffff;
+    background-color: #0000FF;
+    font-weight: bold!important;
+    font-size: 1.3em!important;
+    width: 86%!important;
+    height: 2.5em!important;
+    transition: 1s;
+    display: block;
+    margin: 2% 7% 2% 7% !important;
+    text-decoration: none;
+    
+}
+
+.button_cancel {
+    margin-bottom: 5% !important;
+}
+
+
+.reset_pass {
+    text-align: end;
+    font-weight: 600;
+    text-decoration: none !important;
+}
+
+.reset_pass>p{
+    padding-right: 7% !important;
+}
+
+
+/* responsive */
+@media (min-width: 1025px) {
+    body {
+        background-size: auto;
+    }
+
+    .body_login{
+        padding-top: 10%;
+    }
+
+    .title_login {
+        font-size: 2.5em;
+    }
+}
+
+/*Ipad ngang(1024 x 768)*/
+@media screen and (max-width: 1024px) {
+
+    .container_card{
+        width: 45%;
+        margin: 10% 27.5% !important;
+    }
+
+    .title_login {
+        font-size: 2em;
+    } 
+
+}
+
+/*Ipad dọc(768 x 1024)*/
+@media screen and (max-width: 768px) {
+
+    .container_card{
+        width: 60%;
+        margin: 20% 20% !important;
+    }
+
+}
+
+/*Tablet nhỏ(480 x 640)*/
+@media screen and (max-width: 480px) {
+
+    .container_card{
+        width: 80%;
+        margin: 30% 10% !important;
+    }
+}
+
+/*Iphone(480 x 640)*/
+@media screen and (max-width: 320px) {
+
+    .title_login {
+        font-size: 2em;
+    } 
+
+    .container_card{
+        width: 90%;
+        margin: 40% 5% !important;
+    }
+}
+
+
+

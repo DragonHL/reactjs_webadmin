@@ -1,0 +1,391 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    
+}
+
+#root {
+    min-width: 1372px;
+    font-size: 16px;
+}
+
+.header {
+    width: 100%;
+    height: 87px;
+    position: fixed;
+    display: flex;
+    transition: 1s;
+    background-color: #ffffff;
+    z-index: 99999;
+    min-width: 100%;
+}
+
+
+.logo-header {
+    width: 18%;
+    font-size: 1.5em;
+    padding: 0.3em 0;
+    font-family: 'Lily Script One', cursive;
+    font-style: italic;
+    transition: 1s;
+    min-width: 18%;
+
+}
+
+.logo-header>.titleLogoHeader1 {
+    margin: 0 0 0 22%;
+}
+
+.logo-header>.titleLogoHeader2 {
+    margin: 0 0 0 30%;
+    transform: translateY(-12px);
+}
+
+.navbar-header {
+    width: 82%;
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+    align-items: center;
+    min-width: 82%;
+}
+
+.iconMenu {
+    width: 5%;
+    margin-left: 2%;
+}
+
+.iconMenu .fa-bars {
+    font-size: 2em;
+}
+
+.iconMenu .fa-bars:hover {
+    cursor: pointer;
+    border: 1px solid #efefef;
+}
+
+
+.search {
+    width: 40%;
+    display: flex;
+    align-self: center;
+    position: relative;
+}
+
+.search .iSearch {
+    width: 90%;
+    border-radius: 20px;
+    padding: 10px 39px;
+    border: 0.1px solid #bababa;
+    outline: none;
+}
+
+.search .fa-search {
+    position: absolute;
+    left: 3%;
+    top: 34%;
+    color: #a7a7a7;
+}
+
+.searchView480 {
+    display: none;
+}
+
+.informationAdmin {
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.informationAdmin .imageAdminHeader {
+    background-image: url("../images/logo.jpg");
+    height: 57px;
+    width: 100px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.informationAdmin .nameAdminHeader {
+    font-size: 1.1em;
+    font-weight: 700;
+    color: #6d6d6d;
+    margin: inherit;
+}
+
+.side-bar {
+    position: fixed;
+    width: 18%;
+    height: 100%;
+    left: 0;
+    top: 87px;
+    padding: 0.6em 0;
+    background-color: #ffffff;
+    z-index: 99999;
+    transition: 1s;
+    overflow: scroll;
+    min-width: 18%;
+}
+
+.side-bar p {
+    margin: 0;
+}
+
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+
+@keyframes mymove {
+    from {
+        left: -200px;
+    }
+
+    to {
+        left: 0px;
+    }
+}
+
+.informationAdmin-SideBar {
+    width: 100%;
+    text-align: center;
+}
+
+.imageAdminSideBar {
+    background-image: url("../images/logo.jpg");
+    height: 100px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.informationAdmin-SideBar .informationA{
+    text-decoration:none;
+    color: inherit;
+    
+}
+
+
+.informationAdmin-SideBar .role {
+    color: #989898;
+    text-decoration: none;
+}
+
+.fa-caret-down:hover{
+    color: #0400ff;
+}
+
+#example-collapse-text{
+    text-align: center;
+}
+
+.nav-item-vertical>.linkSideBar{
+    color: #989898;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.nav-item-vertical>.linkSideBar:hover{
+    text-decoration: none;
+}
+
+.titleDasboard {
+    margin: 0.8em 0 0.8em 0.8em;
+    transition: 1s;
+    color: #3d3d3d;
+}
+
+.list-menu {
+    padding-left: 1.5em;
+    list-style-type: none;
+}
+
+.list-menu>li {
+    margin-bottom: 2em;
+    transition: 1s;
+}
+
+
+.list-menu>li>.linkSideBar {
+    display: flex;
+    text-decoration: none;
+    font-size: 1.2em;
+    color: #8D97AD;
+    transition: 0.1s;
+    align-items: center;
+}
+
+.list-menu>li>.linkSideBar:hover{
+    color: #2c2c2c;
+}
+
+.list-menu>li>.linkSideBar:focus {
+    color: black;
+}
+
+.list-menu>li>.linkSideBar>.i {
+    width: 1.5em;
+
+}
+
+.list-menu>li>.linkSideBar>p {
+    margin-left: 0.6em;
+}
+
+/* -----------------srat container-body------------------------- */
+
+.container-body {
+    width: 82%;
+    height: auto;
+    float: right;
+    transition: 1s;
+    background-color: #efefef;
+    margin-top: 87px;
+    min-width: 82%;
+
+
+}
+
+.sub-container {
+    margin: 10px;
+    background-color: #ffffff;
+    padding: 20px 10px;
+    overflow-x: auto;
+    
+}
+
+.title-button{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2%;
+    height: 58px;
+}
+
+.titleTable{
+    color: #4E73DF;
+    transition: 1s;
+    margin-left: 2%;
+}
+
+.title-button .buttonAdd{
+    background-color: #FFB300;
+    width: 12%;
+    border: none;
+    outline: none;
+    border-radius: 61px 0 61px 47px;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1.2em;
+    transition: 0.5s;
+    padding-top: 15px;
+    margin-right: 1%;
+}
+
+.title-button>.buttonAdd:hover{
+    color: #fff8f8;
+    background-color: #f8991d;
+}
+
+/* -----------------end container-body------------------------- */
+
+
+
+/* responsive */
+
+@media screen and (max-width: 1260px) {
+    .side-bar {
+        width: 19.6%;
+    }
+    .logo-header {
+        min-width: 19.6%;
+    }
+
+    .statistical_day_month_year .money {
+        font-size: 2.5vw !important;
+    }
+}
+
+@media screen and (max-width: 1069px) {
+    .side-bar {
+        width: 23.1%;
+    }
+    .logo-header {
+        min-width: 23.1%;
+    }
+    .statistical_day_month_year .money {
+        font-size: 3vw;
+    }
+}
+
+@media screen and (max-width: 979px) {
+    .side-bar {
+        width: 25.3%;
+    }
+    .logo-header {
+        min-width: 25.3%;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .side-bar {
+        width: 27.6%;
+    }
+    .logo-header {
+        min-width: 27.6%;
+    }
+}
+
+@media screen and (max-width: 790px) {
+    .side-bar {
+        width: 31.3%;
+    }
+    .logo-header {
+        min-width: 31.3%;
+    }
+}
+
+@media screen and (max-width: 746px) {
+    .side-bar {
+        width: 33.2%;
+    }
+    .logo-header {
+        min-width: 33.2%;
+    }
+}
+
+@media screen and (max-width: 636px) {
+    .side-bar {
+        width: 39.1%;
+    }
+    .logo-header {
+        min-width: 39.1%;;
+    }
+}
+
+@media screen and (max-width: 546px) {
+    .side-bar {
+        width: 45.3%;
+    }
+    .logo-header {
+        min-width: 45.3%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .side-bar {
+        width: 49.6%;
+    }
+
+    .logo-header {
+        min-width: 49.6%;
+    }
+
+    .informationAdmin {
+        display: none;
+    }
+}
+
